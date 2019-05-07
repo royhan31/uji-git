@@ -47,14 +47,9 @@ return [
             'hash' => false,
         ],
 
-         'pelamar' => [
+         'compeny' => [
             'driver' => 'session',
-            'provider' => 'pelamars',
-        ],
-
-        'api-pelamar' => [
-            'driver' => 'token',
-            'provider' => 'pelamars',
+            'provider' => 'compenies',
         ],
 
         'admin' => [
@@ -90,9 +85,9 @@ return [
             'model' => App\Admin::class,
         ],
 
-        'pelamars' => [
+        'compenies' => [
             'driver' => 'eloquent',
-            'model' => App\Pelamar::class,
+            'model' => App\Compeny::class,
         ],
 
         // 'users' => [
@@ -122,7 +117,7 @@ return [
             'table' => 'password_resets',
             'expire' => 60,
         ],
-        
+
         'users' => [
             'provider' => 'admins',
             'table' => 'password_resets',
