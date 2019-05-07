@@ -15,7 +15,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Route::group(['prefix' => 'admin'], function(){
+  Route::get('/login', 'Admin\AuthAdminController@showLoginForm')->name('admin.login');
+});
+
+Route::group(['prefix' => 'company'], function(){
+  Route::get('/login','Auth\LoginController@showLoginForm')->name('login');
+});
+
+
+//Auth::routes();
 
 //Route::get('/home', 'HomeController@index')->name('home');
 // Auth::routes();
@@ -39,11 +48,6 @@ Route::get('/profil', function () {
 	return view('layouts.manage.profil');
 })->name('profil');
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
 Route::get('loginadmin', function () {
     return view('admin.loginadmin.form');
 });
-

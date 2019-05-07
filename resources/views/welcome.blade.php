@@ -60,8 +60,8 @@
     <!-- Top Bar Starts -->
     <div class="top-bar">
         <div class="container">
-            <div class="tmail">Email: infotim.com</div>    
-            <div class="tphone">Phone: 089685049878 </div>    
+            <div class="tmail">Email: infotim.com</div>
+            <div class="tphone">Phone: 089685049878 </div>
             <div class="tsocial">
                 <a href=""><i class="fa fa-twitter"></i></a>
                 <a href=""><i class="fa fa-facebook"></i></a>
@@ -99,7 +99,7 @@
                                         <li><a class="smooth_scroll" href="#about">ABOUT</a></li>
                                         <li><a class="smooth_scroll" href="#team">TEAM</a></li>
                                         <li><a class="smooth_scroll" href="#contact">CONTACT</a></li>
-                                        <li><a href="login" class="btn btn-trnsp btn-big">LOGIN</a></li>
+                                        <li><a href="{{route('login')}}" class="btn btn-trnsp btn-big">LOGIN</a></li>
                                         <li><a href="register" class="btn btn-trnsp btn-big">REGISTER</a></li>
                                     </ul>
                                 </nav>
@@ -183,28 +183,28 @@
     <!-- About area starts -->
     <section id="about" class="about-area section-big">
         <div class="container">
-            
+
             <div class="row">
                 <div class="col-md-12 text-center">
                     <div class="section-title">
                         <h2>About <span>Us</span></h2>
-                        <p> suport untuk sebuah peluang bisnis dibidang IT yang menyediakan platform untuk penyebaran informasi lowongan kerja dibidang IT 
+                        <p> suport untuk sebuah peluang bisnis dibidang IT yang menyediakan platform untuk penyebaran informasi lowongan kerja dibidang IT
                         </p>
                     </div>
                 </div>
             </div>
-            
+
             <div class="row">
                 <!-- About Image -->
                 <div class="col-md-6">
                     <div class="skill-section">
                         <div class="skill-title">
                             <h3>What Contribution We Have</h3>
-                            <p>Memberikan tempat untuk mengolah dan mendapatkan pekerja yang sesuai dengan kemampuan dibidang IT 
+                            <p>Memberikan tempat untuk mengolah dan mendapatkan pekerja yang sesuai dengan kemampuan dibidang IT
                             </p>
                         </div>
-                        
-                        
+
+
                         <div class="skill-bar">
                             <h4>Web Design</h4>
                             <div class="skillbar clearfix " data-percent="85%">
@@ -242,11 +242,11 @@
         </div>
     </section>
     <!-- About area ends -->
-    
+
     <!-- Team area starts -->
     <section id="team" class="team-area section-big">
         <div class="container">
-        
+
             <div class="row">
                 <div class="col-md-12 text-center">
                     <div class="section-title">
@@ -255,7 +255,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="row">
                 <div class="col-md-3 col-sm-6">
                 </div>
@@ -265,7 +265,7 @@
                         <div class="member-image">
                             <img src="{{asset('assets/front/assets/img/team/member-2.png')}}" alt="">
                         </div>
-                        
+
                         <div class="member-hover">
                             <div class="center-content">
                                 <div class="member-social">
@@ -287,7 +287,7 @@
                         <div class="member-image">
                             <img src="{{asset('assets/front/assets/img/team/member-4.png')}}" alt="">
                         </div>
-                        
+
                         <div class="member-hover">
                             <div class="center-content">
                                 <div class="member-social">
@@ -314,7 +314,7 @@
     <!-- fun-facts area starts -->
     <section id="fun-facts" class="fun-facts-area section-big">
         <div class="container">
-        
+
             <div class="row">
                 <div class="col-sm-6 col-md-3">
                     <div class="fun-fact text-center tab-margin-bottom">
@@ -345,7 +345,7 @@
                     </div>
                 </div>
             </div>
-            
+
         </div>
     </section>
     <!-- fun-facts area ends -->
@@ -375,7 +375,7 @@
                             <p>Locavore pork belly scenester, pinterest chillwave microdosing waistcoat pop-up. Flexitarian +1 cliche artisan, biodiesel mixtape tacos art party mustache cardigan kitsch squid disrupt. Truffaut deep v kitsch salvia sriracha.  </p>
                             <h4>John Doe</h4>
                             <p class="desg">CEO Designcare</p>
-                       </div> 
+                       </div>
                     </div>
 
                     <!-- Testimonial item -->
@@ -386,7 +386,7 @@
                             <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters.</p>
                             <h4>Micle Smith</h4>
                             <p class="desg">Founder of Ambidextrousbd</p>
-                        </div> 
+                        </div>
                     </div>
 
                     <!-- Testimonial item <--></-->
@@ -397,7 +397,7 @@
                             <p>Locavore pork belly scenester, pinterest chillwave microdosing waistcoat pop-up. Flexitarian cliche artisan. There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour.  </p>
                             <h4>Smith Doe</h4>
                             <p class="desg">Founder of designinfo</p>
-                        </div> 
+                        </div>
                     </div>
 
                 </div>
@@ -405,8 +405,8 @@
 
         </div>
     </section>
-    <!-- Testimonial area ends --> 
-        
+    <!-- Testimonial area ends -->
+
     <!-- Client area starts -->
     <section id="client" class="client-area section-big">
         <div class="container">
@@ -459,7 +459,7 @@
         </div>
     </section>
     <!-- Client area ends -->
-    
+
     <!-- Contact area starts -->
     <section id="contact" class="contact-area section-big">
         <div class="container">
@@ -483,7 +483,7 @@
 
                         <form id="ajax-contact" action="assets/mailer.php" method="post">
                             <div class="row">
-                                
+
                                 <div class="col-md-6">
                                     <div class="form-group in_name">
                                         <input type="text" name="name" class="form-control" id="name" placeholder="Full Name" required="required">
@@ -501,7 +501,7 @@
                                 </div>
 
                                 <div class="col-md-12">
-                                    <div class="form-group in_message"> 
+                                    <div class="form-group in_message">
                                         <textarea name="message" class="form-control" id="message" placeholder="Your Message" required="required"></textarea>
                                     </div>
                                     <div class="actions">
@@ -512,10 +512,10 @@
                         </form>
                     </div>
                     <!-- Contact form ends-->
-                    
+
                 </div>
                 <!-- <div class="clearfix visible-xs visible-sm visible-md"></div> -->
-                
+
                 <div class="col-md-4">
                     <div class="contact-info">
                         <i class="fa fa-home"></i>
@@ -541,14 +541,14 @@
                             Skype: example
                         </p>
                     </div>
-                    
+
                 </div>
             </div>
 
         </div>
     </section>
     <!-- Contact area ends -->
-    
+
     <!-- social-area starts-->
     <div class="social-area">
         <div class="container text-center">
@@ -576,13 +576,13 @@
         </div>
     </div>
     <!-- social-area ends-->
-    
+
 
     <!-- Google Map starts-->
     <div id="contactgoogleMap"></div>
     <!-- Google Map ends -->
-    
-    
+
+
     <!-- Footer area starts -->
     <footer class="footer-area">
         <div class="container">
@@ -593,7 +593,7 @@
                             <p>Copyright &copy; 2017 Abirvab. All Rights Reserved by Ambidextrousbd</p>
                         </div>
                         <div class="top-button">
-                          <a href="#slider" class="back-to-top smooth_scroll"><i class="fa fa-angle-up"></i></a> 
+                          <a href="#slider" class="back-to-top smooth_scroll"><i class="fa fa-angle-up"></i></a>
                         </div>
                     </div>
                 </div>
@@ -601,9 +601,9 @@
         </div>
     </footer>
     <!-- Footer area ends -->
-    
-    
-    
+
+
+
     <!-- Latest jQuery -->
     <script src="{{asset('assets/front/assets/js/jquery.min.js')}}"></script>
 
