@@ -1,4 +1,4 @@
-@extends('admin.dashboard')
+@extends('templates.company.dashboard')
 
 @push('css')
 

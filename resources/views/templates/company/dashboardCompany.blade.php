@@ -1,8 +1,7 @@
-
 <!DOCTYPE html>
 <html>
 
-@include('templates.back.partials.head')
+@include('templates.company.partials.head')
 
 
 <body class="theme-red">
@@ -27,18 +26,18 @@
     <div class="overlay"></div>
     <!-- #END# Overlay For Sidebars -->
  {{--bagian search--}}
- @include('templates.back.partials.search')
+ @include('templates.company.partials.search')
 
  {{--bagian header--}}
- @include('templates.back.partials.header')
+ @include('templates.company.partials.header')
 
 {{--bagian side bar--}}
-@include('templates.back.partials.sidebar')
+@include('templates.company.partials.sidebar')
 
 @yield('content')
 
     <!-- Jquery Core Js -->
-   @include('templates.back.partials.script')
+   @include('templates.company.partials.script')
 </body>
 
 </html>

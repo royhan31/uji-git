@@ -18,6 +18,9 @@ Route::get('/', function () {
 Route::group(['prefix' => 'admin'], function(){
   Route::get('/login', 'Admin\AuthAdminController@showLoginForm')->name('admin.login');
 });
+Route::get('/dashboardAdmin', function () {
+    return view('templates.admin.dashboardAdmin');
+})->name('dashboardAdmin');
 
 Route::group(['prefix' => 'company'], function(){
   Route::get('/login','Auth\LoginController@showLoginForm')->name('login');
@@ -31,9 +34,9 @@ Route::group(['prefix' => 'company'], function(){
 
 // Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 
-Route::get('dashboard', function () {
-    return view('admin.dashboard');
-});
+Route::get('/dashboard', function () {
+    return view('templates.company.default');
+})->name('dashboard');
 
 
 Route::get('/datapelamar', function () {
