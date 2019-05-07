@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
+	<img src="{{asset('assets/loginadmin/background.jpg')}}" alt="gambar" class="bg2" />
 	<link href="{{asset('assets/loginadmin/css.css')}}" rel="stylesheet">
 	<link href="{{asset('assets/loginadmin/js.js')}}" rel="stylesheet">
 
 <div class="wrapper">
 	<div class="container">
-		<h1>Welcome</h1>
+		<h1>Admin</h1>
 </head>
 <body>
 		<form class="form">
@@ -23,11 +23,7 @@
 		<li></li>
 		<li></li>
 		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
+		
 	</ul>
 </div>
 </body>

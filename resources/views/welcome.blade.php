@@ -97,11 +97,10 @@
                                     <ul class="nav navbar-nav navbar-right">
                                         <li class="active"><a class="smooth_scroll" href="#slider">HOME</a></li>
                                         <li><a class="smooth_scroll" href="#about">ABOUT</a></li>
-                                        <li><a class="smooth_scroll" href="#work">PORTFOLIO</a></li>
                                         <li><a class="smooth_scroll" href="#team">TEAM</a></li>
                                         <li><a class="smooth_scroll" href="#contact">CONTACT</a></li>
                                         <li><a href="login" class="btn btn-trnsp btn-big">LOGIN</a></li>
-                                        <li><a href="register" class="btn btn-trnsp btn-big">RREISTER</a></li>
+                                        <li><a href="register" class="btn btn-trnsp btn-big">REGISTER</a></li>
                                     </ul>
                                 </nav>
                             </div>
@@ -240,140 +239,9 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- About Text -->
-                <div class="col-md-6">
-                    <div class="about-details">
-                        <div class="about-title">
-                            <h3>ABIRVAB Websites That Look Beautiful</h3>
-                            <p>Locavore pork belly scenester, pinterest chillwave microdosing waistcoat pop-up. Flexitarian +1 cliche artisan, biodiesel mixtape tacos art party mustache cardigan kitsch squid disrupt.</p>
-                        </div>
-                        <ul>
-                            <li>Anim pariatur cliche reprehenderit.</li>
-                            <li>Morbi accumsan ipsum velit sodales tellus.</li>
-                            <li>Quis nostrud exercitation ullamco laboris.</li>
-                            <li>Morbi accumsan ipsum velit sodales tellus.</li>
-                            <li>Locavore pork belly chillwave microdos.</li>
-                        </ul>
-                        <a href="" class="btn">Read more</a>
-                    </div>
-                </div>
-            </div>
-
         </div>
     </section>
     <!-- About area ends -->
-    
-<!--    Work area starts -->
-    <section id="work" class="works-area section-big">
-        <div class="container">
-
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <div class="section-title">
-                       <h2>OUR GREAT<span>WORKS</span></h2>
-                        <p>Locavore pork belly scenester, pinterest chillwave microdosing waistcoat
-                        pop-up. Flexitarian cliche artisan. </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-            
-                <!-- Works filter -->
-                <ul class="work filters">
-                    <li class="filter" data-filter="all">All</li>
-                    <li class="filter" data-filter=".web">Webdesign</li>
-                    <li class="filter" data-filter=".dev">Development</li>
-                    <li class="filter" data-filter=".brand">Branding</li>
-                    <li class="filter" data-filter=".illustrate">Illustration</li>
-                </ul>
-                <!-- / Works filter -->
-
-            </div>
-
-            <div class="portfolio">
-                <div class="row work-items">
-
-                    <!-- work item -->
-                    <div class="col-md-4 col-sm-6 mix illustrate web">
-                        <div class="item ">
-                            <a href="{{asset('assets/front/assets/img/works/1.jpg')}}" class="work-popup">
-                                <img src="assets/img/works/1.jpg" alt="">
-                                <div class="overlay">
-                                    <i class="fa fa-arrows-alt" aria-hidden="true"></i>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- work item -->
-                    <div class="col-md-4 col-sm-6 mix dev">
-                        <div class="item">
-                            <a href="{{asset('assets/front/assets/img/works/2.jpg')}}" class="work-popup">
-                                <img src="assets/img/works/2.jpg" alt="">
-                                <div class="overlay">
-                                    <i class="fa fa-arrows-alt" aria-hidden="true"></i>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- work item -->
-                    <div class="col-md-4 col-sm-6 mix illustrate typography web">
-                        <div class="item">
-                            <a href="{{asset('assets/front/assets/img/works/3.jpg')}}" class="work-popup">
-                                <img src="assets/img/works/3.jpg" alt="">
-                                <div class="overlay">
-                                    <i class="fa fa-arrows-alt" aria-hidden="true"></i>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- work item -->
-                    <div class="col-md-4 col-sm-6 mix web dev brand">
-                        <div class="item">
-                            <a href="{{asset('assets/front/assets/img/works/4.jpg')}}" class="work-popup">
-                                <img src="assets/img/works/4.jpg" alt="">
-                                <div class="overlay">
-                                    <i class="fa fa-arrows-alt" aria-hidden="true"></i>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- work item -->
-                    <div class="col-md-4 col-sm-6 mix web illustrate">
-                        <div class="item">
-                            <a href="{{asset('assets/front/assets/img/works/5.jpg')}}" class="work-popup">
-                                <img src="assets/img/works/5.jpg" alt="">
-                                <div class="overlay">
-                                    <i class="fa fa-arrows-alt" aria-hidden="true"></i>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- work item -->
-                    <div class="col-md-4 col-sm-6 mix dev brand">
-                        <div class="item">
-                            <a href="{{asset('assets/front/assets/img/works/6.jpg')}}" class="work-popup">
-                                <img src="assets/img/works/6.jpg" alt="">
-                                <div class="overlay">
-                                    <i class="fa fa-arrows-alt" aria-hidden="true"></i>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-        </div>
-    </section>
-    <!-- Work area ends  -->
-    
     
     <!-- Team area starts -->
     <section id="team" class="team-area section-big">
@@ -382,35 +250,14 @@
             <div class="row">
                 <div class="col-md-12 text-center">
                     <div class="section-title">
-                        <h2>CLEVER TEAM <span>MEMBERS</span></h2>
-                        <p>Locavore pork belly scenester, pinterest chillwave microdosing waistcoat
-                        pop-up. Flexitarian cliche artisan. </p>
+                        <h2>OUR TEAM <span>MEMBERS</span></h2>
+                        <p>tim yang terdiri dari 2 orang</p>
                     </div>
                 </div>
             </div>
             
             <div class="row">
-
                 <div class="col-md-3 col-sm-6">
-                    <div class="team-member wow fadeInUp" data-wow-delay="0.2s">
-                        <div class="member-image">
-                            <img src="{{asset('assets/front/assets/img/team/member-1.png')}}" alt="">
-                        </div>
-                        
-                        <div class="member-hover">
-                            <div class="center-content">
-                                <div class="member-social">
-                                    <a href="#"><i class="fa fa-rss"></i></a>
-                                    <a href="#"><i class="fa fa-facebook"></i></a>
-                                    <a href="#"><i class="fa fa-twitter"></i></a>
-                                    <a href="#"><i class="fa fa-google-plus"></i></a>
-                                    <a href="#"><i class="fa fa-linkedin"></i></a>
-                                </div>
-                                <h3 class="subtitle">Kristen Craft </h3>
-                                <p class="text-muted">Markater</p>
-                            </div>
-                        </div>
-                    </div>
                 </div>
 
                 <div class="col-md-3 col-sm-6">
@@ -438,7 +285,7 @@
                 <div class="col-md-3 col-sm-6">
                     <div class="team-member wow fadeInUp" data-wow-delay="0.6s">
                         <div class="member-image">
-                            <img src="{{asset('assets/front/assets/img/team/member-3.png')}}" alt="">
+                            <img src="{{asset('assets/front/assets/img/team/member-4.png')}}" alt="">
                         </div>
                         
                         <div class="member-hover">
@@ -458,29 +305,7 @@
                 </div>
 
                 <div class="col-md-3 col-sm-6">
-                    <div class="team-member wow fadeInUp" data-wow-delay="0.8s">
-                        <div class="member-image">
-                            <img src="{{asset('assets/front/assets/img/team/member-4.png')}}" alt="">
-                        </div>
-                        
-                        <div class="member-hover">
-                            <div class="center-content">
-                                <div class="member-social">
-                                    <a href="#"><i class="fa fa-rss"></i></a>
-                                    <a href="#"><i class="fa fa-facebook"></i></a>
-                                    <a href="#"><i class="fa fa-twitter"></i></a>
-                                    <a href="#"><i class="fa fa-google-plus"></i></a>
-                                    <a href="#"><i class="fa fa-linkedin"></i></a>
-                                </div>
-                                <h3 class="subtitle">Kristen Craft </h3>
-                                <p class="text-muted">Markater</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
-            
-            
         </div>
     </section>
     <!-- Team area ends -->

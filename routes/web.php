@@ -15,6 +15,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Auth::routes();
+
+//Route::get('/home', 'HomeController@index')->name('home');
 // Auth::routes();
 
 // Route::get('/dashboard', 'HomeController@index')->name('dashboard');
@@ -39,4 +42,8 @@ Route::get('/profil', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('loginadmin', function () {
+    return view('admin.loginadmin.form');
+});
 
