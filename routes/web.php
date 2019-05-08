@@ -18,39 +18,12 @@ Route::get('/', function () {
 Route::group(['prefix' => 'admin'], function(){
   Route::get('/login', 'Admin\AuthAdminController@showLoginForm')->name('admin.login');
 });
-Route::get('/dashboardAdmin', function () {
-    return view('templates.admin.dashboardAdmin');
-})->name('dashboardAdmin');
 
-Route::group(['prefix' => 'company'], function(){
-  Route::get('/login','Auth\LoginController@showLoginForm')->name('login');
-});
-
-
-//Auth::routes();
-
-//Route::get('/home', 'HomeController@index')->name('home');
-// Auth::routes();
-
-// Route::get('/dashboard', 'HomeController@index')->name('dashboard');
-
-Route::get('/dashboard', function () {
-    return view('templates.company.default');
-})->name('dashboard');
-
-
-Route::get('/datapelamar', function () {
-	return view('layouts.manage.datapelamar');
-})->name('datapelamar');
-
-Route::get('/dataloker', function () {
-	return view('layouts.manage.dataloker');
-})->name('dataloker');
-
-Route::get('/profil', function () {
-	return view('layouts.manage.profil');
-})->name('profil');
-
-Route::get('loginadmin', function () {
-    return view('admin.loginadmin.form');
+Route::group(['prefix' => '/'], function(){
+  Route::get('login','Company\AuthCompanyController@showLoginForm')->name('login');
+  Route::post('login','Company\AuthCompanyController@login')->name('company.login');
+  Route::get('register','Company\AuthCompanyController@showRegisterForm')->name('register');
+  Route::post('register','Company\AuthCompanyController@register')->name('company.register');
+  Route::get('dashboard','Company\CompanyController@index')->name('company.dashboard');
+  Route::post('logout','Company\AuthCompanyController@logoutCompany')->name('company.logout');
 });

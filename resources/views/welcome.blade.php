@@ -100,7 +100,7 @@
                                         <li><a class="smooth_scroll" href="#team">TEAM</a></li>
                                         <li><a class="smooth_scroll" href="#contact">CONTACT</a></li>
                                         <li><a href="{{route('login')}}" class="btn btn-trnsp btn-big">LOGIN</a></li>
-                                        <li><a href="register" class="btn btn-trnsp btn-big">REGISTER</a></li>
+                                        <li><a href="{{route('register')}}" class="btn btn-trnsp btn-big">REGISTER</a></li>
                                     </ul>
                                 </nav>
                             </div>

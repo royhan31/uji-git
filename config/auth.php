@@ -47,9 +47,9 @@ return [
             'hash' => false,
         ],
 
-         'compeny' => [
+         'company' => [
             'driver' => 'session',
-            'provider' => 'compenies',
+            'provider' => 'companies',
         ],
 
         'admin' => [
@@ -85,9 +85,9 @@ return [
             'model' => App\Admin::class,
         ],
 
-        'compenies' => [
+        'companies' => [
             'driver' => 'eloquent',
-            'model' => App\Compeny::class,
+            'model' => App\Company::class,
         ],
 
         // 'users' => [
@@ -118,16 +118,16 @@ return [
             'expire' => 60,
         ],
 
-        'users' => [
+        'companies' => [
             'provider' => 'admins',
             'table' => 'password_resets',
-            'expire' => 15,
+            'expire' => 25,
         ],
 
-        'users' => [
+        'admins' => [
             'provider' => 'pelamars',
             'table' => 'password_resets',
-            'expire' => 0,
+            'expire' => 15,
         ],
     ],
 
