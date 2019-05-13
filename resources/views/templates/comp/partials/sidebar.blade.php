@@ -35,7 +35,7 @@
                             <span>Home</span>
                         </a>
                     </li><li>
-                        <a href="datapelamar">
+                        <a href="{{route('company.dashboard.datapelamar')}}">
                             <i class="material-icons">layers</i>
                             <span>Data Pelamar</span>
                         </a>
@@ -47,15 +47,9 @@
                         </a>
                     </li>
                     <li>
-                        <a href="profil">
-                            <i class="material-icons">text_fields</i>
-                            <span>profil</span>
-                        </a>
-                    </li>
-                    <li>
                         <a href="#">
                             <i class="material-icons">update</i>
-                            <span>Log Activi</span>
+                            <span>Log Activity</span>
                         </a>
                     </li>
                 </ul>

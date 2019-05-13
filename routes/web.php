@@ -29,4 +29,7 @@ Route::group(['prefix' => '/'], function(){
   Route::post('register','Company\AuthCompanyController@register')->name('company.register');
   Route::post('logout','Company\AuthCompanyController@logoutCompany')->name('company.logout');
   Route::get('dashboard','Company\CompanyController@index')->name('company.dashboard');
+  Route::get('datapelamar','Company\CompanyController@index')->name('company.dashboard.datapelamar');
 });
+
+// Route::get('/datapelamar', function () {return view('layouts.manage.company.datapelamar');})->name('datapelamar');
