@@ -41,15 +41,9 @@
                         </a>
                     </li>
                     <li>
-                        <a href="dataloker">
+                        <a href="{{route('company.dashboard.dataloker')}}">
                             <i class="material-icons">layers</i>
                             <span>Data Lowongan Kerja</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="material-icons">update</i>
-                            <span>Log Activity</span>
                         </a>
                     </li>
                 </ul>

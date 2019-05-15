@@ -199,14 +199,14 @@
                 <div class="col-md-6">
                     <div class="skill-section">
                         <div class="skill-title">
-                            <h3>What Contribution We Have</h3>
-                            <p>Memberikan tempat untuk mengolah dan mendapatkan pekerja yang sesuai dengan kemampuan dibidang IT
+                            <h3>Contribution</h3>
+                            <p>Memberikan tempat untuk mengolah lowongan kerja dan mendapatkan pekerja yang sesuai dengan kemampuan dibidang IT
                             </p>
                         </div>
 
 
                         <div class="skill-bar">
-                            <h4>Web Design</h4>
+                            <h4>Lowongan Kerja</h4>
                             <div class="skillbar clearfix " data-percent="85%">
                                 <div class="skillbar-bar"></div>
                                 <div class="skill-bar-percent one">85%</div>
@@ -214,7 +214,7 @@
                         </div>
                     <!-- Work Skill -->
                         <div class="skill-bar">
-                            <h4>Web Development</h4>
+                            <h4>Pekerja Diterima</h4>
                             <div class="skillbar clearfix " data-percent="80%">
                                 <div class="skillbar-bar"></div>
                                 <div class="skill-bar-percent two">80%</div>
@@ -222,7 +222,7 @@
                         </div>
                         <!-- Work Skill -->
                         <div class="skill-bar">
-                            <h4>Wordpress</h4>
+                            <h4>Pendaftar</h4>
                             <div class="skillbar clearfix " data-percent="90%">
                                 <div class="skillbar-bar"></div>
                                 <div class="skill-bar-percent three">90%</div>
@@ -231,7 +231,7 @@
 
                         <!-- Work Skill -->
                         <div class="skill-bar">
-                            <h4>Photoshop</h4>
+                            <h4>Pengguna</h4>
                             <div class="skillbar clearfix " data-percent="85%">
                                 <div class="skillbar-bar"></div>
                                 <div class="skill-bar-percent four">85%</div>
@@ -275,8 +275,8 @@
                                     <a href="#"><i class="fa fa-google-plus"></i></a>
                                     <a href="#"><i class="fa fa-linkedin"></i></a>
                                 </div>
-                                <h3 class="subtitle">Kristen Craft </h3>
-                                <p class="text-muted">Markater</p>
+                                <h3 class="subtitle">Annabela K </h3>
+                                <p class="text-muted">Mobile Development</p>
                             </div>
                         </div>
                     </div>
@@ -297,8 +297,8 @@
                                     <a href="#"><i class="fa fa-google-plus"></i></a>
                                     <a href="#"><i class="fa fa-linkedin"></i></a>
                                 </div>
-                                <h3 class="subtitle">Kristen Craft </h3>
-                                <p class="text-muted">Markater</p>
+                                <h3 class="subtitle">Dade Listi A</h3>
+                                <p class="text-muted">Web Development</p>
                             </div>
                         </div>
                     </div>
@@ -520,9 +520,9 @@
                     <div class="contact-info">
                         <i class="fa fa-home"></i>
                         <p>
-                            777 Locavore pork belly scenester,
+                            Jln. Mataram no.9 Margadana Tegal Jawa Tengah Indonesia,
                             <br>
-                            Bangladesh 54321
+                            Tegal 52141
                         </p>
                     </div>
                     <div class="contact-info">
@@ -536,9 +536,7 @@
                     <div class="contact-info">
                         <i class="fa fa-globe"></i>
                         <p>
-                            example@yourcompany.com
-                            <br>
-                            Skype: example
+                            infotim@gmail.com
                         </p>
                     </div>
 
