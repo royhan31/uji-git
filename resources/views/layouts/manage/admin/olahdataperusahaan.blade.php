@@ -1,4 +1,4 @@
-@extends('templates.comp.default')
+@extends('templates.admin.default')
 
 @push('css')
 
@@ -6,20 +6,13 @@
 
 @section('content')
 
-<section class="content">
-        <div class="container-fluid">
-            <div class="block-header">
-                <h2>
-                    PELAMAR KERJA
-                </h2>
-            </div>
 <!-- Exportable Table -->
             <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
                         <div class="header">
                             <h2>
-                                Tabel Pelamar Kerja
+                                EXPORTABLE TABLE
                             </h2>
                             <ul class="header-dropdown m-r--5">
                                 <li class="dropdown">
@@ -36,40 +29,27 @@
                         </div>
                         <div class="body">
                             <div class="table-responsive">
-                                <div id="DataTables_Table_1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
-                                    <div class="dt-buttons">
-                                    <a class="dt-button buttons-copy buttons-html5" tabindex="0" aria-controls="DataTables_Table_1" href="#"><span>Copy</span></a>
-                                    <a class="dt-button buttons-csv buttons-html5" tabindex="0" aria-controls="DataTables_Table_1" href="#"><span>CSV</span></a>
-                                    <a class="dt-button buttons-excel buttons-html5" tabindex="0" aria-controls="DataTables_Table_1" href="#"><span>Excel</span></a>
-                                    <a class="dt-button buttons-pdf buttons-html5" tabindex="0" aria-controls="DataTables_Table_1" href="#"><span>PDF</span></a>
-                                    <a class="dt-button buttons-print" tabindex="0" aria-controls="DataTables_Table_1" href="#"><span>Print</span></a>
-                            </div>
-                            <div id="DataTables_Table_1_filter" class="dataTables_filter">
-            <label>Search:<input type="search" class="form-control input-sm" placeholder="" aria-controls="DataTables_Table_1">
-            </label>
-        </div>
-            <table class="table table-bordered table-striped table-hover dataTable js-exportable" id="DataTables_Table_1" role="grid" aria-describedby="DataTables_Table_1_info">
-            <thead>
-                <tr role="row">
-                    <th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 142px;">Nama</th>
-                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 235px;">Hasil Potensi</th>
-                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 103px;">Alamat</th>
-                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 46px;">Umur</th>
-                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 97px;">Tanggal Daftar</th>
-                    <th class="text" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending" style="width: 79px;">Aksi</th>
-                </tr>
-            </thead>
-            <tfoot>
-            <tr>
-                <th rowspan="1" colspan="1">Nama</th>
-                <th rowspan="1" colspan="1">Hasil Potensi</th>
-                <th rowspan="1" colspan="1">Alamat</th>
-                <th rowspan="1" colspan="1">Umur</th>
-                <th rowspan="1" colspan="1">Tanggal Daftar</th>
-                <th rowspan="1" colspan="1">Aksi</th>
-            </tr>
-            </tfoot>
-            <tbody>
+                                <table class="table table-bordered table-striped table-hover dataTable js-exportable">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Position</th>
+                                            <th>Office</th>
+                                            <th>Age</th>
+                                            <th>Start date</th>
+                                            <th>Salary</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Position</th>
+                                            <th>Office</th>
+                                            <th>Age</th>
+                                            <th>Start date</th>
+                                            <th>Salary</th>
+                                        </tr>
+                                    </tfoot>
                                     <tbody>
                                         <tr>
                                             <td>Tiger Nixon</td>

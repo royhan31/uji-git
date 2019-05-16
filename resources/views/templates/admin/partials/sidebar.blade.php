@@ -46,7 +46,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="pages/helper-classes.html">
+                        <a href="{{route('admin.dashboard.olahdataperusahaan')}}">
                             <i class="material-icons">layers</i>
                             <span>Olah Data Perusahaan</span>
                         </a>

@@ -20,6 +20,7 @@ Route::group(['prefix' => 'admin'], function(){
   Route::post('/login','Admin\AuthAdminController@login')->name('admin.get.login');
   Route::post('logout','Admin\AuthAdminController@logoutAdmin')->name('admin.logout');
   Route::get('/dashboard','Admin\AdminsController@index')->name('admin.dashboard');
+  Route::get('/olahdataperusahaan','Admin\OlahDataPerusahaanController@index')->name('admin.dashboard.olahdataperusahaan');
 });
 
 Route::group(['prefix' => '/'], function(){
@@ -30,7 +31,7 @@ Route::group(['prefix' => '/'], function(){
   Route::post('logout','Company\AuthCompanyController@logoutCompany')->name('company.logout');
   Route::get('dashboard','Company\CompanyController@index')->name('company.dashboard');
   Route::get('dataloker','Company\DataLokerController@index')->name('company.dashboard.dataloker');
-  Route::get('datapelamar','Company\CompanyController@index')->name('company.dashboard.datapelamar');
+  Route::get('datapelamar','Company\DataPelamarController@index')->name('company.dashboard.datapelamar');
 });
 
-// Route::get('/datapelamar', function () {return view('layouts.manage.company.datapelamar');})->name('datapelamar');
+

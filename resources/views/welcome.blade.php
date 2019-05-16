@@ -127,8 +127,9 @@
                     <div class="table">
                         <div class="table-cell">
                             <div class="intro-text">
-                                <p class="slide-caption"><FONT FACE="eucroasiaUPC">WELCOME</FONT></p>
+                                <p class="slide-caption"><FONT FACE="eucroasiaUPC">Welcome</FONT></p>
                                 <div class="title clearfix">
+                                    <h3><FONT FACE="gabriola">LokerIT offering more than just a job platform</FONT></h3>
                                 </div>
                             </div>
                         </div>
@@ -143,7 +144,7 @@
                             <div class="intro-text">
                                 <p class="slide-caption"><FONT FACE="eucroasiaUPC">WE ARE HEARING</FONT></p>
                                 <div class="title clearfix">
-                                    <h3><FONT FACE="gabriola">Need to grow your business ?</FONT></h3>
+                                    <h3><FONT FACE="gabriola">Need to grow your business ? or Need to promotion your business?</FONT></h3>
                                 </div>
                             </div>
                         </div>
@@ -414,8 +415,9 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="section-title text-center">
-                        <h2>Our Happy <span>Clients</span></h2>
+                        <h2>Our  <span>Partner</span></h2>
                         <p>perusahaan yang bekerjasama dengan kami</p>
+                        <p>Ayoo Daftarkan sekarang!!</p>
                     </div>
                 </div>
             </div>
