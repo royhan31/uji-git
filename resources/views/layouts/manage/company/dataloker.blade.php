@@ -48,7 +48,7 @@
                                 </div>
                                <div class="form-group form-float">
                                     <div class="form-line">
-                                        <input type="text" class="form-control" name="syarat" required>
+                                        <textarea name="description" cols="30" rows="5" class="form-control no-resize" required></textarea>
                                         <label class="form-label">Persyaratan</label>
                                     </div>
                                 </div>

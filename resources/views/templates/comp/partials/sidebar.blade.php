@@ -12,7 +12,7 @@
                     <div class="btn-group user-helper-dropdown">
                         <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
                         <ul class="dropdown-menu pull-right">
-                            <li><a href="javascript:void(0);"><i class="material-icons">person</i>Profile</a></li>s
+                            <li><a href="{{route('company.dashboard.profile')}}"><i class="material-icons">person</i>Profile</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a href="{{ route('company.logout') }}" onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();"><i class="material-icons">input</i>Sign Out</a>
@@ -35,15 +35,35 @@
                             <span>Home</span>
                         </a>
                     </li><li>
-                        <a href="{{route('company.dashboard.datapelamar')}}">
+                        <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">layers</i>
                             <span>Data Pelamar</span>
                         </a>
+                         <ul class="ml-menu">
+                            <li>
+                                <a href="{{route('company.dashboard.daftarpelamarkerja')}}">Daftar Pelamar Kerja</a>
+                            </li>
+                            <li>
+                                <a href="pages/ui/alerts.html">Dokumen Persyaratan</a>
+                            </li>
+                            <li>
+                                <a href="pages/ui/animations.html">Pelamar Kerja acc</a>
+                            </li>
+                            <li>
+                                <a href="pages/ui/badges.html">Pelamar kerja Decline</a>
+                            </li>
+                        </ul>
                     </li>
                     <li>
                         <a href="{{route('company.dashboard.dataloker')}}">
                             <i class="material-icons">layers</i>
                             <span>Data Lowongan Kerja</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="material-icons">swap_calls</i>
+                            <span>Log Aktifitas</span>
                         </a>
                     </li>
                 </ul>

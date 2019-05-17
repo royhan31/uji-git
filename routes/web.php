@@ -31,7 +31,8 @@ Route::group(['prefix' => '/'], function(){
   Route::post('logout','Company\AuthCompanyController@logoutCompany')->name('company.logout');
   Route::get('dashboard','Company\CompanyController@index')->name('company.dashboard');
   Route::get('dataloker','Company\DataLokerController@index')->name('company.dashboard.dataloker');
-  Route::get('datapelamar','Company\DataPelamarController@index')->name('company.dashboard.datapelamar');
+  Route::get('daftarpelamar','Company\DaftarPelamarController@index')->name('company.dashboard.daftarpelamarkerja');
+  Route::get('profile','Company\ProfileController@index')->name('company.dashboard.profile');
 });
 
 
