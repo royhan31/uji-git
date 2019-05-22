@@ -29,18 +29,22 @@
             <div class="menu">
                 <ul class="list">
                     <li class="header">MAIN NAVIGATION</li>
-                    <li class="active">
-                        <a href="#">
+                    <li class="@if (Request::is('dashboard')) active
+
+                    @endif">
+                        <a href="{{url('dashboard')}}">
                             <i class="material-icons">home</i>
                             <span>Home</span>
                         </a>
-                    </li><li>
+                    </li><li class="@if (Request::is('daftarpelamar')) active
+
+                    @endif">
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">layers</i>
                             <span>Data Pelamar</span>
                         </a>
                          <ul class="ml-menu">
-                            <li>
+                            <li class="@if (Request::is('daftarpelamar')) active @endif">
                                 <a href="{{route('company.dashboard.daftarpelamarkerja')}}">Daftar Pelamar Kerja</a>
                             </li>
                             <li>
