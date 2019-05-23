@@ -13,16 +13,16 @@ class DataLokerController extends Controller
     }
 
     public function index(){
-   
-    	$datalokers=dataloker::all();
-    	return view('layouts.manage.company.dataloker',compact('datalokers'));
-    	
+
+    	$lokers=dataloker::all();
+    	// return view('layouts.manage.company.dataloker',compact('datalokers'));
+      return view('home.comp.loker.index',compact('lokers'));
+
     }
 
     public function create(Request $request)
     {
-    	// return redirect('Loker/create');
-    	return view('layouts.manage.company.add-loker');
+    	return view('home.comp.loker.create');
     }
 
     public function store(Request $request)
@@ -38,5 +38,6 @@ class DataLokerController extends Controller
         $dataloker = dataloker::create($validatedData);
 
         return redirect('Loker/create')->with('success', 'data is successfully saved');
-    
+
+}
 }
