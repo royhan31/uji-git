@@ -11,20 +11,6 @@ use Auth;
 class Dataloker extends Model
 {
    protected $table = 'datalokers';
-
-   protected $filable = [
-    'bidang',
-    'lok_penempatan',
-    'persyaratan',
-    'jenis_kel',
-    'tgl_daftar',
-    'tgl_penutup'
-];
-
    protected $guarded = [];
 
-
-   protected $hidden = [
-   	'password',
-   ];
 }

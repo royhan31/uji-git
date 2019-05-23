@@ -2,7 +2,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title>Welcome To | lokerit </title>
+    <title>@if(Request::is('/')) Welcome To | lokerit
+            @elseif(Request::is('login')) Login | lokerit
+            @else
+            LokerIT
+            @endif
+          </title>
     <!-- Favicon-->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
 
@@ -21,6 +26,10 @@
 
     <!-- Morris Chart Css-->
     <link href="{{asset('assets/back/plugins/morrisjs/morris.css')}}" rel="stylesheet" />
+    <link href="{{asset('assets/back/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css')}}" rel="stylesheet" />
+
+   <!-- Bootstrap DatePicker Css -->
+   <link href="{{asset('assets/back/plugins/bootstrap-datepicker/css/bootstrap-datepicker.css')}}" rel="stylesheet" />
 
     <!-- Custom Css -->
     <link href="{{asset('assets/back/css/style.css')}}" rel="stylesheet">

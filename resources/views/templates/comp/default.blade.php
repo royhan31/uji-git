@@ -34,10 +34,14 @@
 {{--bagian side bar--}}
 @include('templates.comp.partials.sidebar')
 
+<section class="content">
+       <div class="container-fluid">
 @yield('content')
+</div>
+</section>
 
     <!-- Jquery Core Js -->
-   @include('templates.comp.partials.script')
+  @include('templates.comp.partials.script')
 </body>
 
 </html>

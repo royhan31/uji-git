@@ -58,7 +58,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li>
+                    <li class="@if (Request::is('loker')) active @endif">
                         <a href="{{route('company.dashboard.dataloker')}}">
                             <i class="material-icons">layers</i>
                             <span>Data Lowongan Kerja</span>

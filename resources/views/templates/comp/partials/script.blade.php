@@ -23,18 +23,18 @@
     <script src="{{asset('assets/back/plugins/chartjs/Chart.bundle.js')}}"></script>
 
     <!-- Flot Charts Plugin Js -->
-    <script src="{{asset('assets/back/plugins/flot-charts/jquery.flot.js')}}"></script>
+    <!-- <script src="{{asset('assets/back/plugins/flot-charts/jquery.flot.js')}}"></script>
     <script src="{{asset('assets/back/plugins/flot-charts/jquery.flot.resize.js')}}"></script>
     <script src="{{asset('assets/back/plugins/flot-charts/jquery.flot.pie.js')}}"></script>
     <script src="{{asset('assets/back/plugins/flot-charts/jquery.flot.categories.js')}}"></script>
-    <script src="{{asset('assets/back/plugins/flot-charts/jquery.flot.time.js')}}"></script>
+    <script src="{{asset('assets/back/plugins/flot-charts/jquery.flot.time.js')}}"></script> -->
 
     <!-- Sparkline Chart Plugin Js -->
     <script src="{{asset('assets/back/plugins/jquery-sparkline/jquery.sparkline.js')}}"></script>
 
     <!-- Custom Js -->
     <script src="{{asset('assets/back/js/admin.js')}}"></script>
-    <script src="{{asset('assets/back/js/pages/index.js')}}"></script>
+    <!-- <script src="{{asset('assets/back/js/pages/index.js')}}"></script> -->
 
     <!-- Demo Js -->
     <script src="{{asset('assets/back/js/demo.js')}}"></script>
@@ -49,10 +49,11 @@
     <script src="{{asset('assets/back/plugins/jquery-datatable/extensions/export/vfs_fonts.js')}}"></script>
     <script src="{{asset('assets/back/plugins/jquery-datatable/extensions/export/buttons.html5.min.js')}}"></script>
     <script src="{{asset('assets/back/plugins/jquery-datatable/extensions/export/buttons.print.min.js')}}"></script>
-
+    <script src="{{asset('assets/back/plugins/ckeditor/ckeditor.js')}}"></script>
     <!-- Custom Js -->
     <script src="{{asset('assets/back/js/admin.js')}}"></script>
     <script src="{{asset('assets/back/js/pages/tables/jquery-datatable.js')}}"></script>
+    <script src="{{asset('assets/back/js/pages/forms/editors.js')}}"></script>
 
     <!-- Demo Js -->
     <script src="{{asset('assets/back/js/demo.js')}}"></script>
