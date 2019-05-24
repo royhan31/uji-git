@@ -19,7 +19,6 @@ class CreateDatalokersTable extends Migration
             $table->string('bidang',50);
             $table->string('loc_penempatan',50);
             $table->longText('persyaratan');
-            $table->string('jenis_kel');
             $table->date('tgl_daftar');
             $table->date('tgl_penutup');
             $table->string('image');

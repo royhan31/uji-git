@@ -42,20 +42,6 @@
                                     <textarea id="ckeditor" name="persyaratan" rows="8" cols="80"></textarea>
                                   </div>
                               </div>
-                            <label>Jenis Kelamin</label>
-                            <br>
-                            <input name="man" value="Laki-laki" type="checkbox" id="laki-laki" class="filled-in m-b-10">
-                                <label for="laki-laki">Laki-laki</label>
-                                <br>
-                            <input name="woman" value="Perempuan" type="checkbox" id="perempuan" class="filled-in m-b-15">
-                            <label for="perempuan">Remember Me</label>
-                            <br>
-                            <br>
-                            <!-- <div class="form-group">
-                              <div class="form-line">
-                                  <input type="text" class="datepicker form-control" placeholder="Masukan Tanggal Daftar">
-                              </div>
-                            </div> -->
                             <div class="row clearfix">
                               <div class="col-sm-4">
                             <label>Tanggal Daftar</label>
