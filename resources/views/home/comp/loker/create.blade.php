@@ -22,7 +22,7 @@
                           </h2>
                       </div>
                       <div class="body">
-                          <form action="" method="POST" enctype="multipart/form-data">
+                          <form action="{{route('loker.store')}}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <label>Bidang Kerja</label>
                               <div class="form-group">
@@ -44,22 +44,43 @@
                               </div>
                             <label>Jenis Kelamin</label>
                             <br>
-                            <input name="laki-laki" type="checkbox" id="laki-laki" class="filled-in m-b-10">
+                            <input name="man" value="Laki-laki" type="checkbox" id="laki-laki" class="filled-in m-b-10">
                                 <label for="laki-laki">Laki-laki</label>
                                 <br>
-                            <input name="perempuan" type="checkbox" id="perempuan" class="filled-in m-b-15">
+                            <input name="woman" value="Perempuan" type="checkbox" id="perempuan" class="filled-in m-b-15">
                             <label for="perempuan">Remember Me</label>
                             <br>
                             <br>
-                            <label>Tanggal Pendaftaran</label>
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                               <div class="form-line">
-                                  <input type="text" class="datepicker form-control" placeholder="Please choose a date...">
+                                  <input type="text" class="datepicker form-control" placeholder="Masukan Tanggal Daftar">
+                              </div>
+                            </div> -->
+                            <div class="row clearfix">
+                              <div class="col-sm-4">
+                            <label>Tanggal Daftar</label>
+                              <div class="form-group col-4">
+                                <div class="form-line" id="bs_datepicker_container">
+                                      <input type="text" name="tgl_daftar" class="form-control" placeholder="Masukan tanggal daftar">
+                                  </div>
                               </div>
                             </div>
-
-
-                              <button type="button" class="btn btn-primary m-t-15 waves-effect">LOGIN</button>
+                            <div class="col-sm-4">
+                              <label>Tanggal penutup</label>
+                              <div class="form-group">
+                                <div class="form-line" id="bs_datepicker_container">
+                                      <input type="text" name="tgl_penutup" class="form-control" placeholder="Masukan tanggal penutup">
+                                  </div>
+                              </div>
+                            </div>
+                          </div>
+                            <label>Gambar</label>
+                              <div class="form-group">
+                                  <div class="form-line">
+                                    <input type="file" name="image" class="form-control">
+                                  </div>
+                              </div>
+                              <button type="submit" class="btn btn-primary m-t-15 waves-effect">Simpan</button>
                           </form>
                       </div>
                   </div>

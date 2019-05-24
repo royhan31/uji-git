@@ -49,9 +49,18 @@
     <script src="{{asset('assets/back/plugins/jquery-datatable/extensions/export/vfs_fonts.js')}}"></script>
     <script src="{{asset('assets/back/plugins/jquery-datatable/extensions/export/buttons.html5.min.js')}}"></script>
     <script src="{{asset('assets/back/plugins/jquery-datatable/extensions/export/buttons.print.min.js')}}"></script>
+    <!-- Bootstrap Material Datetime Picker Plugin Js -->
+    <script src="{{asset('assets/back/plugins/autosize/autosize.js')}}"></script>
+    <script src="{{asset('assets/back/plugins/momentjs/moment.js')}}"></script>
+    <script src="{{asset('assets/back/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js')}}"></script>
+
+    <!-- Bootstrap Datepicker Plugin Js -->
+    <script src="{{asset('assets/back/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js')}}"></script>
     <script src="{{asset('assets/back/plugins/ckeditor/ckeditor.js')}}"></script>
+    <script src="{{asset('assets/back/plugins/tinymce/tinymce.js')}}"></script>
     <!-- Custom Js -->
     <script src="{{asset('assets/back/js/admin.js')}}"></script>
+    <script src="{{asset('assets/back/js/pages/forms/basic-form-elements.js')}}"></script>
     <script src="{{asset('assets/back/js/pages/tables/jquery-datatable.js')}}"></script>
     <script src="{{asset('assets/back/js/pages/forms/editors.js')}}"></script>
 

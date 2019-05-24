@@ -15,15 +15,17 @@ class CreateDatalokersTable extends Migration
     {
         Schema::create('datalokers', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('id_perusahaan')->unsigned();
+            $table->bigInteger('id_perusahaan')->unsigned();
             $table->string('bidang',50);
             $table->string('loc_penempatan',50);
             $table->longText('persyaratan');
             $table->string('jenis_kel');
             $table->date('tgl_daftar');
             $table->date('tgl_penutup');
-            $table->string('image',50);
+            $table->string('image');
             $table->timestamps();
+
+            $table->foreign('id_perusahaan')->references('id')->on('companies')->onDelete('CASCADE');
         });
     }
 

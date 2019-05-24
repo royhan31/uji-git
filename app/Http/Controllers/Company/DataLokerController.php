@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Company;
 use \App\Dataloker;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Auth;
 
 class DataLokerController extends Controller
 {
@@ -27,17 +28,48 @@ class DataLokerController extends Controller
 
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'bidang' => 'required|min:5',
-            'loc_penempatan' => 'required|min:5',
-            'persyaratan' => 'required|min:5',
-            'jenis_kel' => 'required|min:5',
-            'tgl_daftar' => 'required|date(dd-mm-yy)',
-            'tgl_penutup' => 'required|date(dd-mm-yy)',
-        ]);
-        $dataloker = dataloker::create($validatedData);
+        //dd($request->all());
+        $daftar = strtotime($request->tgl_daftar);
+        $penutup = strtotime($request->tgl_penutup);
+        $image = $request->file('image')->store('loker');
+        $company_id = Auth::user()->id;
+        if ($request->man) {
+          if ($request->woman) {
+            Dataloker::create([
+              'id_perusahaan' => $company_id,
+              'bidang' => $request->bidang,
+              'loc_penempatan' => $request->penempatan,
+              'persyaratan' => $request->persyaratan,
+              'jenis_kel' => $request->man ." / ". $request->woman,
+              'tgl_daftar' => date('Y-m-d', $daftar),
+              'tgl_penutup' => date('Y-m-d', $penutup),
+              'image' => $image
+            ]);
+          }else{
+          Dataloker::create([
+            'id_perusahaan' => $company_id,
+            'bidang' => $request->bidang,
+            'loc_penempatan' => $request->penempatan,
+            'persyaratan' => $request->persyaratan,
+            'jenis_kel' => $request->man,
+            'tgl_daftar' => date('Y-m-d', $daftar),
+            'tgl_penutup' => date('Y-m-d', $penutup),
+            'image' => $image
+          ]);
+        }
+        }else {
+          Dataloker::create([
+            'id_perusahaan' => $company_id,
+            'bidang' => $request->bidang,
+            'loc_penempatan' => $request->penempatan,
+            'persyaratan' => $request->persyaratan,
+            'jenis_kel' => $request->woman,
+            'tgl_daftar' => date('Y-m-d', $daftar),
+            'tgl_penutup' => date('Y-m-d', $penutup),
+            'image' => $image
+          ]);
+        }
 
-        return redirect('Loker/create')->with('success', 'data is successfully saved');
-
-}
+        return redirect()->route('company.dashboard.dataloker');
+    }
 }
