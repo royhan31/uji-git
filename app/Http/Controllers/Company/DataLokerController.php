@@ -33,43 +33,15 @@ class DataLokerController extends Controller
         $penutup = strtotime($request->tgl_penutup);
         $image = $request->file('image')->store('loker');
         $company_id = Auth::user()->id;
-        if ($request->man) {
-          if ($request->woman) {
-            Dataloker::create([
-              'id_perusahaan' => $company_id,
-              'bidang' => $request->bidang,
-              'loc_penempatan' => $request->penempatan,
-              'persyaratan' => $request->persyaratan,
-              'jenis_kel' => $request->man ." / ". $request->woman,
-              'tgl_daftar' => date('Y-m-d', $daftar),
-              'tgl_penutup' => date('Y-m-d', $penutup),
-              'image' => $image
-            ]);
-          }else{
-          Dataloker::create([
-            'id_perusahaan' => $company_id,
-            'bidang' => $request->bidang,
-            'loc_penempatan' => $request->penempatan,
-            'persyaratan' => $request->persyaratan,
-            'jenis_kel' => $request->man,
-            'tgl_daftar' => date('Y-m-d', $daftar),
-            'tgl_penutup' => date('Y-m-d', $penutup),
-            'image' => $image
-          ]);
-        }
-        }else {
-          Dataloker::create([
-            'id_perusahaan' => $company_id,
-            'bidang' => $request->bidang,
-            'loc_penempatan' => $request->penempatan,
-            'persyaratan' => $request->persyaratan,
-            'jenis_kel' => $request->woman,
-            'tgl_daftar' => date('Y-m-d', $daftar),
-            'tgl_penutup' => date('Y-m-d', $penutup),
-            'image' => $image
-          ]);
-        }
-
+        Dataloker::create([
+          'id_perusahaan' => $company_id,
+          'bidang' => $request->bidang,
+          'loc_penempatan' => $request->penempatan,
+          'persyaratan' => $request->persyaratan,
+          'tgl_daftar' => date('Y-m-d', $daftar),
+          'tgl_penutup' => date('Y-m-d', $penutup),
+          'image' => $image
+        ]);
         return redirect()->route('company.dashboard.dataloker');
     }
 }
