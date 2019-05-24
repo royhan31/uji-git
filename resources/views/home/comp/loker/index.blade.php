@@ -12,11 +12,12 @@
 </div>
 @else
 <div class="row clearfix">
+  @foreach($lokers as $loker)
   <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
         <div class="card">
             <div class="header bg-red">
                 <h2>
-                    Red - Title <small>Description text here...</small>
+                    {{$loker->bidang}} <small>{{$loker->loc_penempatan}}</small>
                 </h2>
                 <ul class="header-dropdown m-r--5">
                     <li class="dropdown">
@@ -32,10 +33,11 @@
                 </ul>
             </div>
             <div class="body">
-                Quis pharetra a pharetra fames blandit. Risus faucibus velit Risus imperdiet mattis neque volutpat, etiam lacinia netus dictum magnis per facilisi sociosqu. Volutpat. Ridiculus nostra.
+              {!! str_limit($loker->persyaratan,300) !!}
             </div>
         </div>
     </div>
+    @endforeach
   </div>
   @endif
 @endsection

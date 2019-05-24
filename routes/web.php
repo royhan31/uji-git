@@ -36,7 +36,7 @@ Route::group(['prefix' => '/'], function(){
   //crud loker
   Route::get('loker','Company\DataLokerController@index')->name('company.dashboard.dataloker');
   Route::get('loker/tambah','Company\DataLokerController@create')->name('loker.create');
-  Route::post('loker/create','Company\DataLokerController@store')->name('post_loker');
+  Route::post('loker/tambah','Company\DataLokerController@store')->name('loker.store');
 
 
 
