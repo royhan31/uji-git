@@ -20,11 +20,15 @@ class LokerConroller extends Controller
     'datalokers.tgl_daftar','datalokers.tgl_penutup','datalokers.image')
     ->get();
 
-    //$tour = Tour::with('category')->get();
-
+    if ($loker->isEmpty()) {
+      return response()->json([
+        'message' => 'Not Found',
+        'status' => false,
+      ], 404);
+    }
     return response()->json([
       'message' => 'success',
-      'status' => 1,
+      'status' => true,
       'data' => $loker
     ], 200);
   }
