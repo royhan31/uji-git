@@ -21,17 +21,19 @@ class AuthCompanyController extends Controller
   public function register(Request $request){
     $this->validate($request, [
       'name' => 'required|string|min:3|max:255',
+      'company' => 'required|string|min:5',
       'email' => 'required|string|max:150|unique:companies',
       'password' => 'required|string|min:6|confirmed'
     ]);
 
     Company::create([
       'name'     => $request->name,
+      'company'  => $request->company,
       'email'    => $request->email,
       'password' => bcrypt($request->password),
     ]);
 
-    return redirect()->route('login');
+    return redirect()->route('login')->with('success','Berhasil register, Silahkan login');
   }
 
   public function showLoginForm(){
@@ -50,7 +52,9 @@ class AuthCompanyController extends Controller
     ];
 
     if (!Auth::guard('company')->attempt($credential, $request->memeber)) {
-      return redirect()->back()->withInput($request->only('email','remember'));
+      return redirect()->back()
+      ->withInput($request->only('email','remember'))
+      ->with('error','Login gagal, Silahkan coba lagi');
     }
 
     return redirect()->route('company.dashboard');

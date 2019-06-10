@@ -29,10 +29,9 @@ Route::group(['prefix' => '/'], function(){
   Route::get('register','Company\AuthCompanyController@showRegisterForm')->name('register');
   Route::post('register','Company\AuthCompanyController@register')->name('company.register');
   Route::post('logout','Company\AuthCompanyController@logoutCompany')->name('company.logout');
-  Route::get('dashboard','Company\CompanyController@index')->name('company.dashboard');
-  Route::get('daftarpelamar','Company\DaftarPelamarController@index')->name('company.dashboard.daftarpelamarkerja');
-  Route::get('profile','Company\ProfileController@index')->name('company.dashboard.profile');
-
+  Route::get('beranda','Company\CompanyController@index')->name('company.dashboard');
+  Route::get('profil','Company\CompanyController@profile')->name('company.profile');
+  Route::patch('profile/{company}','Company\CompanyController@updateProfile')->name('company.profile.update');
   //crud loker
   Route::get('loker','Company\DataLokerController@index')->name('company.dashboard.dataloker');
   Route::get('loker/tambah','Company\DataLokerController@create')->name('loker.create');

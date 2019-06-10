@@ -99,8 +99,12 @@
                                         <li><a class="smooth_scroll" href="#about">ABOUT</a></li>
                                         <li><a class="smooth_scroll" href="#team">TEAM</a></li>
                                         <li><a class="smooth_scroll" href="#contact">CONTACT</a></li>
+                                        @Auth('company')
+                                        <li><a href="{{route('company.dashboard')}}" class="btn btn-trnsp btn-big">Beranda</a></li>
+                                        @else
                                         <li><a href="{{route('login')}}" class="btn btn-trnsp btn-big">LOGIN</a></li>
                                         <li><a href="{{route('register')}}" class="btn btn-trnsp btn-big">REGISTER</a></li>
+                                        @endauth
                                     </ul>
                                 </nav>
                             </div>
