@@ -12,16 +12,34 @@
     </div>
     <ul class="sidebar-menu">
       <li class=""><a class="sidebar-header @if(Request::is('beranda')) active @endif" href="{{route('company.dashboard')}}"><i data-feather="home"></i><span>Beranda</span></a></li>
-      <li class=""><a class="sidebar-header" href="#"><i data-feather="airplay"></i><span>Data Pelamar</span><i class="fa fa-angle-right pull-right"></i></a>
+      <li class="
+      @if(Request::is('daftar-pelamar-kerja') || Request::is('persyaratan') )
+      active
+      @endif
+      "><a class="sidebar-header" href="#"><i data-feather="airplay"></i><span>Data Pelamar</span><i class="fa fa-angle-right pull-right"></i></a>
         <ul class="sidebar-submenu">
-          <li class=""><a href="#"><i class="fa fa-circle"></i>Daftar Pelamar Kerja</a></li>
-          <li><a href="#"><i class="fa fa-circle"></i>Dokumen Persyaratan</a></li>
-          <li><a href="#"><i class="fa fa-circle"></i>Pelamar Kerja Acc</a></li>
-          <li><a href="#"><i class="fa fa-circle"></i>Pelamar Kerja Decline</a></li>
+          <li class="@if(Request::is('daftar-pelamar-kerja'))
+          active
+          @endif
+          "><a href="{{route('company.jobApplicant')}}"><i class="fa fa-circle"></i>Daftar Pelamar Kerja</a></li>
+          <li class="@if(Request::is('persyaratan'))
+          active
+          @endif"><a href="{{route('company.requirements')}}"><i class="fa fa-circle"></i>Dokumen Persyaratan</a></li>
+          <li><a href="#"><i class="fa fa-circle"></i>Pelamar Kerja Diterima</a></li>
+          <li><a href="#"><i class="fa fa-circle"></i>Pelamar Kerja Ditolak</a></li>
 
         </ul>
       </li>
-      <li><a class="sidebar-header" href="#"><i data-feather="clipboard"></i><span>Data Lowongan Kerja</span></a></li>
+      <li><a class="sidebar-header @if(Request::is('loker'))
+         active
+         @elseif(Request::is('loker/tambah'))
+         active
+         @elseif(Request::is('loker/edit'))
+         active
+         @elseif(Request::is('loker/detail'))
+         active
+         @endif"
+        href="{{route('company.loker')}}"><i data-feather="clipboard"></i><span>Data Lowongan Kerja</span></a></li>
       <li><a class="sidebar-header" href="#"><i data-feather="clock"></i><span>Riwayat</span></a></li>
 
       <!-- <li><a class="sidebar-header" href="#"><i data-feather="disc"></i><span>Color Version</span><i class="fa fa-angle-right pull-right"></i></a>

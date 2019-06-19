@@ -33,10 +33,13 @@ Route::group(['prefix' => '/'], function(){
   Route::get('profil','Company\CompanyController@profile')->name('company.profile');
   Route::patch('profile/{company}','Company\CompanyController@updateProfile')->name('company.profile.update');
   //crud loker
-  Route::get('loker','Company\DataLokerController@index')->name('company.dashboard.dataloker');
-  Route::get('loker/tambah','Company\DataLokerController@create')->name('loker.create');
-  Route::post('loker/tambah','Company\DataLokerController@store')->name('loker.store');
+  Route::get('loker','Company\LokerController@index')->name('company.loker');
+  Route::get('loker/tambah','Company\LokerController@create')->name('company.loker.create');
+  Route::get('loker/edit','Company\LokerController@edit')->name('company.loker.edit');
+  Route::get('loker/detail','Company\LokerController@show')->name('company.loker.detail');
 
-
+  //Data pelamar Kerja
+  Route::get('daftar-pelamar-kerja','Company\UserController@jobApplicant')->name('company.jobApplicant');
+  Route::get('persyaratan','Company\UserController@requirements')->name('company.requirements');
 
 });
