@@ -34,9 +34,10 @@
           </div>
           <div class="card-body">
               <div class="row mb-2">
-                <div class="col-auto"><img class="img-70 rounded-circle" alt="" src="{{asset('images/'.Auth::user()->avatar)}}"></div>
+                <!-- <div class="col-auto"><img class="img-70 rounded-circle" alt="" src="{{asset('images/'.Auth::user()->avatar)}}"></div> -->
                 <div class="col">
                   <h3 class="mb-1">{{Auth::user()->name}}</h3>
+                  <p class="mb-4">{{Auth::user()->company}}</p>
                 </div>
               </div>
 
@@ -93,9 +94,12 @@
             <div class="row">
               <div class="col-sm-12 col-md-12">
                   <div class="form-group">
+                    <div class="form-group mb-5">
+                      <img src="{{asset('images/'.Auth::user()->avatar)}}" class="img-100 rounded-circle" alt="" id="preview_avatar" width="30%" height="30%">
+                    </div>
                     <label class="form-label">Foto</label>
                     <div class="custom-file">
-                      <input name="avatar" class="custom-file-input" id="validatedCustomFile" type="file">
+                      <input name="avatar" class="custom-file-input" id="avatar" type="file" accept="image/*">
                       <label class="custom-file-label" for="validatedCustomFile">Pilih Gambar</label>
                     </div>
                   </div>

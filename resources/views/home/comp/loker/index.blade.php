@@ -43,10 +43,11 @@
 @else
 <div class="container-fluid">
   <div class="row">
+    @foreach($lokers as $loker)
     <div class="col-sm-12 col-xl-4">
       <div class="card">
         <div class="card-header">
-          <h5>Basic Card</h5>
+          <h5>{{$loker->name}}</h5>
           <div class="card-header-right">
             <ul class="list-unstyled card-option">
               <li><i class="icofont icofont-simple-left"></i></li>
@@ -57,14 +58,15 @@
           </div>
         </div>
         <div class="card-body">
-          <p class="mb-0">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled.</p>
-
+          <p class="mb-0">{!!$loker->description!!}</p>
         </div>
         <div class="card-footer">
-
+          <h5></h5>
         </div>
       </div>
+
     </div>
+
     <!-- Modal Hapus -->
     <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenter" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
@@ -83,7 +85,9 @@
         </div>
       </div>
     </div>
+    @endforeach
   </div>
 </div>
+
 @endif
 @endsection

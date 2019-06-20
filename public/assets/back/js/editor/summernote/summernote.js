@@ -3764,7 +3764,7 @@ var Editor = /** @class */ (function () {
             })(idx);
             this.context.memo('help.formatH' + idx, this.lang.help['formatH' + idx]);
         }
-        
+
         this.insertParagraph = this.wrapCommand(function () {
             _this.typing.insertParagraph(_this.editable);
         });
@@ -7109,11 +7109,11 @@ $$1.summernote = $$1.extend($$1.summernote, {
             ['style', ['style']],
             ['font', ['bold', 'underline', 'clear']],
             ['fontname', ['fontname']],
-            ['color', ['color']],
+            // ['color', ['color']],
             ['para', ['ul', 'ol', 'paragraph']],
-            ['table', ['table']],
-            ['insert', ['link', 'picture', 'video']],
-            ['view', ['fullscreen', 'codeview', 'help']]
+            // ['table', ['table']],
+            // ['insert', ['link', 'picture', 'video']],
+            // ['view', ['fullscreen', 'codeview', 'help']]
         ],
         // popover
         popatmouse: true,
@@ -7320,4 +7320,3 @@ $$1.summernote = $$1.extend($$1.summernote, {
 });
 
 })));
-

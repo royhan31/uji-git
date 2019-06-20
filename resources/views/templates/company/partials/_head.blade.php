@@ -26,6 +26,8 @@
   <!-- Feather icon-->
   <link rel="stylesheet" type="text/css" href="{{ asset('assets/back/css/feather-icon.css')}}">
   <!-- Plugins css start-->
+  <link rel="stylesheet" type="text/css" href="{{ asset('assets/back/css/summernote.css')}}">
+  <link rel="stylesheet" type="text/css" href="{{ asset('assets/back/css/date-picker.css')}}">
   <!-- Plugins css Ends-->
   <!-- Bootstrap css-->
   <link rel="stylesheet" type="text/css" href="{{ asset('assets/back/css/bootstrap.css')}}">

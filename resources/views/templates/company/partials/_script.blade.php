@@ -9,6 +9,11 @@
 <script src="{{ asset('assets/back/js/sidebar-menu.js')}}"></script>
 <script src="{{ asset('assets/back/js/config.js')}}"></script>
 <!-- Plugins JS start-->
+<script src="{{ asset('assets/back/js/datepicker/date-picker/datepicker.js')}}"></script>
+<script src="{{ asset('assets/back/js/datepicker/date-picker/datepicker.en.js')}}"></script>
+<script src="{{ asset('assets/back/js/datepicker/date-picker/datepicker.custom.js')}}"></script>
+<script src="{{ asset('assets/back/js/editor/summernote/summernote.js')}}"></script>
+<script src="{{ asset('assets/back/js/editor/summernote/summernote.custom.js')}}"></script>
 <script src="{{ asset('assets/back/js/typeahead/handlebars.js')}}"></script>
 <script src="{{ asset('assets/back/js/typeahead/typeahead.bundle.js')}}"></script>
 <script src="{{ asset('assets/back/js/typeahead/typeahead.custom.js')}}"></script>
@@ -26,3 +31,44 @@
 <script src="{{ asset('assets/back/js/theme-customizer/customizer.js')}}"></script>
 @endif
 <!-- Plugin used-->
+
+<script>
+function readURL(input) {
+   if (input.files && input.files[0]) {
+    var reader = new FileReader();
+
+    reader.onload = function (e) {
+     $('#preview_avatar').attr('src', e.target.result);
+    }
+
+    reader.readAsDataURL(input.files[0]);
+   }
+  }
+
+  $(document).ready(function(){
+     $('#avatar').change(function(){
+       readURL(this);
+     });
+
+    });
+</script>
+<script>
+function readURL(input) {
+   if (input.files && input.files[0]) {
+    var reader = new FileReader();
+
+    reader.onload = function (e) {
+     $('#preview_image').attr('src', e.target.result);
+    }
+
+    reader.readAsDataURL(input.files[0]);
+   }
+  }
+
+  $(document).ready(function(){
+     $('#image').change(function(){
+       readURL(this);
+     });
+
+    });
+</script>
