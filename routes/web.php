@@ -36,8 +36,10 @@ Route::group(['prefix' => '/'], function(){
   Route::get('loker','Company\LokerController@index')->name('company.loker');
   Route::get('loker/tambah','Company\LokerController@create')->name('company.loker.create');
   Route::post('loker/tambah','Company\LokerController@store')->name('company.loker.store');
-  Route::get('loker/edit','Company\LokerController@edit')->name('company.loker.edit');
-  Route::get('loker/detail','Company\LokerController@show')->name('company.loker.detail');
+  Route::get('loker/edit/{loker}','Company\LokerController@edit')->name('company.loker.edit');
+  Route::patch('loker/edit/{loker}','Company\LokerController@update')->name('company.loker.update');
+  Route::get('loker/detail/{loker}','Company\LokerController@show')->name('company.loker.detail');
+  Route::post('loker/hapus/{loker}','Company\LokerController@destroy')->name('company.loker.destroy');
 
   //Data pelamar Kerja
   Route::get('daftar-pelamar-kerja','Company\UserController@jobApplicant')->name('company.jobApplicant');

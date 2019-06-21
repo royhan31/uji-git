@@ -13,4 +13,8 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('loker','API\LokerConroller@index');
+//Route::get('loker','API\LokerConroller@index');
+Route::get('company','API\CompanyController@index');
+Route::get('company/{id}','API\CompanyController@companyLoker');
+Route::get('loker','API\LokerController@index');
+Route::get('loker/{id}','API\LokerController@details');

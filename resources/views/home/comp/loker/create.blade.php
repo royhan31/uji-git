@@ -62,7 +62,7 @@
               <div class="col">
                 <div class="form-group">
                   <label for="exampleInputPassword2">Deskripsi</label>
-                  <textarea name="description" rows="6" class="form-control @error('description') @enderror summernote" required>{{old('description')}}</textarea>
+                  <textarea name="description" rows="6" class="form-control @error('description') is-invalid @enderror summernote" required>{{old('description')}}</textarea>
                   @error('description')
                       <span class="invalid-feedback" role="alert">
                           <strong>Deskripsi Terlalu Pendek</strong>
@@ -74,19 +74,14 @@
             <div class="row">
               <div class="col-sm-6 col-md-6">
                 <div class="form-group">
-                  <label for="exampleInputPassword2">Tanggal Buka</label>
-                  <input name="date_opened" class="datepicker-here form-control @if(Session::has('errorOpened')) is-invalid @endif digits" type="text" data-language="en" value="{{old('date_opened')}}" required>
-                  @if(Session::has('errorOpened'))
-                      <span class="invalid-feedback" role="alert">
-                          <strong>{{Session::get('errorOpened')}}</strong>
-                      </span>
-                  @endif
+                  <label>Tanggal Buka</label>
+                  <input name="date_opened" class="form-control digits" id="minMaxExample" type="text" data-language="en" value="{{old('date_opened')}}" required>
                 </div>
               </div>
               <div class="col-sm-6 col-md-6">
                 <div class="form-group">
-                  <label for="exampleInputPassword2">Tanggal Tutup</label>
-                  <input name="date_closed" value="{{old('date_closed')}}" class="datepicker-here form-control @if(Session::has('errorClosed')) is-invalid @endif digits" type="text" data-language="en" required>
+                  <label>Tanggal Tutup</label>
+                  <input name="date_closed" class="form-control @if(Session::has('errorClosed')) is-invalid @endif digits" id="minMaxExample2" type="text" data-language="en" value="{{old('date_closed')}}" required>
                   @if(Session::has('errorClosed'))
                       <span class="invalid-feedback" role="alert">
                           <strong>{{Session::get('errorClosed')}}</strong>
@@ -111,13 +106,11 @@
             </div>
             <div class="row">
               <div class="col-sm-12 col-md-12">
-                  <div class="form-group">
-                    <div class="form-group mb-5">
-                      <img src="" alt="" id="preview_image" width="30%" height="30%">
-                    </div>
-                  </div>
+                <div class="form-group mb-5">
+                  <img src="" alt="" id="preview_image" width="30%" height="30%">
                 </div>
               </div>
+            </div>
           </div>
           <div class="card-footer">
             <button class="btn btn-primary" type="submit">Simpan</button>

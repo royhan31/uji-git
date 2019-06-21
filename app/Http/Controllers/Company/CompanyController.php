@@ -38,7 +38,8 @@ class CompanyController extends Controller
             'company_number' => $request->company_number,
             'phone' => $request->phone,
             'address' => $request->address,
-            'avatar' => $avatar
+            'avatar' => $avatar,
+            'status' => 1
           ]);
         }else {
           $avatar_path = $company->avatar;
@@ -51,7 +52,8 @@ class CompanyController extends Controller
             'company_number' => $request->company_number,
             'phone' => $request->phone,
             'address' => $request->address,
-            'avatar' => $avatar
+            'avatar' => $avatar,
+            'status' => 1
           ]);
         }
       }
@@ -61,6 +63,7 @@ class CompanyController extends Controller
           'company_number' => $request->company_number,
           'phone' => $request->phone,
           'address' => $request->address,
+          'status' => 1
         ]);
        }
 

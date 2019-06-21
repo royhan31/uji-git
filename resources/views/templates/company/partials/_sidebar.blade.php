@@ -34,9 +34,9 @@
          active
          @elseif(Request::is('loker/tambah'))
          active
-         @elseif(Request::is('loker/edit'))
+         @elseif(Request::is('loker/edit/*'))
          active
-         @elseif(Request::is('loker/detail'))
+         @elseif(Request::is('loker/detail/*'))
          active
          @endif"
         href="{{route('company.loker')}}"><i data-feather="clipboard"></i><span>Data Lowongan Kerja</span></a></li>

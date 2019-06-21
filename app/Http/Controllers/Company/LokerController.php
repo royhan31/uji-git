@@ -16,7 +16,7 @@ class LokerController extends Controller
     }
 
     public function index(){
-      $lokers = Loker::where('company_id',Auth::user()->id)->get();
+      $lokers = Loker::where('company_id',Auth::user()->id)->orderBy('id','DESC')->paginate(9);
       return view('home.comp.loker.index', compact('lokers'));
     }
 
@@ -28,29 +28,21 @@ class LokerController extends Controller
     }
 
     public function store(Request $request){
-      dd($request->all());
+      //dd($request->all());
       $this->validate($request,[
         'name' => 'required|min:6',
-        'description' => 'required|min:10',
-        'image' => 'image|mimes:jpg,jpeg,png|max:2000'
+        'description' => 'required|min:300',
+        'image' => 'required|image|mimes:jpg,jpeg,png|max:2000'
       ]);
-
-      $now = now()->format('Y-m-d');
       $date_opened = strtotime($request->date_opened);
       $date_closed = strtotime($request->date_closed);
       $opened = date('Y-m-d', $date_opened);
       $closed = date('Y-m-d', $date_closed);
-      $start_date = new DateTime($now);
       $end_date_opened = new DateTime($opened);
       $end_date_closed = new DateTime($closed);
-      $interval_opened = $start_date->diff($end_date_opened);
       $interval_closed = $end_date_opened->diff($end_date_closed);
       $image = $request->file('image')->store('loker');
-      //dd($interval_opened->format('%r%a'));
-      if($interval_opened->format('%r%a') < 0){
-        return back()->with('errorOpened','Tanggal yang anda pilih salah')
-        ->withInput($request->only('name','job','description','date_opened','date_closed'));
-      }elseif($interval_closed->format('%r%a') < 15){
+      if($interval_closed->format('%r%a') < 15){
         return back()->with('errorClosed','Tanggal yang anda pilih minimal 14 hari setelah tanggal buka')
         ->withInput($request->only('name','job','description','date_opened','date_closed'));
       }else{
@@ -70,19 +62,71 @@ class LokerController extends Controller
 
     }
 
-    public function edit(Request $request, Loker $loker){
-      return view('home.comp.loker.edit');
+    public function edit(Loker $loker){
+      return view('home.comp.loker.edit', compact('loker'));
     }
 
     public function update(Request $request, Loker $loker){
+      //dd($request->all());
+      $this->validate($request,[
+        'name' => 'required|min:6',
+        'description' => 'required|min:300',
+        'image' => 'image|mimes:jpg,jpeg,png|max:2000'
+      ]);
+      $date_opened = strtotime($request->date_opened);
+      $date_closed = strtotime($request->date_closed);
+      $opened = date('Y-m-d', $date_opened);
+      $closed = date('Y-m-d', $date_closed);
+      $end_date_opened = new DateTime($opened);
+      $end_date_closed = new DateTime($closed);
+      $interval_closed = $end_date_opened->diff($end_date_closed);
+      if($interval_closed->format('%r%a') < 15){
+        return back()->with('errorClosed','Tanggal yang anda pilih minimal 14 hari setelah tanggal buka')
+        ->withInput($request->only('name','job','description','date_opened','date_closed'));
+      }else{
+        if($request->image){
+          $image = $request->file('image')->store('loker');
+          $image_path = $loker->image;
+          if (Storage::exists($image_path)) {
+              Storage::delete($image_path);
+          }
+          $loker->update([
+            'name' => $request->name,
+            'slug' => str_slug($request->name),
+            'job' => $request->job,
+            'description' => $request->description,
+            'date_opened' => $opened,
+            'date_closed' => $closed,
+            'image' => $image,
+          ]);
+        }
+        else{
+          $loker->update([
+            'name' => $request->name,
+            'slug' => str_slug($request->name),
+            'job' => $request->job,
+            'description' => $request->description,
+            'date_opened' => $opened,
+            'date_closed' => $closed,
+          ]);
+        }
 
+        return redirect()->route('company.loker')->with('success','Loker berhasil diubah');
+      }
     }
 
-    public function destroy(Request $request, Loker $loker){
+    public function destroy(Loker $loker){
+      $image_path = $loker->image;
+      if (Storage::exists($image_path)) {
+          Storage::delete($image_path);
+      }
+      $loker->delete();
 
+      return redirect()->back()->with('success','Loker berhasil dihapus');
     }
 
-    public function show(Request $request, Loker $loker){
-      return view('home.comp.loker.detail');
+    public function show(Loker $loker){
+      //$loker = Loker::where('id',$id)->where('slug',$slug)->get();
+      return view('home.comp.loker.detail', compact('loker'));
     }
 }
