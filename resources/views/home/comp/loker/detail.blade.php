@@ -26,5 +26,44 @@
     </div>
   </div>
 </div>
+<div class="container-fluid">
+            <div class="row">
+              <div class="col-12">
+                <div class="card">
+                  <div class="job-search">
+                    <div class="card-body">
+                      <div class="media"><img class="m-r-20" width="110" height="70" src="{{asset('images/'.$loker->image)}}" alt="">
+                        <div class="media-body">
+                          <h3 class="f-w-600"><a href="">{{$loker->name}}</a><span class="pull-right"></h3>
+                              <!-- <button class="btn btn-primary" type="button">Apply for this job</button></span> -->
+                          <p><h6>{{$loker->job}}</h6></p>
+                        </div>
+                      </div>
+                      <div class="job-description">
+                        <h6>Deskripsi</h6>
+                        <p>{!!$loker->description!!}</p>
+                        <!-- <p>Front-end web designers combine design, programming, writing and organizational skills in their work. They help shape the vision for a company's online content.</p>-->
+                      </div>
+                      <div class="job-description">
+                        <h6>Keterangan </h6>
+                        <ul>
+                          <h5><li>Tanggal Buka  : <strong>{{date('d M Y', strtotime($loker->date_opened))}}</strong></li></h5>
+                          <h5><li>Tanggal Tutup : <strong>{{date('d M Y', strtotime($loker->date_closed))}}</strong></li></h5>
+                          <h5><li>Total Pelamar : <strong>{{count($loker->registration)}} pelamar</strong></li></h5>
+                        </ul>
+                      </div>
+                      <div class="job-description">
+                        <button class="btn btn-primary" onclick="window.location='{{route("company.loker.edit",$loker)}}'" type="button"><span><i class="fa fa-pencil"></i></span> Edit</button>
+                        <button class="btn btn-primary" onclick="window.location='{{route("company.loker")}}'" type="button"><span><i class=""></i></span>Kembali</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <!-- Container-fluid Ends-->
+        </div>
 
 @endsection

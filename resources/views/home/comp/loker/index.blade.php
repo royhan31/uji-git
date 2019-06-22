@@ -69,7 +69,7 @@
           <h5>{{$loker->job}}</h5>
           {{--<p class="mb-1">Tanggal Buka   : {{date('d M Y', strtotime($loker->date_opened))}}</p>--}}
           <p class="mb-1">Tanggal Tutup  : {{date('d M Y', strtotime($loker->date_closed))}}</p>
-          <p>Jumlah Pelamar : 0</p>
+          <p>Jumlah Pelamar : {{count($loker->registration)}}</p>
         </div>
       </div>
 

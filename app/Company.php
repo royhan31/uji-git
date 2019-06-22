@@ -11,7 +11,8 @@ class Company extends Authenticatable
     protected $guarded = [];
 
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token','created_at'
+        ,'updated_at','company_number','status','email_verified_at'
     ];
 
     protected $casts = [

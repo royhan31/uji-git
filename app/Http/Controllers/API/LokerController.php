@@ -33,12 +33,12 @@ class LokerController extends Controller
   public function details($id){
     $loker = DB::table('lokers')
               ->join('companies','companies.id','=','lokers.company_id')
-              ->select('lokers.id','lokers.name','lokers.job',
+              ->select('lokers.id','lokers.name','lokers.job','lokers.image',
               'lokers.description','lokers.date_opened','lokers.date_closed','companies.company as company')
               ->where('lokers.id',$id)
-              ->get();
+              ->first();
 
-    if ($loker->isEmpty()) {
+    if ($loker == null) {
       return response()->json([
         'message' => 'Not Found',
         'status' => false,
@@ -48,7 +48,16 @@ class LokerController extends Controller
     return response()->json([
       'message' => 'success',
       'status' => true,
-      'data' => $loker
+      'data' => [
+        'id' => $loker->id,
+        'name' => $loker->name,
+        'job' => $loker->job,
+        'description' => $loker->description,
+        'image' => $loker->image,
+        'date_opened' => date('d M Y', strtotime($loker->date_opened)),
+        'date_closed' => date('d M Y', strtotime($loker->date_closed)),
+        'company' => $loker->company
+      ]
     ], 200);
   }
 }
