@@ -18,4 +18,8 @@ class Company extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function lokers(){
+      return $this->hasMany(Loker::class);
+    }
 }

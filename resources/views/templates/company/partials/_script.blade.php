@@ -9,11 +9,7 @@
 <script src="{{ asset('assets/back/js/sidebar-menu.js')}}"></script>
 <script src="{{ asset('assets/back/js/config.js')}}"></script>
 <!-- Plugins JS start-->
-<script src="{{ asset('assets/back/js/datepicker/date-picker/datepicker.js')}}"></script>
-<script src="{{ asset('assets/back/js/datepicker/date-picker/datepicker.en.js')}}"></script>
-<script src="{{ asset('assets/back/js/datepicker/date-picker/datepicker.custom.js')}}"></script>
-<script src="{{ asset('assets/back/js/editor/summernote/summernote.js')}}"></script>
-<script src="{{ asset('assets/back/js/editor/summernote/summernote.custom.js')}}"></script>
+
 <script src="{{ asset('assets/back/js/typeahead/handlebars.js')}}"></script>
 <script src="{{ asset('assets/back/js/typeahead/typeahead.bundle.js')}}"></script>
 <script src="{{ asset('assets/back/js/typeahead/typeahead.custom.js')}}"></script>
@@ -23,6 +19,11 @@
 <script src="{{ asset('assets/back/js/typeahead-search/typeahead-custom.js')}}"></script>
 <script src="{{ asset('assets/back/js/clipboard/clipboard.min.js')}}"></script>
 <script src="{{ asset('assets/back/js/custom-card/custom-card.js')}}"></script>
+<script src="{{ asset('assets/back/js/datepicker/date-picker/datepicker.js')}}"></script>
+<script src="{{ asset('assets/back/js/datepicker/date-picker/datepicker.en.js')}}"></script>
+<script src="{{ asset('assets/back/js/datepicker/date-picker/datepicker.custom.js')}}"></script>
+<script src="{{ asset('assets/back/js/editor/summernote/summernote.js')}}"></script>
+<script src="{{ asset('assets/back/js/editor/summernote/summernote.custom.js')}}"></script>
 <!-- Plugins JS Ends-->
 <!-- Theme js-->
 <script src="{{ asset('assets/back/js/script.js')}}"></script>

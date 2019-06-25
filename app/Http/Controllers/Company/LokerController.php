@@ -28,7 +28,6 @@ class LokerController extends Controller
     }
 
     public function store(Request $request){
-      //dd($request->all());
       $this->validate($request,[
         'name' => 'required|min:6',
         'description' => 'required|min:300',
@@ -67,7 +66,6 @@ class LokerController extends Controller
     }
 
     public function update(Request $request, Loker $loker){
-      //dd($request->all());
       $this->validate($request,[
         'name' => 'required|min:6',
         'description' => 'required|min:300',

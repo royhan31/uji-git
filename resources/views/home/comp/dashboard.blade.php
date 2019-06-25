@@ -35,36 +35,36 @@
       <div class="row">
           <div class="item col-md-3">
             <div class="card">
-              <div class="card-body ecommerce-icons text-center"><i data-feather="dollar-sign"></i>
-                <div><span>Total Earning</span></div>
-                <h4 class="font-primary mb-0 counter">72</h4>
+              <div class="card-body ecommerce-icons text-center"><i data-feather="clipboard"></i>
+                <div><span>Total Loker</span></div>
+                <h4 class="font-primary mb-0 counter">{{count(Auth::user()->lokers)}}</h4>
               </div>
             </div>
           </div>
           <div class="item col-md-3">
             <div class="card">
-              <div class="card-body ecommerce-icons text-center"><i data-feather="map-pin"></i>
-                <div><span>Total Web Visitor</span></div>
-                <h4 class="font-primary mb-0 counter">65</h4>
+              <div class="card-body ecommerce-icons text-center"><i data-feather="users"></i>
+                <div><span>Total Pelamar</span></div>
+                <h4 class="font-primary mb-0 counter">{{count($registrations)}}</h4>
               </div>
             </div>
           </div>
-          <div class="item col-md-3">
+          <!-- <div class="item col-md-3">
             <div class="card">
               <div class="card-body ecommerce-icons text-center"><i data-feather="shopping-cart"></i>
                 <div><span>Total Sale Product</span></div>
                 <h4 class="font-primary mb-0 counter">96</h4>
               </div>
             </div>
-          </div>
-          <div class="item col-md-3">
+          </div> -->
+          <!-- <div class="item col-md-3">
             <div class="card">
               <div class="card-body ecommerce-icons text-center"><i data-feather="trending-down"></i>
                 <div><span>Company Loss</span></div>
                 <h4 class="font-primary mb-0 counter">89</h4>
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
