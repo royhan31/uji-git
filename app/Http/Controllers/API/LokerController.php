@@ -12,7 +12,7 @@ class LokerController extends Controller
     $lokers = DB::table('lokers')
               ->join('companies','companies.id','=','lokers.company_id')
               ->select('lokers.id','lokers.name','lokers.job',
-              'lokers.description','lokers.date_opened','lokers.date_closed','companies.company as company')
+              'lokers.description','lokers.date_opened','lokers.date_closed','lokers.image','companies.company as company')
               ->orderBy('id','DESC')
               ->get();
     //$loker = Loker::all();
@@ -34,7 +34,7 @@ class LokerController extends Controller
     $loker = DB::table('lokers')
               ->join('companies','companies.id','=','lokers.company_id')
               ->select('lokers.id','lokers.name','lokers.job','lokers.image',
-              'lokers.description','lokers.date_opened','lokers.date_closed','companies.company as company')
+              'lokers.description','lokers.date_opened','lokers.date_closed','lokers.image','companies.company as company','companies.email','companies.avatar','companies.address','companies.phone')
               ->where('lokers.id',$id)
               ->first();
 
@@ -56,7 +56,11 @@ class LokerController extends Controller
         'image' => $loker->image,
         'date_opened' => date('d M Y', strtotime($loker->date_opened)),
         'date_closed' => date('d M Y', strtotime($loker->date_closed)),
-        'company' => $loker->company
+        'company' => $loker->company,
+        'email' => $loker->email,
+        'avatar' => $loker->avatar,
+        'address' => $loker->address,
+        'phone' => $loker->phone,
       ]
     ], 200);
   }
