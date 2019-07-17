@@ -14,24 +14,24 @@ class AdminSeeder extends Seeder
      */
     public function run()
     {
-        // Admin::create([
-        //   'name'      => 'Administrator',
-        //   'username'  => 'admin',
-        //   'email'     => 'admin@gmail.com',
-        //   'password'   => bcrypt('12345678')
+        Admin::create([
+          'name'      => 'Administrator',
+          'username'  => 'admin',
+          'email'     => 'admin@gmail.com',
+          'password'   => bcrypt('12345678')
+        ]);
+        //
+        // Notification::create([
+        //   'admin_id' => 1,
+        //   'message' => 'halo Admin',
+        //   'subject' => 'User verification'
         // ]);
         //
-        Notification::create([
-          'admin_id' => 1,
-          'message' => 'halo Admin',
-          'subject' => 'User verification'
-        ]);
-
-        Notification::create([
-          'admin_id' => 1,
-          'message' => 'halo Admin2',
-          'subject' => 'User verification'
-        ]);
+        // Notification::create([
+        //   'admin_id' => 1,
+        //   'message' => 'halo Admin2',
+        //   'subject' => 'User verification'
+        // ]);
 
 
     }
