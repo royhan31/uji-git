@@ -1,55 +1,34 @@
+
 <!DOCTYPE html>
-<html>
-
-<head>
-    @include('templates.admin.partials.head')
-
-</head>
-
-<body class="theme-red">
-    <!-- Page Loader -->
-    <div class="page-loader-wrapper">
-        <div class="loader">
-            <div class="preloader">
-                <div class="spinner-layer pl-red">
-                    <div class="circle-clipper left">
-                        <div class="circle"></div>
-                    </div>
-                    <div class="circle-clipper right">
-                        <div class="circle"></div>
-                    </div>
-                </div>
-            </div>
-            <p>Please wait...</p>
-        </div>
+<html lang="en">
+  @include('templates.admin.partials._head')
+  <body>
+    <!-- Loader starts-->
+    <div class="loader-wrapper">
+      <div class="loader bg-white">
+        <div class="whirly-loader"> </div>
+      </div>
     </div>
-    <!-- #END# Page Loader -->
-    <!-- Overlay For Sidebars -->
-    <div class="overlay"></div>
-    <!-- #END# Overlay For Sidebars -->
-    <!-- Search Bar -->
-     {{--bagian search--}}
- @include('templates.admin.partials.search')
-    <!-- #END# Search Bar -->
-    <!-- Top Bar -->
-    @include('templates.admin.partials.topbar')
-    <!-- #Top Bar -->
-    <section>
-        <!-- Left Sidebar -->
-        {{--bagian side bar--}}
-@include('templates.admin.partials.sidebar')
-        <!-- #END# Left Sidebar -->
-    </section>
-@include('templates.admin.partials.conten')
+    <!-- Loader ends-->
+    <!-- page-wrapper Start-->
+    <div class="page-wrapper">
+      <!-- Page Header Start-->
+      @include('templates.admin.partials._navbar')
+      <!-- Page Header Ends                              -->
+      <!-- Page Body Start-->
+      <div class="page-body-wrapper">
+        <!-- Page Sidebar Start-->
+        @include('templates.admin.partials._sidebar')
+        <!-- Page Sidebar Ends-->
 
-   
-                <!-- #END# Answered Tickets -->
-            </div>
-            </div>
+        <div class="page-body">
+          @yield('content')
         </div>
-    </section>
-
-    @include('templates.admin.partials.script')
-</body>
-
+        <!-- footer start-->
+        @include('templates.admin.partials._footer')
+      </div>
+    </div>
+    <!-- latest jquery-->
+  @include('templates.admin.partials._script')
+  </body>
 </html>

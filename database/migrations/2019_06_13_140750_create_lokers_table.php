@@ -16,7 +16,6 @@ class CreateLokersTable extends Migration
         Schema::create('lokers', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->string('slug');
             $table->string('job');
             $table->text('description');
             $table->string('image');

@@ -56,8 +56,12 @@ class AuthCompanyController extends Controller
       ->withInput($request->only('email','remember'))
       ->with('error','Login gagal, Silahkan coba lagi');
     }
-
-    return redirect()->route('company.dashboard');
+    if (Auth::guard('company')->user()->deleted_at == 1) {
+      Auth::guard('company')->logout();
+      return redirect()->back()->with('error','Login gagal, Akun anda telah dinonaktifkan oleh Admin');
+    }else{
+        return redirect()->route('company.dashboard');
+    }
   }
 
   public function logoutCompany(Request $request)

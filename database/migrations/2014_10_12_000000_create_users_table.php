@@ -12,7 +12,6 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::defaultStringLength(191);
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
@@ -20,11 +19,14 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('avatar')->default('avatar/default.jpg')->nullable();
-            $table->string('api_token');
-            $table->string('nik',16)->nullable();
+            $table->string('api_token')->nullable();
+            $table->string('address')->nullable();
+            $table->string('phone')->unique()->nullable();
+            $table->string('nik',16)->unique()->nullable();
             $table->string('ktp')->nullable();
-            $table->boolean('status')->default(0);
+            $table->boolean('status')->default(1);
             $table->boolean('job')->default(0);
+            $table->boolean('deleted_at')->default(0);
             $table->timestamps();
         });
     }

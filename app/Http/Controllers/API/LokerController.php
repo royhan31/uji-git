@@ -21,7 +21,7 @@ class LokerController extends Controller
         'message' => 'Not Found',
         'status' => false,
         'data' => []
-      ], 404);
+      ], 200);
     }
     return response()->json([
       'message' => 'success',
@@ -43,7 +43,7 @@ class LokerController extends Controller
         'message' => 'Not Found',
         'status' => false,
         'data' => []
-      ], 404);
+      ], 200);
     }
     return response()->json([
       'message' => 'success',
@@ -63,5 +63,15 @@ class LokerController extends Controller
         'phone' => $loker->phone,
       ]
     ], 200);
+  }
+
+  public function search(Request $request){
+    $search = $request->search;
+    $loker = Loker::where('job', 'LIKE', '%' . $search . '%')->get();
+    return response()->json([
+      'message' => 'Berhasil',
+      'status' => true,
+      'data' => $loker
+    ]);
   }
 }

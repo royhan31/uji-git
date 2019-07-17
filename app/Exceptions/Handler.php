@@ -58,12 +58,12 @@ class Handler extends ExceptionHandler
         ], 404);
       }
 
-      if ($exception instanceof NotFoundHttpException) {
-        return response()->json([
-          'message' => "Not Found",
-          'status' => false,
-        ], 404);
-      }
+      // if ($exception instanceof NotFoundHttpException) {
+      //   return response()->json([
+      //     'message' => "Not Found",
+      //     'status' => false,
+      //   ], 404);
+      // }
       return parent::render($request, $exception);
     }
 

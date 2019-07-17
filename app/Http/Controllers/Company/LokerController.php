@@ -47,7 +47,6 @@ class LokerController extends Controller
       }else{
         Loker::create([
           'name' => $request->name,
-          'slug' => str_slug($request->name),
           'job' => $request->job,
           'description' => $request->description,
           'date_opened' => $opened,
@@ -90,7 +89,6 @@ class LokerController extends Controller
           }
           $loker->update([
             'name' => $request->name,
-            'slug' => str_slug($request->name),
             'job' => $request->job,
             'description' => $request->description,
             'date_opened' => $opened,
@@ -101,7 +99,6 @@ class LokerController extends Controller
         else{
           $loker->update([
             'name' => $request->name,
-            'slug' => str_slug($request->name),
             'job' => $request->job,
             'description' => $request->description,
             'date_opened' => $opened,
@@ -124,7 +121,6 @@ class LokerController extends Controller
     }
 
     public function show(Loker $loker){
-      //$loker = Loker::where('id',$id)->where('slug',$slug)->get();
       return view('home.comp.loker.detail', compact('loker'));
     }
 }

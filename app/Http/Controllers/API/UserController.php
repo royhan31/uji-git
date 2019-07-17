@@ -9,6 +9,7 @@ use App\Loker;
 use App\Registration;
 use Auth;
 use DB;
+use Storage;
 class UserController extends Controller
 {
     public function register(Request $request){
@@ -48,6 +49,12 @@ class UserController extends Controller
       }
 
       $user = User::find(Auth::user()->id);
+      if ($user->api_token == null) {
+        return response()->json([
+            'message' => 'Akun anda telah dinonaktifkan oleh admin',
+            'status' => false,
+        ], 200);
+      }
       return response()->json([
           'message' => 'Berhasil',
           'status' => true,
@@ -57,7 +64,8 @@ class UserController extends Controller
 
     public function userRegistration(Request $request){
       $this->validate($request,[
-        'loker_id' => 'required'
+        'loker_id' => 'required',
+        'data' => 'required|image|mimes:pdf'
       ]);
       $auth = User::find(Auth::user()->id);
       $user_id = $auth->id;
@@ -65,13 +73,13 @@ class UserController extends Controller
       $user = User::where('id',$user_id)->first();
       $loker = Loker::where('id',$request->loker_id)->first();
       $registration = Registration::where('user_id',$user_id)->where('loker_id',$loker_id)->first();
-      // if($user->status == 0){
-      //   return response()->json([
-      //       'message' => 'Akun anda belum di konvirmasi',
-      //       'status' => false,
-      //   ], 200);
-      // }
-      if($user == null){
+      if($user->status == 0){
+        return response()->json([
+            'message' => 'Akun anda belum di konvirmasi',
+            'status' => false,
+        ], 200);
+      }
+      elseif($user == null){
         return response()->json([
             'message' => 'user tidak ada',
             'status' => false,
@@ -88,10 +96,11 @@ class UserController extends Controller
             'status' => false,
         ], 200);
       }
-      //
+      $data = $request->file('data')->store('persyaratan');
       Registration::create([
         'user_id' => $request->user_id,
-        'loker_id' => $request->loker_id
+        'loker_id' => $request->loker_id,
+        'data' => $data
       ]);
 
       return response()->json([
@@ -99,6 +108,90 @@ class UserController extends Controller
           'status' => true,
           'data' => $auth->id
       ], 201);
+    }
+
+    public function show(){
+      $user = User::find(Auth::user()->id);
+      return response()->json([
+        'message' => 'Berhasil',
+        'status' => true,
+        'data' => $user
+      ]);
+    }
+
+    public function update(Request $request){
+      $user = User::find(Auth::user()->id);
+      //$email = User::where('email',$request->email)->first();
+      //$phone = User::where('phone',$request->phone)->first();
+      // if ($email != null) {
+      //   return response()->json([
+      //     'message' => 'Email telah digunakan',
+      //     'status' => false
+      //   ]);
+      // }elseif($phone != null) {
+      //   return response()->json([
+      //     'message' => 'Nomor Telephon telah digunakan',
+      //     'status' => false
+      //   ]);
+      //}
+      if ($user->avatar == 'avatar/default.jpg') {
+        $avatar = $request->file('avatar')->store('avatar');
+        if ($user->nik != null || $user->ktp != null) {
+          $user->update([
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'address' => $request->address,
+            'avatar'=> $avatar
+          ]);
+
+          return response()->json([
+            'message' => 'Update berhasil',
+            'status' => true,
+            'data' => $user
+          ]);
+        }
+        $ktp = $request->file('ktp')->store('ktp');
+        $user->update([
+          'email' => $request->email,
+          'phone' => $request->phone,
+          'address' => $request->address,
+          'avatar'=> $avatar,
+          'nik' => $request->nik,
+          'ktp' => $ktp
+        ]);
+        return response()->json([
+          'message' => 'Update berhasil',
+          'status' => true,
+          'data' => $user
+        ]);
+      }else {
+        $avatar_path = $user->avatar;
+        if (Storage::exists($avatar_path)) {
+            Storage::delete($avatar_path);
+        }
+        $ktp = $request->file('ktp')->store('ktp');
+        $user->update([
+          'email' => $request->email,
+          'phone' => $request->phone,
+          'address' => $request->address,
+          'avatar'=> $avatar,
+          'nik' => $request->nik,
+          'ktp' => $ktp
+        ]);
+        return response()->json([
+          'message' => 'Update berhasil',
+          'status' => true,
+          'data' => $user
+        ]);
+      }
+    }
+
+    public function logout(){
+      Auth::guard('web')->logout();
+      return response()->json([
+        'message' => 'Berhasil',
+        'status' => true
+      ]);
     }
 
     public function userLoker(){

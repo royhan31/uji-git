@@ -4,6 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\User;
+use App\Company;
+use App\Loker;
+use App\Notification;
+use Auth;
 
 class AdminsController extends Controller
 {
@@ -16,10 +21,23 @@ class AdminsController extends Controller
     public function __construct(){
       $this->middleware('auth:admin');
     }
-    
+
     public function index()
     {
-        return view('home.admin.dashboard');
+        $user = User::all();
+        $company = Company::all();
+        $loker = Loker::all();
+        $notifications = Notification::orderBy('id','DESC')->where('admin_id',Auth::guard('admin')->user()->id)->paginate('4');
+        $notif = Notification::where('status',0)->get();
+        return view('home.admin.dashboard',compact('user','company','notifications','notif','loker'));
+    }
+
+    public function showNotif(Notification $notification){
+      $notification->update([
+        'status' => 1
+      ]);
+
+      return redirect()->back();
     }
 
     /**

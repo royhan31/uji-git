@@ -21,17 +21,17 @@ class AuthAdminController extends Controller
 
   public function login(Request $request){
     $this->validate($request, [
-      'email' => 'required|string',
+      'username' => 'required|string',
       'password' => 'required|string|min:6'
     ]);
 
     $credential = [
-      'email' => $request->email,
+      'username' => $request->username,
       'password' => $request->password
     ];
 
     if (!Auth::guard('admin')->attempt($credential, $request->memeber)) {
-      return redirect()->back()->withInput($request->only('email','remember'));
+      return redirect()->back()->withInput($request->only('username','remember'));
     }
 
     return redirect()->route('admin.dashboard');

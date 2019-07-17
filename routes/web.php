@@ -19,8 +19,13 @@ Route::group(['prefix' => 'admin'], function(){
   Route::get('/login', 'Admin\AuthAdminController@showLoginForm')->name('admin.login');
   Route::post('/login','Admin\AuthAdminController@login')->name('admin.get.login');
   Route::post('logout','Admin\AuthAdminController@logoutAdmin')->name('admin.logout');
-  Route::get('/dashboard','Admin\AdminsController@index')->name('admin.dashboard');
-  Route::get('/olahdataperusahaan','Admin\OlahDataPerusahaanController@index')->name('admin.dashboard.olahdataperusahaan');
+  Route::get('/beranda','Admin\AdminsController@index')->name('admin.dashboard');
+  Route::get('/perusahaan','Admin\CompanyController@index')->name('admin.company');
+  Route::get('/notif/{notification}','Admin\AdminsController@showNotif')->name('admin.notif');
+  Route::post('/perusahaan/{company}','Admin\CompanyController@update')->name('admin.company.update');
+  Route::get('/pengguna','Admin\UserController@index')->name('admin.user');
+  Route::post('/pengguna/{user}','Admin\UserController@update')->name('admin.user.update');
+
 });
 
 Route::group(['prefix' => '/'], function(){
