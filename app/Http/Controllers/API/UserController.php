@@ -65,7 +65,7 @@ class UserController extends Controller
     public function userRegistration(Request $request){
       $this->validate($request,[
         'loker_id' => 'required',
-        'data' => 'required|image|mimes:pdf'
+        'data' => 'required|file|mimes:pdf'
       ]);
       $auth = User::find(Auth::user()->id);
       $user_id = $auth->id;
