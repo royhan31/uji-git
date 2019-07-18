@@ -73,10 +73,15 @@ class CompanyController extends Controller
         ]);
        }
 
-      return back()->with('success','Profil Berhasil Diubah');
+      return back()->with('success','Profil pengguna Berhasil Diubah');
     }
 
     public function resetPassword(Request $request){
 
+    }
+
+    public function destroy(Comment $comment){
+      $comment->delete();
+      return back()->with('success','Komentar Berhasil Dihapus');
     }
 }

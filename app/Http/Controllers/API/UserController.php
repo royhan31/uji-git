@@ -98,7 +98,7 @@ class UserController extends Controller
       }
       $data = $request->file('data')->store('persyaratan');
       Registration::create([
-        'user_id' => $request->user_id,
+        'user_id' => $auth->id,
         'loker_id' => $request->loker_id,
         'data' => $data
       ]);
@@ -106,7 +106,7 @@ class UserController extends Controller
       return response()->json([
           'message' => 'Berhasil',
           'status' => true,
-          'data' => $auth->id
+          // 'data' => $auth->id
       ], 201);
     }
 
