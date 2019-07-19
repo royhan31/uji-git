@@ -23,8 +23,8 @@ class UserController extends Controller
     $lokers = Loker::where('company_id', Auth::user()->id)->get();
     foreach ($lokers as $loker) {
       $registrations = Registration::where('loker_id', $loker->id)->where('status',0)->orderBy('id','DESC')->get();
+      return view('home.comp.applicant.jobApplicant', compact('registrations','notifications','notif'));
     }
-    return view('home.comp.applicant.jobApplicant', compact('registrations','notifications','notif'));
   }
 
   public function requirements(){
