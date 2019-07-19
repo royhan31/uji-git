@@ -18,12 +18,15 @@ class UserController extends Controller
   }
 
   public function jobApplicant(){
+    $registration = [];
     $notifications = Notification::orderBy('id','DESC')->Where('company_id',Auth::user()->id)->paginate('4');
     $notif = Notification::where('company_id',Auth::user()->id)->Where('read',false)->get();
     $lokers = Loker::where('company_id', Auth::user()->id)->get();
     foreach ($lokers as $loker) {
       $registrations = Registration::where('loker_id', $loker->id)->where('status',0)->orderBy('id','DESC')->get();
     }
+
+    //dd($registrations);
 
     return view('home.comp.applicant.jobApplicant', compact('registrations','notifications','notif'));
 
