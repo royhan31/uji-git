@@ -24,7 +24,6 @@ class UserController extends Controller
     foreach ($lokers as $loker) {
       $registrations = Registration::where('loker_id', $loker->id)->where('status',0)->orderBy('id','DESC')->get();
     }
-    dd($registrations);
     return view('home.comp.applicant.jobApplicant', compact('registrations','notifications','notif'));
 
   }
