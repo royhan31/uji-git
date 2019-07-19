@@ -21,6 +21,7 @@ class UserController extends Controller
     $notifications = Notification::orderBy('id','DESC')->Where('company_id',Auth::user()->id)->paginate('4');
     $notif = Notification::where('company_id',Auth::user()->id)->Where('read',false)->get();
     $lokers = Loker::where('company_id', Auth::user()->id)->get();
+    $registrations = array();
     foreach ($lokers as $loker) {
       $registrations = Registration::where('loker_id', $loker->id)->where('status',0)->orderBy('id','DESC')->get();
     }
