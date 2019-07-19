@@ -22,9 +22,6 @@
           active
           @endif
           "><a href="{{route('company.jobApplicant')}}"><i class="fa fa-circle"></i>Daftar Pelamar Kerja</a></li>
-          <li class="@if(Request::is('persyaratan'))
-          active
-          @endif"><a href="{{route('company.requirements')}}"><i class="fa fa-circle"></i>Dokumen Persyaratan</a></li>
           <li><a href="#"><i class="fa fa-circle"></i>Pelamar Kerja Diterima</a></li>
           <li><a href="#"><i class="fa fa-circle"></i>Pelamar Kerja Ditolak</a></li>
 
@@ -40,7 +37,7 @@
          active
          @endif"
         href="{{route('company.loker')}}"><i data-feather="clipboard"></i><span>Data Lowongan Kerja</span></a></li>
-      <li><a class="sidebar-header" href="#"><i data-feather="clock"></i><span>Riwayat</span></a></li>
+      <li><a class="sidebar-header @if(Request::is('riwayat')) active @endif" href="{{route('company.history')}}"><i data-feather="clock"></i><span>Riwayat</span></a></li>
 
       <!-- <li><a class="sidebar-header" href="#"><i data-feather="disc"></i><span>Color Version</span><i class="fa fa-angle-right pull-right"></i></a>
         <ul class="sidebar-submenu">

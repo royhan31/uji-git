@@ -16,7 +16,7 @@ use Illuminate\Http\Request;
 //Route::get('loker','API\LokerConroller@index');
 Route::post('user/register','API\UserController@register');
 Route::post('user/login','API\UserController@login');
-Route::post('user/registration','API\UserController@userRegistration')->middleware('auth:api');
+Route::post('user/registration','API\RegistrationController@userRegistration')->middleware('auth:api');
 Route::get('user/profile','API\UserController@show')->middleware('auth:api');
 Route::get('user/logout','API\UserController@logout')->middleware('auth:api');
 Route::get('user/loker','API\UserController@userLoker')->middleware('auth:api');

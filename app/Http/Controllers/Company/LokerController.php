@@ -6,9 +6,10 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Loker;
 use Auth;
+use App\Notification;
 use DateTime;
 use Storage;
-
+use App\History;
 class LokerController extends Controller
 {
     public function __construct(){
@@ -16,22 +17,27 @@ class LokerController extends Controller
     }
 
     public function index(){
+      $notifications = Notification::orderBy('id','DESC')->Where('company_id',Auth::user()->id)->paginate('4');
+      $notif = Notification::where('company_id',Auth::user()->id)->Where('read',false)->get();
       $lokers = Loker::where('company_id',Auth::user()->id)->orderBy('id','DESC')->paginate(9);
-      return view('home.comp.loker.index', compact('lokers'));
+      return view('home.comp.loker.index', compact('lokers','notifications','notif'));
     }
 
     public function create(){
+      $notifications = Notification::orderBy('id','DESC')->Where('company_id',Auth::user()->id)->paginate('4');
+      $notif = Notification::where('company_id',Auth::user()->id)->Where('read',false)->get();
       if(Auth::user()->company_number == null || Auth::user()->phone == null || Auth::user()->address == null){
         return back()->with('error','');
       }
-      return view('home.comp.loker.create');
+      return view('home.comp.loker.create', compact('notifications','notif'));
     }
 
     public function store(Request $request){
       $this->validate($request,[
         'name' => 'required|min:6',
         'description' => 'required|min:300',
-        'image' => 'required|image|mimes:jpg,jpeg,png|max:2000'
+        'image' => 'required|image|mimes:jpg,jpeg,png|max:2000',
+        'requirements' => 'min:5'
       ]);
       $date_opened = strtotime($request->date_opened);
       $date_closed = strtotime($request->date_closed);
@@ -43,16 +49,22 @@ class LokerController extends Controller
       $image = $request->file('image')->store('loker');
       if($interval_closed->format('%r%a') < 15){
         return back()->with('errorClosed','Tanggal yang anda pilih minimal 14 hari setelah tanggal buka')
-        ->withInput($request->only('name','job','description','date_opened','date_closed'));
+        ->withInput($request->only('name','job','requirements','description','date_opened','date_closed'));
       }else{
-        Loker::create([
+      $loker = Loker::create([
           'name' => $request->name,
           'job' => $request->job,
           'description' => $request->description,
           'date_opened' => $opened,
           'date_closed' => $closed,
           'image' => $image,
+          'requirements' => $request->requirements,
           'company_id' => Auth::user()->id
+        ]);
+
+        History::create([
+          'company_id' => Auth::user()->id,
+          'message' => 'Anda telah menambahkan loker'.$loker->name
         ]);
 
         return redirect()->route('company.loker')->with('success','Loker berhasil ditambahkan');
@@ -61,14 +73,17 @@ class LokerController extends Controller
     }
 
     public function edit(Loker $loker){
-      return view('home.comp.loker.edit', compact('loker'));
+      $notifications = Notification::orderBy('id','DESC')->Where('company_id',Auth::user()->id)->paginate('4');
+      $notif = Notification::where('company_id',Auth::user()->id)->Where('read',false)->get();
+      return view('home.comp.loker.edit', compact('loker','notifications','notif'));
     }
 
     public function update(Request $request, Loker $loker){
       $this->validate($request,[
         'name' => 'required|min:6',
         'description' => 'required|min:300',
-        'image' => 'image|mimes:jpg,jpeg,png|max:2000'
+        'image' => 'image|mimes:jpg,jpeg,png|max:2000',
+        'requirements' => 'min:5'
       ]);
       $date_opened = strtotime($request->date_opened);
       $date_closed = strtotime($request->date_closed);
@@ -79,7 +94,7 @@ class LokerController extends Controller
       $interval_closed = $end_date_opened->diff($end_date_closed);
       if($interval_closed->format('%r%a') < 15){
         return back()->with('errorClosed','Tanggal yang anda pilih minimal 14 hari setelah tanggal buka')
-        ->withInput($request->only('name','job','description','date_opened','date_closed'));
+        ->withInput($request->only('name','job','description','requirements','date_opened','date_closed'));
       }else{
         if($request->image){
           $image = $request->file('image')->store('loker');
@@ -90,6 +105,7 @@ class LokerController extends Controller
           $loker->update([
             'name' => $request->name,
             'job' => $request->job,
+            'requirements' => $request->requirements,
             'description' => $request->description,
             'date_opened' => $opened,
             'date_closed' => $closed,
@@ -100,6 +116,7 @@ class LokerController extends Controller
           $loker->update([
             'name' => $request->name,
             'job' => $request->job,
+            'requirements' => $request->requirements,
             'description' => $request->description,
             'date_opened' => $opened,
             'date_closed' => $closed,
@@ -121,6 +138,8 @@ class LokerController extends Controller
     }
 
     public function show(Loker $loker){
-      return view('home.comp.loker.detail', compact('loker'));
+      $notifications = Notification::orderBy('id','DESC')->Where('company_id',Auth::user()->id)->paginate('4');
+      $notif = Notification::where('company_id',Auth::user()->id)->Where('read',false)->get();
+      return view('home.comp.loker.detail', compact('loker','notifications','notif'));
     }
 }

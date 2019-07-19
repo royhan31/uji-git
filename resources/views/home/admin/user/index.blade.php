@@ -6,7 +6,7 @@
     <div class="row">
       <div class="col">
         <div class="page-header-left">
-          <h3>Data Perusahaan</h3>
+          <h3>Data Pengguna</h3>
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{route('company.dashboard')}}"><i data-feather="home"></i></a></li>
           </ol>
@@ -56,7 +56,7 @@
                   <span class="badge badge-success">Aktif</span>
                    @endif</td>
                  <td width="20%">
-                   <a href="#"><span class="badge badge-info">Detail</span></a>
+                   <a href="{{route('admin.user.show', $user)}}"><span class="badge badge-info">Detail</span></a>
                    @if($user->deleted_at == 0)
                    <a href="#" data-toggle="modal" data-target="#update{{$user->id}}"><span class="badge badge-danger">Non Aktifkan</span></a>
                    @else

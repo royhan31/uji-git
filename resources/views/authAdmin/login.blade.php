@@ -19,15 +19,11 @@
               <div class="auth-innerright">
                 <div class="authentication-box">
                   <!-- <div class="text-center"><img src="../assets/images/endless-logo.png" alt=""></div> -->
-                  @if(Session::has('success'))
-                  <div class="alert alert-success dark alert-dismissible fade show" role="alert"><strong>{{Session::get('success')}}</strong>
+                  @if(Session::has('message'))
+                  <div class="alert alert-danger dark alert-dismissible fade show" role="alert"><strong>{{Session::get('message')}}</strong>
                       <button class="close" type="button" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
                     </div>
-                    @elseif(Session::has('error'))
-                    <div class="alert alert-danger dark alert-dismissible fade show" role="alert"><strong>{{Session::get('error')}}</strong>
-                        <button class="close" type="button" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
-                      </div>
-                    @endif
+                  @endif
                   <div class="card mt-4 p-4">
                     <div class="card-body">
                       <div class="text-center">

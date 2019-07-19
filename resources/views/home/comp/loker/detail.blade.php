@@ -40,6 +40,8 @@
                         </div>
                       </div>
                       <div class="job-description">
+                        <h6>Persyaratan: {{$loker->requirements}}</h6>
+                      <div class="job-description">
                         <h6>Deskripsi</h6>
                         <p>{!!$loker->description!!}</p>
                         <!-- <p>Front-end web designers combine design, programming, writing and organizational skills in their work. They help shape the vision for a company's online content.</p>-->
@@ -49,12 +51,12 @@
                         <ul>
                           <h5><li>Tanggal Buka  : <strong>{{date('d M Y', strtotime($loker->date_opened))}}</strong></li></h5>
                           <h5><li>Tanggal Tutup : <strong>{{date('d M Y', strtotime($loker->date_closed))}}</strong></li></h5>
-                          <h5><li>Total Pelamar : <strong>{{count($loker->registration)}} pelamar</strong></li></h5>
+                          <h5><li>Total Pelamar : <strong>{{count($loker->registrations)}} pelamar</strong></li></h5>
                         </ul>
                       </div>
                       <div class="job-description">
                         <button class="btn btn-primary" onclick="window.location='{{route("company.loker.edit",$loker)}}'" type="button"><span><i class="fa fa-pencil"></i></span> Edit</button>
-                        <button class="btn btn-primary" onclick="window.location='{{route("company.loker")}}'" type="button"><span><i class=""></i></span>Kembali</button>
+                        <button class="btn btn-light" onclick="window.location='{{route("company.loker")}}'" type="button"><span><i class=""></i></span>Kembali</button>
                       </div>
                     </div>
                   </div>

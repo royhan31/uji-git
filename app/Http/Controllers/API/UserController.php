@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\User;
 use App\Loker;
 use App\Registration;
+use App\Notification;
+use App\History;
 use Auth;
 use DB;
 use Storage;
@@ -16,16 +18,29 @@ class UserController extends Controller
       $this->validate($request,[
         'name' => 'required|min:5',
         'email' => 'required|email|max:255|unique:users',
-        'password' => 'required|min:6'
+        'password' => 'required|min:6',
+        'address' => 'required|min:5',
+        'phone' => 'required|string|min:11|max:13|unique:users',
+        'nik' => 'required|string|min:16|max:16|unique:users',
+        'ktp' => 'required|image|mimes:jpg,jpeg,png,'
       ]);
-
+      $ktp = $request->file('ktp')->store('ktp');
       $user = User::create([
         'name' => $request->name,
         'email' => $request->email,
         'password' => bcrypt($request->password),
-        'api_token' => bcrypt($request->email)
+        'api_token' => bcrypt($request->email),
+        'address' => $request->address,
+        'phone' => $request->phone,
+        'nik' => $request->nik,
+        'ktp' => $ktp
       ]);
 
+      Notification::create([
+        'user_id' => $user->id,
+        'message' => $user->name.' Telah mendaftar',
+        'subject' => 'Pendaftaran Pengguna'
+      ]);
       return response()->json([
         'message' => 'Register Berhasil',
         'status' => true,
@@ -62,53 +77,7 @@ class UserController extends Controller
       ], 200);
     }
 
-    public function userRegistration(Request $request){
-      $this->validate($request,[
-        'loker_id' => 'required',
-        'data' => 'required|file|mimes:pdf'
-      ]);
-      $auth = User::find(Auth::user()->id);
-      $user_id = $auth->id;
-      $loker_id = $request->loker_id;
-      $user = User::where('id',$user_id)->first();
-      $loker = Loker::where('id',$request->loker_id)->first();
-      $registration = Registration::where('user_id',$user_id)->where('loker_id',$loker_id)->first();
-      if($user->status == 0){
-        return response()->json([
-            'message' => 'Akun anda belum di konvirmasi',
-            'status' => false,
-        ], 200);
-      }
-      elseif($user == null){
-        return response()->json([
-            'message' => 'user tidak ada',
-            'status' => false,
-        ], 200);
-      }elseif ($loker == null) {
-        return response()->json([
-            'message' => 'loker tidak ada',
-            'status' => false,
-        ], 200);
-      }
-      elseif (!$registration == null) {
-        return response()->json([
-            'message' => 'Anda sudah mendaftar pada loker ini',
-            'status' => false,
-        ], 200);
-      }
-      $data = $request->file('data')->store('persyaratan');
-      Registration::create([
-        'user_id' => $auth->id,
-        'loker_id' => $request->loker_id,
-        'data' => $data
-      ]);
 
-      return response()->json([
-          'message' => 'Berhasil',
-          'status' => true,
-          // 'data' => $auth->id
-      ], 201);
-    }
 
     public function show(){
       $user = User::find(Auth::user()->id);

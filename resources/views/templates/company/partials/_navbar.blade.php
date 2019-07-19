@@ -24,18 +24,27 @@
           </form> -->
         </li>
         <!-- <li><a class="text-dark" href="#!" onclick="javascript:toggleFullScreen()"><i data-feather="maximize"></i></a></li> -->
-        <li class="onhover-dropdown"><i data-feather="bell"></i><span class=""></span>
+        <li class="onhover-dropdown"><i data-feather="bell"></i><span class="@if(count($notif) > 0) dot @endif"></span>
           <ul class="notification-dropdown onhover-show-div">
-            <li>Notification <span class="badge badge-pill badge-primary pull-right">3</span></li>
-            <li>
+            <li>Notifikasi <span class="badge badge-pill badge-primary pull-right">
+                {{count($notif)}}
+            </span></li>
+
+            @foreach($notifications as $notification)
+            <li class="@if($notification->read == 0)bg-light txt-dark @endif">
+              <a href="{{route('company.notification',$notification)}}">
               <div class="media">
                 <div class="media-body">
-                  <h6 class="mt-0"><span><i class="shopping-color" data-feather="shopping-bag"></i></span>Your order ready for Ship..!<small class="pull-right">9:00 AM</small></h6>
-                  <p class="mb-0">Lorem ipsum dolor sit amet, consectetuer.</p>
+                  <h6 class="mt-0"><span><i class="shopping-color"></i>
+                  </span>{{$notification->message}}</h6>
+                  <p class="mb-0">{{$notification->subject}}</p>
+                  <small class="pull-right bg-light txt-dark"> {{$notification->created_at->diffForHumans()}}</small>
                 </div>
               </div>
+              </a>
             </li>
-            <li class="bg-light txt-dark"><a href="#">All</a> notification</li>
+            @endforeach
+            <li class="txt-dark"><a href="#">Semua</a> Notifkasi</li>
           </ul>
         </li>
         <li class="onhover-dropdown">

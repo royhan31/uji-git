@@ -11,7 +11,7 @@
     <ul class="sidebar-menu">
       <li class=""><a class="sidebar-header @if(Request::is('admin/beranda')) active @endif" href="{{route('admin.dashboard')}}"><i data-feather="home"></i><span>Beranda</span></a></li>
       <li><a class="sidebar-header @if(Request::is('admin/perusahaan')) active @endif" href="{{route('admin.company')}}"><i data-feather="globe"></i><span>Data Perusahaan</span></a></li>
-      <li><a class="sidebar-header  @if(Request::is('admin/pengguna')) active @endif" href="{{route('admin.user')}}"><i data-feather="users"></i><span>Data Pengguna</span></a></li>
+      <li><a class="sidebar-header  @if(Request::is('admin/pengguna') || Request::is('admin/pengguna/*')) active @endif" href="{{route('admin.user')}}"><i data-feather="users"></i><span>Data Pengguna</span></a></li>
       <li><a class="sidebar-header" href="#"><i data-feather="clock"></i><span>Riwayat</span></a></li>
     </ul>
   </div>

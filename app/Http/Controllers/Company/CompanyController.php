@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Company;
 use App\Loker;
 use App\Registration;
+use App\Notification;
+use App\History;
 use Auth;
 use Storage;
 use DB;
@@ -18,17 +20,20 @@ class CompanyController extends Controller
     }
 
     public function index(){
-      //$lokers = Loker::where('company_id',Auth::guard('company')->user()->id)->get();
+      $notifications = Notification::orderBy('id','DESC')->Where('company_id',Auth::user()->id)->paginate('4');
+      $notif = Notification::where('company_id',Auth::user()->id)->Where('read',false)->get();
       $registrations = DB::table('registrations')
                       ->join('lokers','lokers.id','=','registrations.loker_id')
                       ->join('companies','companies.id','=','lokers.company_id')
                       ->where('lokers.company_id',Auth::guard('company')->user()->id)
                       ->get();
-      return view('home.comp.dashboard',compact('registrations'));
+      return view('home.comp.dashboard',compact('registrations','notifications','notif'));
     }
 
     public function profile(){
-      return view('home.comp.profile');
+      $notifications = Notification::orderBy('id','DESC')->Where('company_id',Auth::user()->id)->paginate('4');
+      $notif = Notification::where('company_id',Auth::user()->id)->Where('read',false)->get();
+      return view('home.comp.profile', compact('notifications','notif'));
     }
 
     public function updateProfile(Request $request, Company $company){
@@ -73,15 +78,24 @@ class CompanyController extends Controller
         ]);
        }
 
-      return back()->with('success','Profil pengguna Berhasil Diubah');
+      return back()->with('success','Profil Berhasil Diubah');
     }
 
     public function resetPassword(Request $request){
 
     }
 
-    public function destroy(Comment $comment){
-      $comment->delete();
-      return back()->with('success','Komentar Berhasil Dihapus');
+    public function notif(Notification $notification){
+      $notification->update([
+        'read' => true
+      ]);
+      return redirect()->route('company.jobApplicant');
+    }
+
+    public function history(){
+      $histories = History::where('company_id', Auth::user()->id)->orderBy('id', 'DESC')->paginate(4);
+      $notifications = Notification::orderBy('id','DESC')->Where('company_id',Auth::user()->id)->paginate('4');
+      $notif = Notification::where('company_id',Auth::user()->id)->Where('read',false)->get();
+      return view('home.comp.history', compact('notifications','notif', 'histories'));
     }
 }

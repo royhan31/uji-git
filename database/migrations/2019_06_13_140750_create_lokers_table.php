@@ -17,6 +17,7 @@ class CreateLokersTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('job');
+            $table->text('requirements');
             $table->text('description');
             $table->string('image');
             $table->date('date_opened');

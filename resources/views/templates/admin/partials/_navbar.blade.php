@@ -25,7 +25,7 @@
               <div class="media">
                 <div class="media-body">
                   <h6 class="mt-0"><span><i class="shopping-color" data-feather="bell"></i>
-                  </span>{{$notification->message}}<small class="pull-right">{{$notification->created_at->diffForHumans()}}</small></h6>
+                  </span>{{$notification->message}} <small class="pull-right"> {{$notification->created_at->diffForHumans()}}</small></h6>
                   <p class="mb-0">{{$notification->subject}}</p>
                 </div>
               </div>
@@ -33,7 +33,7 @@
             </li>
             @endforeach
             <li class="bg-light txt-dark"><a href="#">Semua</a> Notifkasi</li>
-            
+
           </ul>
         </li>
         <li class="onhover-dropdown">

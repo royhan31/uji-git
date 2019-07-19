@@ -11,6 +11,8 @@
 <!-- Plugins JS start-->
 
 <script src="{{ asset('assets/back/js/typeahead/handlebars.js')}}"></script>
+<script src="{{ asset('assets/back/js/datatable/datatables/jquery.dataTables.min.js')}}"></script>
+<script src="{{ asset('assets/back/js/datatable/datatables/datatable.custom.js')}}"></script>
 <script src="{{ asset('assets/back/js/typeahead/typeahead.bundle.js')}}"></script>
 <script src="{{ asset('assets/back/js/typeahead/typeahead.custom.js')}}"></script>
 <script src="{{ asset('assets/back/js/chat-menu.js')}}"></script>

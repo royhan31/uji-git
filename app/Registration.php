@@ -9,10 +9,10 @@ class Registration extends Model
     protected $guarded=[];
 
     public function loker(){
-      return $this->hasMany(Loker::class, 'loker_id');
+      return $this->belongsTo(Loker::class, 'loker_id','id');
     }
 
     public function user(){
-      return $this->hasMany(User::class, 'user_id');
+      return $this->belongsTo(User::class, 'user_id','id');
     }
 }

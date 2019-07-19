@@ -27,14 +27,14 @@ class AdminsController extends Controller
         $user = User::all();
         $company = Company::all();
         $loker = Loker::all();
-        $notifications = Notification::orderBy('id','DESC')->where('admin_id',Auth::guard('admin')->user()->id)->paginate('4');
-        $notif = Notification::where('status',0)->get();
+        $notifications = Notification::orderBy('id','DESC')->where('user_id','<>',null)->orWhere('company_id','<>',null)->paginate('4');
+        $notif = Notification::where('read',false)->get();
         return view('home.admin.dashboard',compact('user','company','notifications','notif','loker'));
     }
 
     public function showNotif(Notification $notification){
       $notification->update([
-        'status' => 1
+        'read' => true
       ]);
 
       return redirect()->back();

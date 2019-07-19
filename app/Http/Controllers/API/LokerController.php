@@ -11,7 +11,7 @@ class LokerController extends Controller
   public function index(){
     $lokers = DB::table('lokers')
               ->join('companies','companies.id','=','lokers.company_id')
-              ->select('lokers.id','lokers.name','lokers.job',
+              ->select('lokers.id','lokers.name','lokers.job','lokers.requirements',
               'lokers.description','lokers.date_opened','lokers.date_closed','lokers.image','companies.company as company')
               ->orderBy('id','DESC')
               ->get();
@@ -33,7 +33,7 @@ class LokerController extends Controller
   public function details($id){
     $loker = DB::table('lokers')
               ->join('companies','companies.id','=','lokers.company_id')
-              ->select('lokers.id','lokers.name','lokers.job','lokers.image',
+              ->select('lokers.id','lokers.name','lokers.job','lokers.requirements','lokers.image',
               'lokers.description','lokers.date_opened','lokers.date_closed','lokers.image','companies.company as company','companies.email','companies.avatar','companies.address','companies.phone')
               ->where('lokers.id',$id)
               ->first();
@@ -52,6 +52,7 @@ class LokerController extends Controller
         'id' => $loker->id,
         'name' => $loker->name,
         'job' => $loker->job,
+        'requirements' => $loker->requirements,
         'description' => $loker->description,
         'image' => $loker->image,
         'date_opened' => date('d M Y', strtotime($loker->date_opened)),

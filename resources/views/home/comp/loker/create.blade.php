@@ -61,6 +61,19 @@
             <div class="row">
               <div class="col">
                 <div class="form-group">
+                  <label for="exampleInputPassword2">Persyaratan</label>
+                  <textarea name="requirements" rows="6" class="form-control @error('requirements') is-invalid @enderror" required>{{old('requirements')}}</textarea>
+                  @error('requirements')
+                      <span class="invalid-feedback" role="alert">
+                          <strong>Persyaratan Terlalu Pendek</strong>
+                      </span>
+                  @enderror
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
                   <label for="exampleInputPassword2">Deskripsi</label>
                   <textarea name="description" rows="6" class="form-control @error('description') is-invalid @enderror summernote" required>{{old('description')}}</textarea>
                   @error('description')

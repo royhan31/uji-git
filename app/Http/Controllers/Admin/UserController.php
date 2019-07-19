@@ -16,10 +16,10 @@ class UserController extends Controller
     }
 
     public function index(){
-      $notifications = Notification::orderBy('id','DESC')->where('admin_id',Auth::guard('admin')->user()->id)->paginate('4');
-      $notif = Notification::where('status',0)->get();
+      $notifications = Notification::orderBy('id','DESC')->where('user_id','<>',null)->orWhere('company_id','<>',null)->paginate('4');
+      $notif = Notification::where('read',false)->get();
       $users = User::orderBy('id','DESC')->get();
-      return view('home.admin.user', compact('notifications','notif','users'));
+      return view('home.admin.user.index', compact('notifications','notif','users'));
     }
 
     public function update(User $user){
@@ -41,5 +41,11 @@ class UserController extends Controller
         }
 
       return redirect()->back();
+    }
+
+    public function show(User $user){
+      $notifications = Notification::orderBy('id','DESC')->where('user_id','<>',null)->orWhere('company_id','<>',null)->paginate('4');
+      $notif = Notification::where('read',false)->get();
+      return view('home.admin.user.show', compact('user','notifications','notif'));
     }
 }

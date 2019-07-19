@@ -31,7 +31,7 @@ class AuthAdminController extends Controller
     ];
 
     if (!Auth::guard('admin')->attempt($credential, $request->memeber)) {
-      return redirect()->back()->withInput($request->only('username','remember'));
+      return redirect()->back()->withInput($request->only('username','remember'))->with('message','Gagal Login, Silahkan coba lagi');
     }
 
     return redirect()->route('admin.dashboard');

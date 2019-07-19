@@ -25,6 +25,9 @@ Route::group(['prefix' => 'admin'], function(){
   Route::post('/perusahaan/{company}','Admin\CompanyController@update')->name('admin.company.update');
   Route::get('/pengguna','Admin\UserController@index')->name('admin.user');
   Route::post('/pengguna/{user}','Admin\UserController@update')->name('admin.user.update');
+  Route::get('/pengguna','Admin\UserController@index')->name('admin.user');
+  Route::get('/pengguna/{user}','Admin\UserController@show')->name('admin.user.show');
+
 
 });
 
@@ -45,9 +48,10 @@ Route::group(['prefix' => '/'], function(){
   Route::patch('loker/edit/{loker}','Company\LokerController@update')->name('company.loker.update');
   Route::get('loker/detail/{loker}','Company\LokerController@show')->name('company.loker.detail');
   Route::post('loker/hapus/{loker}','Company\LokerController@destroy')->name('company.loker.destroy');
-
+  //Notifikasi
+  Route::get('notification/{notification}','Company\CompanyController@notif')->name('company.notification');
   //Data pelamar Kerja
   Route::get('daftar-pelamar-kerja','Company\UserController@jobApplicant')->name('company.jobApplicant');
-  Route::get('persyaratan','Company\UserController@requirements')->name('company.requirements');
+  Route::get('riwayat','Company\CompanyController@history')->name('company.history');
 
 });

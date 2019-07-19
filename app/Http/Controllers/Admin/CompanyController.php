@@ -15,8 +15,8 @@ class CompanyController extends Controller
     }
 
     public function index(){
-      $notifications = Notification::orderBy('id','DESC')->where('admin_id',Auth::guard('admin')->user()->id)->paginate('4');
-      $notif = Notification::where('status',0)->get();
+      $notifications = Notification::orderBy('id','DESC')->where('user_id','<>',null)->orWhere('company_id','<>',null)->paginate('4');
+      $notif = Notification::where('read',false)->get();
       $companies = Company::orderBy('id','DESC')->get();
       return view('home.admin.company', compact('notifications','notif','companies'));
     }

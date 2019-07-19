@@ -20,7 +20,7 @@ class CreateNotificationsTable extends Migration
             $table->bigInteger('user_id')->unsigned()->nullable();
             $table->string('message');
             $table->string('subject');
-            $table->string('status')->default(0);
+            $table->boolean('read')->default(false);
             $table->timestamps();
 
             $table->foreign('admin_id')->references('id')->on('admins')->onDelete('CASCADE');
