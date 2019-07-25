@@ -17,14 +17,14 @@ class LokerController extends Controller
     }
 
     public function index(){
-      $notifications = Notification::orderBy('id','DESC')->Where('company_id',Auth::user()->id)->paginate('4');
+      $notifications = Notification::orderBy('id','DESC')->Where('company_id',Auth::user()->id)->paginate(4);
       $notif = Notification::where('company_id',Auth::user()->id)->Where('read',false)->get();
       $lokers = Loker::where('company_id',Auth::user()->id)->orderBy('id','DESC')->paginate(9);
       return view('home.comp.loker.index', compact('lokers','notifications','notif'));
     }
 
     public function create(){
-      $notifications = Notification::orderBy('id','DESC')->Where('company_id',Auth::user()->id)->paginate('4');
+      $notifications = Notification::orderBy('id','DESC')->Where('company_id',Auth::user()->id)->paginate(4);
       $notif = Notification::where('company_id',Auth::user()->id)->Where('read',false)->get();
       if(Auth::user()->company_number == null || Auth::user()->phone == null || Auth::user()->address == null){
         return back()->with('error','');
@@ -73,7 +73,7 @@ class LokerController extends Controller
     }
 
     public function edit(Loker $loker){
-      $notifications = Notification::orderBy('id','DESC')->Where('company_id',Auth::user()->id)->paginate('4');
+      $notifications = Notification::orderBy('id','DESC')->Where('company_id',Auth::user()->id)->paginate(4);
       $notif = Notification::where('company_id',Auth::user()->id)->Where('read',false)->get();
       return view('home.comp.loker.edit', compact('loker','notifications','notif'));
     }
@@ -138,7 +138,7 @@ class LokerController extends Controller
     }
 
     public function show(Loker $loker){
-      $notifications = Notification::orderBy('id','DESC')->Where('company_id',Auth::user()->id)->paginate('4');
+      $notifications = Notification::orderBy('id','DESC')->Where('company_id',Auth::user()->id)->paginate(4);
       $notif = Notification::where('company_id',Auth::user()->id)->Where('read',false)->get();
       return view('home.comp.loker.detail', compact('loker','notifications','notif'));
     }

@@ -55,8 +55,8 @@
               <div class="form-group">
                 <label for="exampleFormControlSelect9">Bidang</label>
                 <select name="job" class="form-control digits">
-                  <option value="Frontend Develoer" {{old('job') == 'Frontend Develoer' ? 'selected' : ''}}
-                  @if($loker->job == 'Frontend Develoer') selected @endif
+                  <option value="Frontend Developer" {{old('job') == 'Frontend Developer' ? 'selected' : ''}}
+                  @if($loker->job == 'Frontend Developer') selected @endif
                   >Frontend Developer</option>
                   <option value="Backend Develoer"  {{old('job') == 'Backend Develoer' ? 'selected' : ''}}
                   @if($loker->job == 'Backend Develoer') selected @endif

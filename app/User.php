@@ -23,7 +23,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password','email_verified_at','job','status','created_at','updated_at','deleted_at','ktp'
+        'password','email_verified_at','job','created_at','updated_at','deleted_at','ktp'
     ];
 
     /**
@@ -35,5 +35,5 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    
+
 }

@@ -20,8 +20,8 @@ class CompanyController extends Controller
     }
 
     public function index(){
-      $notifications = Notification::orderBy('id','DESC')->Where('company_id',Auth::user()->id)->paginate('4');
-      $notif = Notification::where('company_id',Auth::user()->id)->Where('read',false)->get();
+      $notifications = Notification::orderBy('id','DESC')->where('company_id',Auth::user()->id)->paginate(4);
+      $notif = Notification::where('company_id',Auth::user()->id)->where('read',false)->get();
       $registrations = DB::table('registrations')
                       ->join('lokers','lokers.id','=','registrations.loker_id')
                       ->join('companies','companies.id','=','lokers.company_id')
@@ -31,8 +31,8 @@ class CompanyController extends Controller
     }
 
     public function profile(){
-      $notifications = Notification::orderBy('id','DESC')->Where('company_id',Auth::user()->id)->paginate('4');
-      $notif = Notification::where('company_id',Auth::user()->id)->Where('read',false)->get();
+      $notifications = Notification::orderBy('id','DESC')->where('company_id',Auth::user()->id)->paginate(4);
+      $notif = Notification::where('company_id',Auth::user()->id)->where('read',false)->get();
       return view('home.comp.profile', compact('notifications','notif'));
     }
 
@@ -94,8 +94,8 @@ class CompanyController extends Controller
 
     public function history(){
       $histories = History::where('company_id', Auth::user()->id)->orderBy('id', 'DESC')->paginate(4);
-      $notifications = Notification::orderBy('id','DESC')->Where('company_id',Auth::user()->id)->paginate('4');
-      $notif = Notification::where('company_id',Auth::user()->id)->Where('read',false)->get();
+      $notifications = Notification::orderBy('id','DESC')->where('company_id',Auth::user()->id)->paginate(4);
+      $notif = Notification::where('company_id',Auth::user()->id)->where('read',false)->get();
       return view('home.comp.history', compact('notifications','notif', 'histories'));
     }
 }

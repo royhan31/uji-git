@@ -26,12 +26,18 @@ class RegistrationController extends Controller
     $user = User::where('id',$user_id)->first();
     $loker = Loker::where('id',$request->loker_id)->first();
     $registration = Registration::where('user_id',$user_id)->where('loker_id',$loker_id)->first();
-    // if($user->status == 0){
-    //   return response()->json([
-    //       'message' => 'Akun anda belum di konvirmasi',
-    //       'status' => false,
-    //   ], 200);
-    // }
+    if(!$user->status){
+      return response()->json([
+          'message' => 'Akun anda belum di konfirmasi',
+          'status' => false,
+      ], 200);
+    }
+    if($user->job){
+      return response()->json([
+          'message' => 'Anda telah bekerja',
+          'status' => false,
+      ], 200);
+    }
     if($user == null){
       return response()->json([
           'message' => 'user tidak ada',
@@ -53,6 +59,7 @@ class RegistrationController extends Controller
     Registration::create([
       'user_id' => $auth->id,
       'loker_id' => $request->loker_id,
+      'message' => 'Pendaftaran loker masih dalam proses',
       'data' => $data
     ]);
     Notification::create([
@@ -62,8 +69,7 @@ class RegistrationController extends Controller
     ]);
     History::create([
       'user_id' => $auth->id,
-      'company_id' => $loker->company->id,
-      'message' => 'Pendaftaran Loker '.$loker->name.' oleh '.$auth->name,
+      'message' => 'Pendaftaran Loker di '.$loker->name
     ]);
     return response()->json([
         'message' => 'Berhasil',

@@ -15,16 +15,16 @@ class CompanyController extends Controller
     }
 
     public function index(){
-      $notifications = Notification::orderBy('id','DESC')->where('user_id','<>',null)->orWhere('company_id','<>',null)->paginate('4');
-      $notif = Notification::where('read',false)->get();
+      $notifications = Notification::orderBy('id', 'DESC')->where('company_id',null)->paginate(4);
+      $notif = Notification::where('company_id',null)->where('read',false)->get();
       $companies = Company::orderBy('id','DESC')->get();
       return view('home.admin.company', compact('notifications','notif','companies'));
     }
 
     public function update(Company $company){
-        if ($company->deleted_at == 1) {
+        if ($company->deleted_at) {
           $company->update([
-            'deleted_at' => 0
+            'deleted_at' => false
           ]);
         }else {
           if(Auth::guard('company')->user() != null){
@@ -33,7 +33,7 @@ class CompanyController extends Controller
             }
           }
           $company->update([
-            'deleted_at' => 1
+            'deleted_at' => true
           ]);
         }
 

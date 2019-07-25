@@ -13,27 +13,25 @@
     <ul class="sidebar-menu">
       <li class=""><a class="sidebar-header @if(Request::is('beranda')) active @endif" href="{{route('company.dashboard')}}"><i data-feather="home"></i><span>Beranda</span></a></li>
       <li class="
-      @if(Request::is('daftar-pelamar-kerja') || Request::is('persyaratan') )
+      @if(Request::is('daftar-pelamar-kerja') || Request::is('daftar-pelamar-kerja/diterima') || Request::is('daftar-pelamar-kerja/ditolak') )
       active
       @endif
       "><a class="sidebar-header" href="#"><i data-feather="airplay"></i><span>Data Pelamar</span><i class="fa fa-angle-right pull-right"></i></a>
         <ul class="sidebar-submenu">
-          <li class="@if(Request::is('daftar-pelamar-kerja'))
-          active
-          @endif
-          "><a href="{{route('company.jobApplicant')}}"><i class="fa fa-circle"></i>Daftar Pelamar Kerja</a></li>
-          <li><a href="#"><i class="fa fa-circle"></i>Pelamar Kerja Diterima</a></li>
-          <li><a href="#"><i class="fa fa-circle"></i>Pelamar Kerja Ditolak</a></li>
+          <li class="@if(Request::is('daftar-pelamar-kerja')) active @endif">
+            <a href="{{route('company.jobApplicant')}}"><i class="fa fa-circle"></i>Daftar Pelamar Kerja</a>
+          </li>
+          <li class="@if(Request::is('daftar-pelamar-kerja/diterima')) active @endif">
+            <a href="{{route('company.jobApplicantAccept')}}"><i class="fa fa-circle"></i>Pelamar Kerja Diterima</a>
+          </li>
+          <li class="@if(Request::is('daftar-pelamar-kerja/ditolak')) active @endif">
+            <a href="{{route('company.jobApplicantDenied')}}"><i class="fa fa-circle"></i>Pelamar Kerja Ditolak</a>
+          </li>
 
         </ul>
       </li>
-      <li><a class="sidebar-header @if(Request::is('loker'))
-         active
-         @elseif(Request::is('loker/tambah'))
-         active
-         @elseif(Request::is('loker/edit/*'))
-         active
-         @elseif(Request::is('loker/detail/*'))
+      <li><a class="sidebar-header @if(Request::is('loker') ||
+        Request::is('loker/tambah') || Request::is('loker/edit/*') || Request::is('loker/detail/*'))
          active
          @endif"
         href="{{route('company.loker')}}"><i data-feather="clipboard"></i><span>Data Lowongan Kerja</span></a></li>

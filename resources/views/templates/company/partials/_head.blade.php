@@ -29,6 +29,8 @@
   <link rel="stylesheet" type="text/css" href="{{ asset('assets/back/css/datatables.css')}}">
   <link rel="stylesheet" type="text/css" href="{{ asset('assets/back/css/summernote.css')}}">
   <link rel="stylesheet" type="text/css" href="{{ asset('assets/back/css/date-picker.css')}}">
+  <!-- <link rel="stylesheet" type="text/css" href="{{ asset('assets/back/css/photoswipe.css')}}"> -->
+
   <!-- Plugins css Ends-->
   <!-- Bootstrap css-->
   <link rel="stylesheet" type="text/css" href="{{ asset('assets/back/css/bootstrap.css')}}">

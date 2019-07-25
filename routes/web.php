@@ -21,12 +21,16 @@ Route::group(['prefix' => 'admin'], function(){
   Route::post('logout','Admin\AuthAdminController@logoutAdmin')->name('admin.logout');
   Route::get('/beranda','Admin\AdminsController@index')->name('admin.dashboard');
   Route::get('/perusahaan','Admin\CompanyController@index')->name('admin.company');
-  Route::get('/notif/{notification}','Admin\AdminsController@showNotif')->name('admin.notif');
+  Route::get('/notif/{notification}','Admin\AdminsController@showNotif')->name('admin.notification');
   Route::post('/perusahaan/{company}','Admin\CompanyController@update')->name('admin.company.update');
   Route::get('/pengguna','Admin\UserController@index')->name('admin.user');
   Route::post('/pengguna/{user}','Admin\UserController@update')->name('admin.user.update');
   Route::get('/pengguna','Admin\UserController@index')->name('admin.user');
   Route::get('/pengguna/{user}','Admin\UserController@show')->name('admin.user.show');
+  Route::patch('/pengguna/{user}','Admin\UserController@confirm')->name('admin.user.confirm');
+  Route::get('/pertanyaan','Admin\QuestionController@index')->name('admin.question');
+  Route::post('/pertanyaan','Admin\QuestionController@store')->name('admin.question.store');
+
 
 
 });
@@ -52,6 +56,11 @@ Route::group(['prefix' => '/'], function(){
   Route::get('notification/{notification}','Company\CompanyController@notif')->name('company.notification');
   //Data pelamar Kerja
   Route::get('daftar-pelamar-kerja','Company\UserController@jobApplicant')->name('company.jobApplicant');
+  Route::get('daftar-pelamar-kerja/diterima','Company\UserController@jobApplicantAccept')->name('company.jobApplicantAccept');
+  Route::get('daftar-pelamar-kerja/ditolak','Company\UserController@jobApplicantDenied')->name('company.jobApplicantDenied');
+  Route::patch('daftar-pelamar-kerja/terima/{registration}','Company\UserController@accept')->name('company.jobApplicant.accept');
+  Route::patch('daftar-pelamar-kerja/tolak/{registration}','Company\UserController@denied')->name('company.jobApplicant.denied');
+
   Route::get('riwayat','Company\CompanyController@history')->name('company.history');
 
 });

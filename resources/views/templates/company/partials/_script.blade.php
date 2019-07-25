@@ -9,8 +9,6 @@
 <script src="{{ asset('assets/back/js/sidebar-menu.js')}}"></script>
 <script src="{{ asset('assets/back/js/config.js')}}"></script>
 <!-- Plugins JS start-->
-
-<script src="{{ asset('assets/back/js/typeahead/handlebars.js')}}"></script>
 <script src="{{ asset('assets/back/js/datatable/datatables/jquery.dataTables.min.js')}}"></script>
 <script src="{{ asset('assets/back/js/datatable/datatables/datatable.custom.js')}}"></script>
 <script src="{{ asset('assets/back/js/typeahead/typeahead.bundle.js')}}"></script>
@@ -26,6 +24,9 @@
 <script src="{{ asset('assets/back/js/datepicker/date-picker/datepicker.custom.js')}}"></script>
 <script src="{{ asset('assets/back/js/editor/summernote/summernote.js')}}"></script>
 <script src="{{ asset('assets/back/js/editor/summernote/summernote.custom.js')}}"></script>
+<!-- <script src="{{ asset('assets/back/js/photoswipe/photoswipe.min.js')}}"></script>
+<script src="{{ asset('assets/back/js/photoswipe/photoswipe-ui-default.min.js')}}"></script>
+<script src="{{ asset('assets/back/js/photoswipe/photoswipe.js')}}"></script> -->
 <!-- Plugins JS Ends-->
 <!-- Theme js-->
 <script src="{{ asset('assets/back/js/script.js')}}"></script>

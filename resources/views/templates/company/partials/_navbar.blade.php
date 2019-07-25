@@ -31,20 +31,22 @@
             </span></li>
 
             @foreach($notifications as $notification)
-            <li class="@if($notification->read == 0)bg-light txt-dark @endif">
+            <li class="@if(!$notification->read)bg-light txt-dark @endif">
               <a href="{{route('company.notification',$notification)}}">
               <div class="media">
                 <div class="media-body">
                   <h6 class="mt-0"><span><i class="shopping-color"></i>
                   </span>{{$notification->message}}</h6>
                   <p class="mb-0">{{$notification->subject}}</p>
-                  <small class="pull-right bg-light txt-dark"> {{$notification->created_at->diffForHumans()}}</small>
+                  <small class="pull-right txt-dark"> {{$notification->created_at->diffForHumans()}}</small>
                 </div>
               </div>
               </a>
             </li>
             @endforeach
-            <li class="txt-dark"><a href="#">Semua</a> Notifkasi</li>
+            @if(!$notifications->isEmpty())
+            <li class="bg-light txt-dark"><a href="#">Semua</a> Notifkasi</li>
+            @endif
           </ul>
         </li>
         <li class="onhover-dropdown">

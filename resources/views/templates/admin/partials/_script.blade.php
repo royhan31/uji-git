@@ -25,6 +25,7 @@
 <script src="{{ asset('assets/back/js/datepicker/date-picker/datepicker.custom.js')}}"></script>
 <script src="{{ asset('assets/back/js/editor/summernote/summernote.js')}}"></script>
 <script src="{{ asset('assets/back/js/editor/summernote/summernote.custom.js')}}"></script>
+<script src="{{ asset('assets/back/js/form-validation-custom.js')}}"></script>
 <!-- Plugins JS Ends-->
 <!-- Theme js-->
 <script src="{{ asset('assets/back/js/script.js')}}"></script>

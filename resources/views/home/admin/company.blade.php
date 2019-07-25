@@ -53,10 +53,10 @@
                  </td>
                  <td>
                    <a href="#"><span class="badge badge-info">Detail</span></a>
-                   @if($company->deleted_at == 0)
-                   <a href="#" data-toggle="modal" data-target="#update{{$company->id}}"><span class="badge badge-danger">Non Aktifkan</span></a>
-                   @else
+                   @if($company->deleted_at)
                    <a href="#" data-toggle="modal" data-target="#update{{$company->id}}"><span class="badge badge-success">Aktifkan</span></a>
+                   @else
+                   <a href="#" data-toggle="modal" data-target="#update{{$company->id}}"><span class="badge badge-danger">Non Aktifkan</span></a>
                    @endif
                  </td>
                </tr>
@@ -64,13 +64,13 @@
                 <div class="modal-dialog" role="document">
                   <div class="modal-content">
                     <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel">@if($company->deleted_at == 0) Non Aktifkan Perusahaan
-                        @else Aktifkan Perusahaan
+                      <h5 class="modal-title" id="exampleModalLabel">@if($company->deleted_at) Aktifkan Perusahaan
+                        @else Non Aktifkan Perusahaan
                          @endif</h5>
                       <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                     </div>
                     <div class="modal-body">
-                      @if($company->deleted_at == 1)
+                      @if($company->deleted_at)
                       <h5>Aktifkan <strong> {{$company->company}}</strong></h5>
                       @else
                       <h5>Nonaktifkan <strong> {{$company->company}}</strong></h5>
@@ -80,7 +80,7 @@
                       @csrf
                     <div class="modal-footer">
                       <button class="btn btn-primary" type="button" data-dismiss="modal">Batal</button>
-                      @if($company->deleted_at == 1)
+                      @if($company->deleted_at)
                       <button class="btn btn-success" type="submit">Aktifkan</button>
                       @else
                       <button class="btn btn-danger" type="submit">Non Aktifkan</button>

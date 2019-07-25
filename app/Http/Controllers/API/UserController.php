@@ -37,14 +37,21 @@ class UserController extends Controller
       ]);
 
       Notification::create([
-        'user_id' => $user->id,
         'message' => $user->name.' Telah mendaftar',
         'subject' => 'Pendaftaran Pengguna'
       ]);
       return response()->json([
         'message' => 'Register Berhasil',
         'status' => true,
-        'data' => $user
+        'data' => [
+          'id' => $user->id,
+          'name' => $user->name,
+          'email' => $user->email,
+          'api_token' => $user->api_token,
+          'address' => $user->address,
+          'phone' => $user->phone,
+          'status' => $user->status == true ? 'Terkonfirmasi' : 'Belum Terkonfirmasi'
+        ]
       ], 201);
     }
 
@@ -73,7 +80,15 @@ class UserController extends Controller
       return response()->json([
           'message' => 'Berhasil',
           'status' => true,
-          'data' => $user
+          'data' => [
+            'id' => $user->id,
+            'name' => $user->name,
+            'email' => $user->email,
+            'api_token' => $user->api_token,
+            'address' => $user->address,
+            'phone' => $user->phone,
+            'status' => $user->status == true ? 'Terkonfirmasi' : 'Belum Terkonfirmasi'
+          ]
       ], 200);
     }
 
@@ -90,43 +105,13 @@ class UserController extends Controller
 
     public function update(Request $request){
       $user = User::find(Auth::user()->id);
-      //$email = User::where('email',$request->email)->first();
-      //$phone = User::where('phone',$request->phone)->first();
-      // if ($email != null) {
-      //   return response()->json([
-      //     'message' => 'Email telah digunakan',
-      //     'status' => false
-      //   ]);
-      // }elseif($phone != null) {
-      //   return response()->json([
-      //     'message' => 'Nomor Telephon telah digunakan',
-      //     'status' => false
-      //   ]);
-      //}
       if ($user->avatar == 'avatar/default.jpg') {
         $avatar = $request->file('avatar')->store('avatar');
-        if ($user->nik != null || $user->ktp != null) {
-          $user->update([
-            'email' => $request->email,
-            'phone' => $request->phone,
-            'address' => $request->address,
-            'avatar'=> $avatar
-          ]);
-
-          return response()->json([
-            'message' => 'Update berhasil',
-            'status' => true,
-            'data' => $user
-          ]);
-        }
-        $ktp = $request->file('ktp')->store('ktp');
         $user->update([
           'email' => $request->email,
           'phone' => $request->phone,
           'address' => $request->address,
           'avatar'=> $avatar,
-          'nik' => $request->nik,
-          'ktp' => $ktp
         ]);
         return response()->json([
           'message' => 'Update berhasil',
@@ -138,14 +123,11 @@ class UserController extends Controller
         if (Storage::exists($avatar_path)) {
             Storage::delete($avatar_path);
         }
-        $ktp = $request->file('ktp')->store('ktp');
         $user->update([
           'email' => $request->email,
           'phone' => $request->phone,
           'address' => $request->address,
           'avatar'=> $avatar,
-          'nik' => $request->nik,
-          'ktp' => $ktp
         ]);
         return response()->json([
           'message' => 'Update berhasil',
@@ -165,17 +147,38 @@ class UserController extends Controller
 
     public function userLoker(){
       $user = User::find(Auth::user()->id);
-      $loker = DB::table('registrations')
-              ->join('lokers','lokers.id','=','registrations.loker_id')
-              ->join('companies','companies.id','=','lokers.company_id')
-              ->select('lokers.name','lokers.job','lokers.description'
-              ,'lokers.date_opened','lokers.date_closed','lokers.image','companies.company as company')
-              ->where('registrations.user_id',$user->id)
-              ->get();
+      $lokers = array();
+      $registrations = Registration::where('user_id', $user->id)->get( );
+      foreach ($registrations as $registration) {
+        if ($registration->status == 0) {
+          $status = 'Menunggu';
+        }
+        if ($registration->status == 1) {
+          $status = 'Diterima';
+        }
+        if ($registration->status == 2) {
+          $status = 'Ditolak';
+        }
+        $lokers[] = [
+          'id' => $registration->loker->id,
+          'name' => $registration->loker->name,
+          'job' => $registration->loker->job,
+          'requirements' => $registration->loker->requirements,
+          'job' => $registration->loker->job,
+          'description' => $registration->loker->description,
+          'date_opened' => $registration->loker->date_opened,
+          'date_closed' => $registration->loker->date_closed,
+          'date_closed' => $registration->loker->image,
+          'company' => $registration->loker->company->company,
+          'status' => $status,
+          'message' => $registration->message,
+          'time' => $registration->updated_at->diffForHumans(),
+        ];
+      }
       return response()->json([
           'message' => 'Berhasil',
           'status' => true,
-          'loker' => $loker
-      ], 201);
+          'data' => $lokers
+      ], 200);
     }
 }

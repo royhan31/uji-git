@@ -24,7 +24,7 @@ class CreateCompaniesTable extends Migration
             $table->string('company_number')->nullable()->unique();
             $table->text('address')->nullable();
             $table->string('phone',13)->nullable();
-            $table->boolean('deleted_at')->default(0);
+            $table->boolean('deleted_at')->default(false);
             $table->rememberToken();
             $table->timestamps();
         });

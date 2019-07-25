@@ -17,7 +17,7 @@
   </div>
 </div>
 @if(Session::has('success'))
-<div class="col-6">
+<div class="col-12">
   <div class="alert alert-success dark alert-dismissible fade show" role="alert"><strong>{{Session::get('success')}}</strong>
       <button class="close" type="button" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
     </div>
@@ -40,18 +40,6 @@
                   <p class="mb-4">{{Auth::user()->company}}</p>
                 </div>
               </div>
-
-              <!-- <div class="form-group">
-                <label class="form-label">Password</label>
-                <input class="form-control" type="password" value="password">
-              </div>
-              <div class="form-group">
-                <label class="form-label">Website</label>
-                <input class="form-control" placeholder="http://Uplor .com">
-              </div> -->
-              <!-- <div class="form-footer">
-                <button class="btn btn-primary btn-block">Save</button>
-              </div> -->
           </div>
         </div>
         <div class="card">
@@ -99,11 +87,14 @@
                     </div>
                     <label class="form-label">Foto</label>
                     <div class="custom-file">
-                      <input name="avatar" class="custom-file-input" id="avatar" type="file" accept="image/*">
+                      <input name="avatar" class="custom-file-input" id="image" type="file" accept="image/*">
                       <label class="custom-file-label" for="validatedCustomFile">Pilih Gambar</label>
                     </div>
-                  </div>
-                </div>
+                      <div class="form-group mt-2">
+                          <img src="" alt="" id="preview_image" width="30%" height="30%">
+                        </div>
+                      </div>
+                    </div>
             <div class="col-sm-12 col-md-6">
                 <div class="form-group">
                   <label class="form-label">Email</label>

@@ -16,8 +16,8 @@ class UserController extends Controller
     }
 
     public function index(){
-      $notifications = Notification::orderBy('id','DESC')->where('user_id','<>',null)->orWhere('company_id','<>',null)->paginate('4');
-      $notif = Notification::where('read',false)->get();
+      $notifications = Notification::orderBy('id', 'DESC')->where('company_id',null)->paginate(4);
+      $notif = Notification::where('company_id',null)->where('read',false)->get();
       $users = User::orderBy('id','DESC')->get();
       return view('home.admin.user.index', compact('notifications','notif','users'));
     }
@@ -44,8 +44,17 @@ class UserController extends Controller
     }
 
     public function show(User $user){
-      $notifications = Notification::orderBy('id','DESC')->where('user_id','<>',null)->orWhere('company_id','<>',null)->paginate('4');
-      $notif = Notification::where('read',false)->get();
+      $notifications = Notification::orderBy('id', 'DESC')->where('company_id',null)->paginate(4);
+      $notif = Notification::where('company_id',null)->where('read',false)->get();
+
       return view('home.admin.user.show', compact('user','notifications','notif'));
+    }
+
+    public function confirm(User $user){
+      $user->update([
+        'status' => true,
+      ]);
+
+      return redirect()->route('admin.user')->with('success','Akun berhasil di konfirmasi');
     }
 }

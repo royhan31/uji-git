@@ -18,7 +18,8 @@ class CreateRegistrationsTable extends Migration
           $table->bigInteger('user_id')->unsigned();
           $table->bigInteger('loker_id')->unsigned();
           $table->string('data');
-          $table->boolean('status')->default(0);
+          $table->char('status')->default(0);
+          $table->text('message')->nullable();
           $table->timestamps();
 
           $table->foreign('user_id')->references('id')->on('users')->onDelete('CASCADE');

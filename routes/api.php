@@ -1,3 +1,4 @@
+
 <?php
 
 use Illuminate\Http\Request;
@@ -26,3 +27,4 @@ Route::get('company/{id}','API\CompanyController@companyLoker');
 Route::get('loker','API\LokerController@index');
 Route::get('loker/{id}','API\LokerController@details');
 Route::post('loker/search','API\LokerController@search');
+Route::get('question','API\QuestionController@index');

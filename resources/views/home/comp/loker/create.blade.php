@@ -45,10 +45,10 @@
                 <div class="form-group">
                   <label for="exampleFormControlSelect9">Bidang</label>
                   <select name="job" class="form-control digits">
-                    <option value="Frontend Develoer" {{old('job') == 'Frontend Develoer' ? 'selected' : ''}}>Frontend Developer</option>
-                    <option value="Backend Develoer"  {{old('job') == 'Backend Develoer' ? 'selected' : ''}}>Backend Developer</option>
-                    <option value="Web Develoer" {{old('job') == 'Web Developer' ? 'selected' : ''}}>Web Developer</option>
-                    <option value="Android Develoer" {{old('job') == 'Android Developer' ? 'selected' : ''}}>Android Developer</option>
+                    <option value="Frontend Developer" {{old('job') == 'Frontend Developer' ? 'selected' : ''}}>Frontend Developer</option>
+                    <option value="Backend Developer"  {{old('job') == 'Backend Developer' ? 'selected' : ''}}>Backend Developer</option>
+                    <option value="Web Developer" {{old('job') == 'Web Developer' ? 'selected' : ''}}>Web Developer</option>
+                    <option value="Android Developer" {{old('job') == 'Android Developer' ? 'selected' : ''}}>Android Developer</option>
                     <option value="Sistem Analisis" {{old('job') == 'Sistem Analis' ? 'selected' : ''}}>Sistem Analis</option>
                     <option value="Database Administrator" {{old('job') == 'Database Administrator' ? 'selected' : ''}}>Database Administrator</option>
                     <option value="UI/UX Designer" {{old('job') == 'UI/UX Designer' ? 'selected' : ''}}>UI/UX Designer</option>

@@ -25,8 +25,8 @@ class CreateUsersTable extends Migration
             $table->string('nik',16)->unique()->nullable();
             $table->string('ktp')->nullable();
             $table->boolean('status')->default(false);
-            $table->boolean('job')->default(0);
-            $table->boolean('deleted_at')->default(0);
+            $table->boolean('job')->default(false);
+            $table->boolean('deleted_at')->default(false);
             $table->timestamps();
         });
     }

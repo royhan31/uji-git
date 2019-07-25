@@ -14,15 +14,8 @@ class LokerController extends Controller
               ->select('lokers.id','lokers.name','lokers.job','lokers.requirements',
               'lokers.description','lokers.date_opened','lokers.date_closed','lokers.image','companies.company as company')
               ->orderBy('id','DESC')
+              ->where('companies.deleted_at', 0)
               ->get();
-    //$loker = Loker::all();
-    if ($lokers->isEmpty()) {
-      return response()->json([
-        'message' => 'Not Found',
-        'status' => false,
-        'data' => []
-      ], 200);
-    }
     return response()->json([
       'message' => 'success',
       'status' => true,
@@ -31,24 +24,42 @@ class LokerController extends Controller
   }
 
   public function details($id){
-    $loker = DB::table('lokers')
-              ->join('companies','companies.id','=','lokers.company_id')
-              ->select('lokers.id','lokers.name','lokers.job','lokers.requirements','lokers.image',
-              'lokers.description','lokers.date_opened','lokers.date_closed','lokers.image','companies.company as company','companies.email','companies.avatar','companies.address','companies.phone')
-              ->where('lokers.id',$id)
-              ->first();
-
-    if ($loker == null) {
-      return response()->json([
-        'message' => 'Not Found',
-        'status' => false,
-        'data' => []
-      ], 200);
-    }
+    $loker = Loker::find($id);
     return response()->json([
       'message' => 'success',
       'status' => true,
       'data' => [
+        'id' => $loker->id,
+        'name' => $loker->name,
+        'job' => $loker->job,
+        'requirements' => $loker->requirements,
+        'description' => $loker->description,
+        'image' => $loker->image,
+        'date_opened' => date('d M Y', strtotime($loker->date_opened)),
+        'date_closed' => date('d M Y', strtotime($loker->date_closed)),
+        'company' => $loker->company->company,
+        'email' => $loker->company->email,
+        'avatar' => $loker->company->avatar,
+        'address' => $loker->company->address,
+        'phone' => $loker->company->phone,
+      ]
+    ], 200);
+  }
+
+  public function search(Request $request){
+    $search = $request->search;
+    $lokers = DB::table('lokers')
+                ->join('companies','companies.id','=','lokers.company_id')
+                ->select('lokers.id','lokers.name','lokers.job','lokers.requirements','lokers.description',
+                'lokers.image','lokers.date_opened','lokers.date_closed','companies.company','companies.email',
+                'companies.avatar','companies.address','companies.phone')
+                ->where('lokers.job', 'LIKE', '%' . $search . '%')
+                ->orWhere('lokers.name', 'LIKE', '%' . $search . '%')
+                ->orWhere('companies.company', 'LIKE', '%' . $search . '%')
+                ->get();
+    $result = array();
+    foreach ($lokers as $loker) {
+      $result[] = [
         'id' => $loker->id,
         'name' => $loker->name,
         'job' => $loker->job,
@@ -62,17 +73,12 @@ class LokerController extends Controller
         'avatar' => $loker->avatar,
         'address' => $loker->address,
         'phone' => $loker->phone,
-      ]
-    ], 200);
-  }
-
-  public function search(Request $request){
-    $search = $request->search;
-    $loker = Loker::where('job', 'LIKE', '%' . $search . '%')->get();
+      ];
+    }
     return response()->json([
       'message' => 'Berhasil',
       'status' => true,
-      'data' => $loker
+      'data' => $result
     ]);
   }
 }
