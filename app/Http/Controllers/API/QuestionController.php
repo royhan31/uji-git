@@ -40,13 +40,13 @@ class QuestionController extends Controller
        // if ($resUser != null) {
        //    Result::where('user_id',Auth::user()->id)->delete();
        // }
-       // for ($i=0; $i < count($results) ; $i++) {
-       //   Result::create([
-       //     'user_id' => Auth::user()->id,
-       //     'category' => $results[$i]["name"],
-       //     'score' => $results[$i]["score"]
-       //   ]);
-       // }
+       for ($i=0; $i < count($results) ; $i++) {
+         Result::create([
+           'user_id' => Auth::user()->id,
+           'category' => $results[$i]["name"],
+           'score' => $results[$i]["score"]
+         ]);
+       }
        $res = Result::orderBy('score','DESC')->where('user_id', Auth::user()->id)->first();
        return response()->json([
          'message' => $res->category,
