@@ -32,7 +32,7 @@ class QuestionController extends Controller
     }
 
     public function store(Request $request){
-      try {
+      // try {
         $result = $request->getContent();
         $result = json_decode($result);
         $results = json_decode($result, true);
@@ -56,11 +56,9 @@ class QuestionController extends Controller
           'status' => true,
           'data' => []
         ], 201);
-      } catch (Exception $e) {
-        'message' => $e->getMessage(),
-        'status' => false,
-        'data' => []
-      }
+      // } catch (Exception $e) {
+        
+      // }
 
 
     }
