@@ -8,7 +8,6 @@ use App\Question;
 use DB;
 use Storage;
 use File;
-use App\User;
 use App\Result;
 use Auth;
 
@@ -34,6 +33,7 @@ class QuestionController extends Controller
     public function store(Request $request){
        $result = $request->getContent();
        $result = json_decode($result);
+       //$results = json_decode($result);
        Storage::disk('local')->put('file.txt', $result);
        $results = json_decode(File::get(public_path('images/file.txt')), true);
        $resUser = Result::where('user_id',Auth::user()->id)->first();
