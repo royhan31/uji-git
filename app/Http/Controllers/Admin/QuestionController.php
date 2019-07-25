@@ -15,7 +15,7 @@ class QuestionController extends Controller
 
   public function index(){
     $categories = [
-      '1' => 'Frontend Develoer',
+      '1' => 'Frontend Developer',
       '2' => 'Backend Developer',
       '3' => 'Web Developer',
       '4' => 'Android Developer',

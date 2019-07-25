@@ -28,3 +28,5 @@ Route::get('loker','API\LokerController@index');
 Route::get('loker/{id}','API\LokerController@details');
 Route::post('loker/search','API\LokerController@search');
 Route::get('question','API\QuestionController@index');
+Route::post('question','API\QuestionController@store')->middleware('auth:api');
+Route::get('question/loker/{category}','API\QuestionController@showResult');

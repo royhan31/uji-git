@@ -24,12 +24,24 @@ class LokerController extends Controller
     }
 
     public function create(){
+      $jobs= [
+        '1' => 'Frontend Developer',
+        '2' => 'Backend Developer',
+        '3' => 'Web Developer',
+        '4' => 'Android Developer',
+        '5' => 'Sistem Analisis',
+        '6' => 'Database Administrator',
+        '7' => 'UI/UX Designer',
+        '8' => 'Hardware Engineer',
+        '9' => 'Network Engineer',
+        '10' => 'Umum',
+      ];
       $notifications = Notification::orderBy('id','DESC')->Where('company_id',Auth::user()->id)->paginate(4);
       $notif = Notification::where('company_id',Auth::user()->id)->Where('read',false)->get();
       if(Auth::user()->company_number == null || Auth::user()->phone == null || Auth::user()->address == null){
         return back()->with('error','');
       }
-      return view('home.comp.loker.create', compact('notifications','notif'));
+      return view('home.comp.loker.create', compact('notifications','notif', 'jobs'));
     }
 
     public function store(Request $request){
@@ -73,9 +85,21 @@ class LokerController extends Controller
     }
 
     public function edit(Loker $loker){
+      $jobs= [
+        '1' => 'Frontend Developer',
+        '2' => 'Backend Developer',
+        '3' => 'Web Developer',
+        '4' => 'Android Developer',
+        '5' => 'Sistem Analisis',
+        '6' => 'Database Administrator',
+        '7' => 'UI/UX Designer',
+        '8' => 'Hardware Engineer',
+        '9' => 'Network Engineer',
+        '10' => 'Umum',
+      ];
       $notifications = Notification::orderBy('id','DESC')->Where('company_id',Auth::user()->id)->paginate(4);
       $notif = Notification::where('company_id',Auth::user()->id)->Where('read',false)->get();
-      return view('home.comp.loker.edit', compact('loker','notifications','notif'));
+      return view('home.comp.loker.edit', compact('loker','notifications','notif', 'jobs'));
     }
 
     public function update(Request $request, Loker $loker){

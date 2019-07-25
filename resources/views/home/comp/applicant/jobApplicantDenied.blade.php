@@ -55,18 +55,21 @@
              </thead>
              <tbody>
                @php($no = 1)
-               @foreach($registrations as $registration)
+               @foreach($lokers as $loker)
+                @foreach($loker->registrations as $registration)
+                @if($registration->status == 2)
                <tr>
                  <td>{{$no}}</td>
-                 <td>{{$registration->loker->name}}</td>
+                 <td>{{$loker->name}}</td>
                  <td>{{$registration->user->name}}</td>
                  <td>{{$registration->user->email}}</td>
-                 <td>{{$registration->loker->job}}</td>
+                 <td>{{$loker->job}}</td>
                  <td width="10%">
                    <a href="#" data-toggle="modal" data-target="#detail{{$registration->id}}"><span class="badge badge-info">Detail</span></a>
                  </td>
                </tr>
-                <!-- Modal detail Pelamar -->
+               @endif
+          <!-- Modal detail Pelamar -->
                   <div class="modal fade" id="detail{{$registration->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                    <div class="modal-dialog" role="document">
                      <div class="modal-content">
@@ -84,6 +87,7 @@
                                 <h6>{{$registration->user->email}}</h6>
                                 <h6>{{$registration->user->phone}}</h6>
                                 <h6>{{$registration->user->address}}</h6>
+                                <h6>{{$registration->loker->job}}</h6>
                               </div>
                             </div>
                           </div>
@@ -92,6 +96,7 @@
                      </div>
                    </div>
                  </div>
+              @endforeach
                @php($no++)
                @endforeach
              </tbody>

@@ -55,33 +55,9 @@
               <div class="form-group">
                 <label for="exampleFormControlSelect9">Bidang</label>
                 <select name="job" class="form-control digits">
-                  <option value="Frontend Developer" {{old('job') == 'Frontend Developer' ? 'selected' : ''}}
-                  @if($loker->job == 'Frontend Developer') selected @endif
-                  >Frontend Developer</option>
-                  <option value="Backend Develoer"  {{old('job') == 'Backend Develoer' ? 'selected' : ''}}
-                  @if($loker->job == 'Backend Develoer') selected @endif
-                  >Backend Developer</option>
-                  <option value="Web Develoer" {{old('job') == 'Web Developer' ? 'selected' : ''}}
-                  @if($loker->job == 'Web Develoer') selected @endif
-                  >Web Developer</option>
-                  <option value="Android Develoer" {{old('job') == 'Android Developer' ? 'selected' : ''}}
-                  @if($loker->job == 'Android Develoer') selected @endif
-                  >Android Developer</option>
-                  <option value="Sistem Analisis" {{old('job') == 'Sistem Analis' ? 'selected' : ''}}
-                  @if($loker->job == 'Sistem Analis') selected @endif
-                  >Sistem Analis</option>
-                  <option value="Database Administrator" {{old('job') == 'Database Administrator' ? 'selected' : ''}}
-                  @if($loker->job == 'Database Administrator') selected @endif
-                  >Database Administrator</option>
-                  <option value="UI/UX Designer" {{old('job') == 'UI/UX Designer' ? 'selected' : ''}}
-                  @if($loker->job == 'UI/UX Designer') selected @endif
-                  >UI/UX Designer</option>
-                  <option value="Hardware Engineer" {{old('job') == 'Hardware Engineer' ? 'selected' : ''}}
-                  @if($loker->job == 'Hardware Engineer') selected @endif
-                  >Hardware Engineer</option>
-                  <option value="Network Engineer" {{old('job') == 'Network Engineer' ? 'selected' : ''}}
-                  @if($loker->job == 'Network Engineer') selected @endif
-                  >Network Engineer</option>
+                  @foreach($jobs as $job)
+                  <option value="{{$job}}" {{old('job', $loker->job) == $job ? 'selected' : ''}} >{{$job}}</option>
+                  @endforeach
                 </select>
               </div>
             </div>

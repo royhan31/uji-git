@@ -10,6 +10,7 @@ use App\Loker;
 use App\Notification;
 use App\History;
 use Auth;
+use DB;
 
 class UserController extends Controller
 {
@@ -21,33 +22,21 @@ class UserController extends Controller
     $notifications = Notification::orderBy('id','DESC')->Where('company_id',Auth::user()->id)->paginate(4);
     $notif = Notification::where('company_id',Auth::user()->id)->Where('read',false)->get();
     $lokers = Loker::where('company_id', Auth::user()->id)->get();
-    // $registrations = array();
-    foreach ($lokers as $loker) {
-      $registrations = Registration::where('loker_id', $loker->id)->where('status',0)->orderBy('id','DESC')->get();
-    }
-    return view('home.comp.applicant.jobApplicant', compact('registrations','notifications','notif'));
+    return view('home.comp.applicant.jobApplicant', compact('lokers','notifications','notif'));
   }
 
   public function jobApplicantAccept(){
     $notifications = Notification::orderBy('id','DESC')->Where('company_id',Auth::user()->id)->paginate(4);
     $notif = Notification::where('company_id',Auth::user()->id)->Where('read',false)->get();
     $lokers = Loker::where('company_id', Auth::user()->id)->get();
-    // $registrations = array();
-    foreach ($lokers as $loker) {
-      $registrations = Registration::where('loker_id', $loker->id)->where('status',1)->orderBy('id','DESC')->get();
-    }
-    return view('home.comp.applicant.jobApplicantAccept', compact('registrations','notifications','notif'));
+    return view('home.comp.applicant.jobApplicantAccept', compact('lokers','notifications','notif'));
   }
 
   public function jobApplicantDenied(){
     $notifications = Notification::orderBy('id','DESC')->Where('company_id',Auth::user()->id)->paginate(4);
     $notif = Notification::where('company_id',Auth::user()->id)->Where('read',false)->get();
     $lokers = Loker::where('company_id', Auth::user()->id)->get();
-    // $registrations = array();
-    foreach ($lokers as $loker) {
-      $registrations = Registration::where('loker_id', $loker->id)->where('status',2)->orderBy('id','DESC')->get();
-    }
-    return view('home.comp.applicant.jobApplicantDenied', compact('registrations','notifications','notif'));
+    return view('home.comp.applicant.jobApplicantDenied', compact('lokers','notifications','notif'));
   }
 
   public function accept(Request $request, Registration $registration){

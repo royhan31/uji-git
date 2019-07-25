@@ -45,15 +45,9 @@
                 <div class="form-group">
                   <label for="exampleFormControlSelect9">Bidang</label>
                   <select name="job" class="form-control digits">
-                    <option value="Frontend Developer" {{old('job') == 'Frontend Developer' ? 'selected' : ''}}>Frontend Developer</option>
-                    <option value="Backend Developer"  {{old('job') == 'Backend Developer' ? 'selected' : ''}}>Backend Developer</option>
-                    <option value="Web Developer" {{old('job') == 'Web Developer' ? 'selected' : ''}}>Web Developer</option>
-                    <option value="Android Developer" {{old('job') == 'Android Developer' ? 'selected' : ''}}>Android Developer</option>
-                    <option value="Sistem Analisis" {{old('job') == 'Sistem Analis' ? 'selected' : ''}}>Sistem Analis</option>
-                    <option value="Database Administrator" {{old('job') == 'Database Administrator' ? 'selected' : ''}}>Database Administrator</option>
-                    <option value="UI/UX Designer" {{old('job') == 'UI/UX Designer' ? 'selected' : ''}}>UI/UX Designer</option>
-                    <option value="Hardware Engineer" {{old('job') == 'Hardware Engineer' ? 'selected' : ''}}>Hardware Engineer</option>
-                    <option value="Network Engineer" {{old('job') == 'Network Engineer' ? 'selected' : ''}}>Network Engineer</option>
+                    @foreach($jobs as $job)
+                    <option value="{{$job}}" {{old('job') == $job ? 'selected' : ''}}>{{$job}}</option>
+                    @endforeach
                   </select>
                 </div>
               </div>
