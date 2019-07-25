@@ -11,16 +11,16 @@ class QuestionController extends Controller
 {
     public function index(){
       $count = DB::table('questions')
-      ->select(DB::raw('count(category) as category'))
+      ->select('category')
       ->groupBy('category')
-      ->first();
+      ->get();
 
       $questions = Question::orderBy('category','ASC')->get();
       return response()->json([
         'message' => 'Berhasil',
         'status' => true,
         'data' => [
-          'count_category' => $count->category,
+          'count_category' => count($count),
           'question' => $questions
         ]
       ]);
