@@ -36,10 +36,10 @@ class QuestionController extends Controller
        //$results = json_decode($result);
        Storage::disk('local')->put('file.txt', $result);
        $results = json_decode(File::get(public_path('images/file.txt')), true);
-       // $resUser = Result::where('user_id',Auth::user()->id)->first();
-       // if ($resUser != null) {
-       //    Result::where('user_id',Auth::user()->id)->delete();
-       // }
+       $resUser = Result::where('user_id',Auth::user()->id)->get();
+       if (!$resUser->isEmpty()) {
+          Result::where('user_id',Auth::user()->id)->delete();
+       }
        for ($i=0; $i < count($results) ; $i++) {
          Result::create([
            'user_id' => Auth::user()->id,
