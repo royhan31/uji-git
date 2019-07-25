@@ -26,10 +26,6 @@ class AdminsController extends Controller
 
     public function index()
     {
-      $result = json_decode(File::get(public_path('images/file.txt')), true);
-      $res = Result::orderBy('score','DESC')->first();
-
-      dd(count($result));
         $user = User::all();
         $company = Company::all();
         $loker = Loker::all();

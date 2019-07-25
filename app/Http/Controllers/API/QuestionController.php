@@ -34,6 +34,13 @@ class QuestionController extends Controller
        $result = json_decode($result);
        Storage::disk('local')->put('file.txt', $result);
        $results = json_decode(File::get(public_path('images/file.txt')), true);
+       $user = Result::where('user_id', Auth::user()->id)->first();
+       if ($user != null) {
+         return response()->json([
+           'message' => 'Anda sudah mengisi pertanyaan',
+           'status' => false,
+         ], 200);
+       }
        for ($i=0; $i < count($results) ; $i++) {
          Result::create([
            'user_id' => Auth::user()->id,
