@@ -8,7 +8,9 @@ use App\Question;
 use DB;
 use Storage;
 use File;
+use App\User;
 use App\Result;
+use Auth;
 
 class QuestionController extends Controller
 {
@@ -34,12 +36,9 @@ class QuestionController extends Controller
        $result = json_decode($result);
        Storage::disk('local')->put('file.txt', $result);
        $results = json_decode(File::get(public_path('images/file.txt')), true);
-       $user = Result::where('user_id', Auth::user()->id)->first();
-       if ($user != null) {
-         return response()->json([
-           'message' => 'Anda sudah mengisi pertanyaan',
-           'status' => false,
-         ], 200);
+       $resUser = Result::where('user_id',Auth::user()->id)->first();
+       if ($resUser != null) {
+          Result::where('user_id',Auth::user()->id)->delete();
        }
        for ($i=0; $i < count($results) ; $i++) {
          Result::create([
