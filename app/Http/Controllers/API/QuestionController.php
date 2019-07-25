@@ -10,14 +10,19 @@ use DB;
 class QuestionController extends Controller
 {
     public function index(){
-      $count = DB::table('questions')->select(DB::raw('count(category) as category'))->first();
+      $count = DB::table('questions')
+      ->select(DB::raw('count(category) as category'))
+      ->groupBy('category')
+      ->first();
 
       $questions = Question::orderBy('category','ASC')->get();
       return response()->json([
         'message' => 'Berhasil',
         'status' => true,
-        'count_category' => $count->category,
-        'date' => $questions
+        'data' => [
+          'count_category' => $count->category,
+          'question' => $questions
+        ]
       ]);
     }
 }
