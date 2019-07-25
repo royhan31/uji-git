@@ -48,7 +48,7 @@ class QuestionController extends Controller
            'score' => $results[$i]["score"]
          ]);
        }
-       $res = Result::orderBy('score','DESC')->first();
+       $res = Result::orderBy('score','DESC')->where('user_id', Auth::user()->id)->first();
        return response()->json([
          'message' => $res->category,
          'status' => true,
