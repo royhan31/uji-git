@@ -33,9 +33,9 @@ class QuestionController extends Controller
     public function store(Request $request){
        $result = $request->getContent();
        $result = json_decode($result);
-       //$results = json_decode($result);
-       Storage::disk('local')->put('json.txt', $result);
-       $results = json_decode(File::get(public_path('images/json.txt')), true);
+       $results = json_decode($result, true);
+       // Storage::disk('local')->put('json.txt', $result);
+       // $results = json_decode(File::get(public_path('images/json.txt')), true);
        $resUser = Result::where('user_id',Auth::user()->id)->get();
        if (!$resUser->isEmpty()) {
           Result::where('user_id',Auth::user()->id)->delete();
