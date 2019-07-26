@@ -32,15 +32,15 @@ class QuestionController extends Controller
     }
 
     public function store(Request $request){
-      // try {
+
         $result = $request->getContent();
         $result = json_decode($result);
         $results = json_decode($result, true);
         $user = User::find(Auth::user()->id);
         // Storage::disk('local')->put('json.txt', $result);
         // $results = json_decode(File::get(public_path('images/json.txt')), true);
-        $resUser = Result::where('user_id',$user->id)->get();
-        if (!$resUser->isEmpty()) {
+        $resUser = Result::where('user_id',$user->id)->first();
+        if (!$resUser == null) {
            Result::where('user_id',$user->id)->delete();
         }
         for ($i=0; $i < count($results) ; $i++) {
@@ -56,10 +56,6 @@ class QuestionController extends Controller
           'status' => true,
           'data' => []
         ], 201);
-      // } catch (Exception $e) {
-        
-      // }
-
 
     }
 
