@@ -16,7 +16,7 @@ class CreateResultsTable extends Migration
         Schema::create('results', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('user_id')->unsigned();
-            $table->string('category', 20);
+            $table->string('category', 50);
             $table->integer('score');
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('CASCADE');

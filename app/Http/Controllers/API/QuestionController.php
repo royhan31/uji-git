@@ -36,21 +36,42 @@ class QuestionController extends Controller
         $result = $request->getContent();
         $result = json_decode($result);
         $results = json_decode($result, true);
-        $user = User::find(Auth::user()->id);
-        // Storage::disk('local')->put('json.txt', $result);
+        // $user = User::find(Auth::user()->id);
         // $results = json_decode(File::get(public_path('images/json.txt')), true);
-        $resUser = Result::where('user_id',$user->id)->first();
-        if (!$resUser == null) {
-           Result::where('user_id',$user->id)->delete();
-        }
-        for ($i=0; $i < count($results) ; $i++) {
-          Result::create([
-            'user_id' => $user->id,
-            'category' => $results[$i]["name"],
-            'score' => $results[$i]["score"]
-          ]);
-        }
-        $res = Result::orderBy('score','DESC')->where('user_id', $user->id)->first();
+
+        $id = Auth::user()->id;
+        if(!empty($results)){
+          $resUser = Result::where('user_id',$id)->first();
+          if ($resUser != null) {
+             Result::where('user_id',$id)->delete();
+          }
+          $sb = "sss";
+          $sbs = "ssss";
+          for ($i=0; $i < count($results); $i++) {
+            $sb .= $results[$i]["name"];
+            $sb .= $results[$i]["score"];
+                Result::create([
+                  'user_id' => Auth::user()->id,
+                  'category' => $results[$i]["name"],
+                  'score' => $results[$i]["score"]
+                ]);
+//            $sbs .= $results[$i]["name"];
+          }
+          $sb .= Auth::user()->id;
+          $sbs .= Auth::user()->id;
+          Storage::disk('local')->put('json_.txt', $sb);
+          Storage::disk('local')->put('json_s.txt', $sbs);
+
+        //   for ($i=0; $i < 3; $i++) {
+        //     Result::create([
+        //       'user_id' => Auth::user()->id,
+        //       'category' => $results[$i]["name"],
+        //       'score' => $results[$i]["score"],
+        //     ]);
+        // }
+      }
+
+        $res = Result::orderBy('score','DESC')->where('user_id',$id)->first();
         return response()->json([
           'message' => $res->category,
           'status' => true,
