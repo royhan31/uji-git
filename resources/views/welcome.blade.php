@@ -60,15 +60,8 @@
     <!-- Top Bar Starts -->
     <div class="top-bar">
         <div class="container">
-            <div class="tmail">Email: infotim.com</div>
+            <div class="tmail">Email: dadel828@gmail.com</div>
             <div class="tphone">Phone: 089685049878 </div>
-            <div class="tsocial">
-                <a href=""><i class="fa fa-twitter"></i></a>
-                <a href=""><i class="fa fa-facebook"></i></a>
-                <a href=""><i class="fa fa-skype"></i></a>
-                <a href=""><i class="fa fa-google-plus"></i></a>
-                <a href=""><i class="fa fa-pinterest"></i></a>
-            </div>
         </div>
     </div>
     <!-- Top Bar Ends -->
@@ -146,7 +139,7 @@
                     <div class="table">
                         <div class="table-cell">
                             <div class="intro-text">
-                                <p class="slide-caption"><FONT FACE="eucroasiaUPC">WE ARE HEARING</FONT></p>
+                                <p class="slide-caption"><FONT FACE="eucroasiaUPC">WE ARE HIRING</FONT></p>
                                 <div class="title clearfix">
                                     <h3><FONT FACE="gabriola">Need to grow your business ? or Need to promotion your business?</FONT></h3>
                                 </div>
@@ -268,17 +261,15 @@
                 <div class="col-md-3 col-sm-6">
                     <div class="team-member wow fadeInUp" data-wow-delay="0.4s">
                         <div class="member-image">
-                            <img src="{{asset('assets/front/assets/img/team/member-2.png')}}" alt="">
+                            <img src="{{asset('assets/front/assets/img/team/abel.jpg')}}" alt="">
                         </div>
 
                         <div class="member-hover">
                             <div class="center-content">
                                 <div class="member-social">
-                                    <a href="#"><i class="fa fa-rss"></i></a>
                                     <a href="#"><i class="fa fa-facebook"></i></a>
                                     <a href="#"><i class="fa fa-twitter"></i></a>
                                     <a href="#"><i class="fa fa-google-plus"></i></a>
-                                    <a href="#"><i class="fa fa-linkedin"></i></a>
                                 </div>
                                 <h3 class="subtitle">Annabela K </h3>
                                 <p class="text-muted">Mobile Development</p>
@@ -290,17 +281,15 @@
                 <div class="col-md-3 col-sm-6">
                     <div class="team-member wow fadeInUp" data-wow-delay="0.6s">
                         <div class="member-image">
-                            <img src="{{asset('assets/front/assets/img/team/member-4.png')}}" alt="">
+                            <img src="{{asset('assets/front/assets/img/team/dade.jpg')}}" alt="">
                         </div>
 
                         <div class="member-hover">
                             <div class="center-content">
                                 <div class="member-social">
-                                    <a href="#"><i class="fa fa-rss"></i></a>
                                     <a href="#"><i class="fa fa-facebook"></i></a>
                                     <a href="#"><i class="fa fa-twitter"></i></a>
                                     <a href="#"><i class="fa fa-google-plus"></i></a>
-                                    <a href="#"><i class="fa fa-linkedin"></i></a>
                                 </div>
                                 <h3 class="subtitle">Dade Listi A</h3>
                                 <p class="text-muted">Web Development</p>
@@ -324,29 +313,29 @@
                 <div class="col-sm-6 col-md-3">
                     <div class="fun-fact text-center tab-margin-bottom">
                         <i class="fa fa-thumbs-o-up"></i>
-                        <h3><span class="timer">850</span></h3>
-                        <p>Projects Completed</p>
+                        <h3><span class="timer">50</span></h3>
+                        <p>Completed</p>
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-3">
                     <div class="fun-fact text-center tab-margin-bottom">
                         <i class="fa fa-group"></i>
-                        <h3> <span class="timer">800</span></h3>
-                        <p>Happy Clients</p>
+                        <h3> <span class="timer">50</span></h3>
+                        <p>users</p>
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-3">
                     <div class="fun-fact text-center">
                         <i class="fa fa-envelope"></i>
-                        <h3> <span class="timer">925</span></h3>
+                        <h3> <span class="timer">50</span></h3>
                         <p>Mail Conversation</p>
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-3">
                     <div class="fun-fact text-center">
                         <i class="fa fa-file-image-o"></i>
-                        <h3> <span class="timer">1656</span></h3>
-                        <p>Photos Taken</p>
+                        <h3> <span class="timer">50</span></h3>
+                        <p>Pamflet</p>
                     </div>
                 </div>
             </div>
@@ -361,53 +350,8 @@
 
             <div class="row">
                 <div class="col-md-12 text-center">
-                    <div class="section-title">
-                        <h2>Client Testimonial</h2>
-                        <p>Locavore pork belly scenester, pinterest chillwave microdosing waistcoat
-                        pop-up. Flexitarian cliche artisan. </p>
-                    </div>
                 </div>
             </div>
-
-            <div class="row">
-                <div class="testimonial-list">
-
-                    <!-- Testimonial item -->
-                    <div class="single-testimonial">
-                        <img src="{{asset('assets/front/assets/img/testimonial/1.png')}}" alt="">
-                       <div class="testimonial-content">
-                            <i class="fa fa-quote-left"></i>
-                            <p>Locavore pork belly scenester, pinterest chillwave microdosing waistcoat pop-up. Flexitarian +1 cliche artisan, biodiesel mixtape tacos art party mustache cardigan kitsch squid disrupt. Truffaut deep v kitsch salvia sriracha.  </p>
-                            <h4>John Doe</h4>
-                            <p class="desg">CEO Designcare</p>
-                       </div>
-                    </div>
-
-                    <!-- Testimonial item -->
-                    <div class="single-testimonial">
-                        <img src="{{asset('assets/front/assets/img/testimonial/2.png')}}" alt="">
-                        <div class="testimonial-content">
-                            <i class="fa fa-quote-left"></i>
-                            <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters.</p>
-                            <h4>Micle Smith</h4>
-                            <p class="desg">Founder of Ambidextrousbd</p>
-                        </div>
-                    </div>
-
-                    <!-- Testimonial item <--></-->
-                    <div class="single-testimonial">
-                        <img src="{{asset('assets/front/assets/img/testimonial/3.png')}}" alt="">
-                        <div class="testimonial-content">
-                            <i class="fa fa-quote-left"></i>
-                            <p>Locavore pork belly scenester, pinterest chillwave microdosing waistcoat pop-up. Flexitarian cliche artisan. There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour.  </p>
-                            <h4>Smith Doe</h4>
-                            <p class="desg">Founder of designinfo</p>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
         </div>
     </section>
     <!-- Testimonial area ends -->
@@ -420,7 +364,7 @@
                 <div class="col-md-12">
                     <div class="section-title text-center">
                         <h2>Our  <span>Partner</span></h2>
-                        <p>perusahaan yang bekerjasama dengan kami</p>
+                        <p>Yang bekerjasama dengan kami</p>
                         <p>Ayoo Daftarkan sekarang!!</p>
                     </div>
                 </div>
@@ -478,50 +422,6 @@
                     </div>
                 </div>
             </div>
-
-            <div class="row contact-infos">
-                <div class="col-md-8">
-                    <!-- Contact form starts -->
-                    <div class="contact-form">
-
-                        <!-- Submition status -->
-                        <div id="form-messages"></div>
-
-                        <form id="ajax-contact" action="assets/mailer.php" method="post">
-                            <div class="row">
-
-                                <div class="col-md-6">
-                                    <div class="form-group in_name">
-                                        <input type="text" name="name" class="form-control" id="name" placeholder="Full Name" required="required">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group in_email">
-                                        <input type="email" name="email" class="form-control" id="email" placeholder="Email Address" required="required">
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-group in_subject">
-                                        <input type="text" name="subject" class="form-control" id="subject" placeholder="Subject" required="required">
-                                    </div>
-                                </div>
-
-                                <div class="col-md-12">
-                                    <div class="form-group in_message">
-                                        <textarea name="message" class="form-control" id="message" placeholder="Your Message" required="required"></textarea>
-                                    </div>
-                                    <div class="actions">
-                                        <input type="submit" value="Sent Message" name="submit" id="submitButton" class="btn" title="Submit Your Message!">
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <!-- Contact form ends-->
-
-                </div>
-                <!-- <div class="clearfix visible-xs visible-sm visible-md"></div> -->
-
                 <div class="col-md-4">
                     <div class="contact-info">
                         <i class="fa fa-home"></i>
@@ -534,57 +434,27 @@
                     <div class="contact-info">
                         <i class="fa fa-phone"></i>
                         <p>
-                            <a href="tel:0000" title="Click to Call">+ 000 - 1234 - 5678</a>
+                            <a href="tel:0000" title="Click to Call">0896 - 8504 - 9878</a>
                             <br>
-                            <a href="tel:0000" title="Click to Call">+ 000 - 9876 - 5432</a>
+                            <a href="tel:0000" title="Click to Call">0811 - 2666 - 10 </a>
                         </p>
                     </div>
                     <div class="contact-info">
                         <i class="fa fa-globe"></i>
                         <p>
-                            infotim@gmail.com
+                            dadel828@gmail.com
                         </p>
                     </div>
 
                 </div>
             </div>
-
         </div>
+      </div>
     </section>
     <!-- Contact area ends -->
 
     <!-- social-area starts-->
-    <div class="social-area">
-        <div class="container text-center">
-            <div class="row">
-                <div class="social">
-                     <ul class="social-links">
-                        <li class="wow bounceInLeft" data-wow-delay="0.2s">
-                            <a href=""><i class="fa fa-facebook"></i></a>
-                        </li>
-                        <li class="wow bounceInLeft" data-wow-delay="0.5s">
-                            <a href=""><i class="fa fa-twitter"></i></a>
-                        </li>
-                        <li class="wow bounceInLeft" data-wow-delay="0.8s">
-                            <a href=""><i class="fa fa-google-plus"></i></a>
-                        </li>
-                        <li class="wow bounceInLeft" data-wow-delay="1.1s">
-                            <a href=""><i class="fa fa-youtube"></i></a>
-                        </li>
-                        <li class="wow bounceInLeft" data-wow-delay="1.4s">
-                            <a href=""><i class="fa fa-pinterest"></i></a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
     <!-- social-area ends-->
-
-
-    <!-- Google Map starts-->
-    <div id="contactgoogleMap"></div>
-    <!-- Google Map ends -->
 
 
     <!-- Footer area starts -->
@@ -594,7 +464,7 @@
                 <div class="footer-text-area">
                     <div class="col-md-12">
                         <div class="copyright-text">
-                            <p>Copyright &copy; 2017 Abirvab. All Rights Reserved by Ambidextrousbd</p>
+                            <p>Copyright &copy; lokerit</p>
                         </div>
                         <div class="top-button">
                           <a href="#slider" class="back-to-top smooth_scroll"><i class="fa fa-angle-up"></i></a>

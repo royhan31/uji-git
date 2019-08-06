@@ -14,6 +14,8 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Auth::routes();
+Route::get('email/verifikasi/{id}', 'Company\VerificationCompanyController@verify')->name('verificationCompany.verify');
 
 Route::group(['prefix' => 'admin'], function(){
   Route::get('/login', 'Admin\AuthAdminController@showLoginForm')->name('admin.login');
@@ -30,9 +32,10 @@ Route::group(['prefix' => 'admin'], function(){
   Route::patch('/pengguna/{user}','Admin\UserController@confirm')->name('admin.user.confirm');
   Route::get('/pertanyaan','Admin\QuestionController@index')->name('admin.question');
   Route::post('/pertanyaan','Admin\QuestionController@store')->name('admin.question.store');
-
-
-
+  Route::patch('/pertanyaan/{question}','Admin\QuestionController@update')->name('admin.question.update');
+  Route::post('/pertanyaan/{question}','Admin\QuestionController@destroy')->name('admin.question.destroy');
+  Route::get('/loker','Admin\AdminsController@loker')->name('admin.loker');
+  Route::get('riwayat','Admin\AdminsController@history')->name('admin.history');
 });
 
 Route::group(['prefix' => '/'], function(){
@@ -43,6 +46,7 @@ Route::group(['prefix' => '/'], function(){
   Route::post('logout','Company\AuthCompanyController@logoutCompany')->name('company.logout');
   Route::get('beranda','Company\CompanyController@index')->name('company.dashboard');
   Route::get('profil','Company\CompanyController@profile')->name('company.profile');
+  Route::post('profil','Company\CompanyController@resetPassword')->name('company.reset.password');
   Route::patch('profile/{company}','Company\CompanyController@updateProfile')->name('company.profile.update');
   //crud loker
   Route::get('loker','Company\LokerController@index')->name('company.loker');

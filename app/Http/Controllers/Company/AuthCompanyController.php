@@ -20,20 +20,20 @@ class AuthCompanyController extends Controller
 
   public function register(Request $request){
     $this->validate($request, [
-      'name' => 'required|string|min:3|max:255',
-      'company' => 'required|string|min:5',
+      'name' => 'string|min:3|regex:/^[\pL\s\-]+$/u',
+      'company' => 'string|regex:/^[\pL\s\-]+$/u|min:5',
       'email' => 'required|string|max:150|unique:companies',
       'password' => 'required|string|min:6|confirmed'
     ]);
 
-    Company::create([
+    $company = Company::create([
       'name'     => $request->name,
       'company'  => $request->company,
       'email'    => $request->email,
       'password' => bcrypt($request->password),
     ]);
-
-    return redirect()->route('login')->with('success','Berhasil register, Silahkan login');
+    $company->sendEmailCompanyVerificationNotification();
+    return redirect()->route('login')->with('success','Berhasil register, Silahkan cek email anda');
   }
 
   public function showLoginForm(){
@@ -69,4 +69,6 @@ class AuthCompanyController extends Controller
     Auth::guard('company')->logout();
     return redirect('/');
   }
+
+
 }

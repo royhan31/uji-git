@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Company;
 use App\Notification;
 use Auth;
+use App\History;
 
 class CompanyController extends Controller
 {
@@ -26,6 +27,10 @@ class CompanyController extends Controller
           $company->update([
             'deleted_at' => false
           ]);
+
+          History::create([
+            'message' => 'Anda telah mengaktifkan perusahaan '.$company->company
+          ]);
         }else {
           if(Auth::guard('company')->user() != null){
             if ($company->id == Auth::guard('company')->user()->id) {
@@ -34,6 +39,10 @@ class CompanyController extends Controller
           }
           $company->update([
             'deleted_at' => true
+          ]);
+
+          History::create([
+            'message' => 'Anda telah menonaktifkan perusahaan '.$company->company
           ]);
         }
 

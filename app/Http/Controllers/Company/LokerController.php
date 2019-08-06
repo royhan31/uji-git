@@ -10,6 +10,7 @@ use App\Notification;
 use DateTime;
 use Storage;
 use App\History;
+use App\Registration;
 class LokerController extends Controller
 {
     public function __construct(){
@@ -41,15 +42,18 @@ class LokerController extends Controller
       if(Auth::user()->company_number == null || Auth::user()->phone == null || Auth::user()->address == null){
         return back()->with('error','');
       }
+      if (Auth::user()->email_verified_at == null) {
+        return back()->with('errorEmail','Silahkan konfirmasi email terlebih dahulu');
+      }
       return view('home.comp.loker.create', compact('notifications','notif', 'jobs'));
     }
 
     public function store(Request $request){
       $this->validate($request,[
-        'name' => 'required|min:6',
-        'description' => 'required|min:300',
-        'image' => 'required|image|mimes:jpg,jpeg,png|max:2000',
-        'requirements' => 'min:5'
+        'name' => 'string|min:3|max:255|regex:/^[\pL\s\-]+$/u',
+        'description' => 'string|min:100',
+        'image' => 'image|mimes:jpg,jpeg,png|max:2048',
+        'requirements' => 'regex:/^[a-zA-Z0-9\s-]+$/|min:5'
       ]);
       $date_opened = strtotime($request->date_opened);
       $date_closed = strtotime($request->date_closed);
@@ -61,7 +65,7 @@ class LokerController extends Controller
       $image = $request->file('image')->store('loker');
       if($interval_closed->format('%r%a') < 15){
         return back()->with('errorClosed','Tanggal yang anda pilih minimal 14 hari setelah tanggal buka')
-        ->withInput($request->only('name','job','requirements','description','date_opened','date_closed'));
+        ->withInput();
       }else{
       $loker = Loker::create([
           'name' => $request->name,
@@ -76,7 +80,7 @@ class LokerController extends Controller
 
         History::create([
           'company_id' => Auth::user()->id,
-          'message' => 'Anda telah menambahkan loker'.$loker->name
+          'message' => 'Anda telah menambahkan loker '.$loker->name
         ]);
 
         return redirect()->route('company.loker')->with('success','Loker berhasil ditambahkan');
@@ -85,6 +89,10 @@ class LokerController extends Controller
     }
 
     public function edit(Loker $loker){
+      $registraions = Registration::where('loker_id', $loker->id)->get();
+      if (!$registraions->isEmpty()) {
+        return redirect()->back()->with('error','Loker tidak bisa dirubah saat ada pelamar kerja');
+      }
       $jobs= [
         '1' => 'Frontend Developer',
         '2' => 'Backend Developer',
@@ -104,10 +112,10 @@ class LokerController extends Controller
 
     public function update(Request $request, Loker $loker){
       $this->validate($request,[
-        'name' => 'required|min:6',
-        'description' => 'required|min:300',
-        'image' => 'image|mimes:jpg,jpeg,png|max:2000',
-        'requirements' => 'min:5'
+        'name' => 'string|min:3|max:255|regex:/^[\pL\s\-]+$/u',
+        'description' => 'string|min:100',
+        'image' => 'image|mimes:jpg,jpeg,png|max:2048',
+        'requirements' => 'regex:/^[a-zA-Z0-9\s-]+$/|min:5'
       ]);
       $date_opened = strtotime($request->date_opened);
       $date_closed = strtotime($request->date_closed);
@@ -118,7 +126,7 @@ class LokerController extends Controller
       $interval_closed = $end_date_opened->diff($end_date_closed);
       if($interval_closed->format('%r%a') < 15){
         return back()->with('errorClosed','Tanggal yang anda pilih minimal 14 hari setelah tanggal buka')
-        ->withInput($request->only('name','job','description','requirements','date_opened','date_closed'));
+        ->withInput();
       }else{
         if($request->image){
           $image = $request->file('image')->store('loker');
@@ -146,12 +154,23 @@ class LokerController extends Controller
             'date_closed' => $closed,
           ]);
         }
-
+        History::create([
+          'company_id' => Auth::user()->id,
+          'message' => 'Anda telah merubah loker '.$loker->name
+        ]);
         return redirect()->route('company.loker')->with('success','Loker berhasil diubah');
       }
     }
 
     public function destroy(Loker $loker){
+      $registraions = Registration::where('loker_id', $loker->id)->get();
+      if (!$registraions->isEmpty()) {
+        return redirect()->back()->with('error','Loker tidak bisa dihapus saat ada pelamar kerja');
+      }
+      History::create([
+        'company_id' => Auth::user()->id,
+        'message' => 'Anda telah menghapus loker '.$loker->name
+      ]);
       $image_path = $loker->image;
       if (Storage::exists($image_path)) {
           Storage::delete($image_path);

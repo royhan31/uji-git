@@ -25,15 +25,21 @@
 </div>
 @if(Session::has('error'))
 <div class="col-12">
-  <div class="alert alert-warning alert-dismissible fade show" role="alert"><strong><i class="icon-alert"></i> Anda tidak bisa menambahkan loker sebelum melengkapi profil, <a class="text-white" href="{{route('company.profile')}}">Silahkan Lengkapi Profil Anda.</a> </strong>
-    <!-- <button class="close" type="button" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button> -->
-  </div>
+  <div class="alert alert-danger dark alert-dismissible fade show" role="alert"><strong>{{Session::get('error')}}</strong>
+      <button class="close" type="button" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
 </div>
 @elseif(Session::has('success'))
 <div class="col-12">
   <div class="alert alert-success alert-dismissible fade show" role="alert"><strong><i class="icon-check"></i>{{Session::get('success')}}</strong>
     <button class="close" type="button" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
   </div>
+</div>
+@elseif(Session::has('errorEmail'))
+<div class="col-12">
+  <div class="alert alert-danger dark alert-dismissible fade show" role="alert"><strong>{{Session::get('errorEmail')}}</strong>
+      <button class="close" type="button" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
 </div>
 @endif
 <div class="col-2 mb-3">

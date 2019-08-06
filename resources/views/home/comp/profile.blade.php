@@ -22,6 +22,18 @@
       <button class="close" type="button" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
     </div>
 </div>
+@elseif($errors->has('password'))
+<div class="col-12">
+  <div class="alert alert-danger dark alert-dismissible fade show" role="alert"><strong>Gagal merubah password</strong>
+      <button class="close" type="button" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+</div>
+@elseif($errors->all())
+<div class="col-12">
+  <div class="alert alert-danger dark alert-dismissible fade show" role="alert"><strong>Gagal merubah profil</strong>
+      <button class="close" type="button" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+</div>
 @endif
 <div class="container-fluid">
   <div class="edit-profile">
@@ -48,13 +60,19 @@
             <div class="card-options"><a class="card-options-collapse" href="#" data-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a><a class="card-options-remove" href="#" data-toggle="card-remove"><i class="fe fe-x"></i></a></div>
           </div>
           <div class="card-body">
-              <form class="" action="" method="post">
+              <form class="" action="{{route('company.reset.password')}}" method="post">
+                @csrf
               <div class="form-group">
                 <label class="form-label">Password</label>
                 <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="**********">
                 @error('password')
                     <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
+                      <strong>@if($message == 'validation.min.string')
+                        Password terlalu pendek
+                        @else
+                        Password tidak sama
+                        @endif
+                      </strong>
                     </span>
                 @enderror
               </div>
@@ -109,10 +127,18 @@
               <div class="col-sm-6 col-md-6">
                 <div class="form-group">
                   <label class="form-label">Nomor Perusahaan</label>
-                  <input class="form-control @error('company_number') is-invalid @enderror" name="company_number" value="{{old('company_number',Auth::user()->company_number)}}" type="text" placeholder="" required>
-                  @error('number_company')
+                  <input class="form-control @error('company_number') is-invalid @enderror" name="company_number" value="{{old('company_number',Auth::user()->company_number)}}" type="text" maxlength="8" placeholder="" required>
+                  @error('company_number')
                       <span class="invalid-feedback" role="alert">
-                          <strong>{{ $message }}</strong>
+                          <strong>
+                            @if($message = 'validation.numeric')
+                            Nomor Perusahaan tidak benar
+                            @elseif($message = 'validation.digits_between')
+                            Nomor Perusahaan harus 8 karakter
+                            @else
+                            Nomor Perusahaan sudah ada
+                            @endif
+                          </strong>
                       </span>
                   @enderror
                 </div>

@@ -17,6 +17,13 @@
     </div>
   </div>
 </div>
+@if($errors->all() || Session::has('errorClosed'))
+<div class="col-12">
+  <div class="alert alert-danger dark alert-dismissible fade show" role="alert"><strong>Gagal menambahkan loker</strong>
+      <button class="close" type="button" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+</div>
+@endif
   <div class="container-fluid">
   <div class="row">
     <div class="col-sm-12">
@@ -34,7 +41,12 @@
                   <input name="name" value="{{old('name')}}" class="form-control @error('name') is-invalid @enderror" type="text" autofocus required>
                   @error('name')
                       <span class="invalid-feedback" role="alert">
-                          <strong>Nama Loker Terlalu Pendek</strong>
+                        <strong>@if($message == 'validation.regex')
+                          Masukan nama loker dengan benar
+                          @else
+                          Nama loker terlalu pendek
+                          @endif
+                        </strong>
                       </span>
                   @enderror
                 </div>
@@ -59,7 +71,12 @@
                   <textarea name="requirements" rows="6" class="form-control @error('requirements') is-invalid @enderror" required>{{old('requirements')}}</textarea>
                   @error('requirements')
                       <span class="invalid-feedback" role="alert">
-                          <strong>Persyaratan Terlalu Pendek</strong>
+                        <strong>@if($message == 'validation.regex')
+                          Masukan persyaratan dengan benar
+                          @else
+                          Persyaratan terlalu pendek
+                          @endif
+                        </strong>
                       </span>
                   @enderror
                 </div>

@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\User;
 use App\Notification;
 use Auth;
+use App\History;
 
 
 class UserController extends Controller
@@ -28,6 +29,9 @@ class UserController extends Controller
             'api_token' => bcrypt($user->email),
             'deleted_at' => 0
           ]);
+          History::create([
+            'message' => 'Anda telah mengaktifkan '.$user->name
+          ]);
         }else {
           if(Auth::guard('web')->user() != null){
             if ($user->id == Auth::guard('web')->user()->id) {
@@ -37,6 +41,10 @@ class UserController extends Controller
           $user->update([
             'api_token' => null,
             'deleted_at' => 1
+          ]);
+
+          History::create([
+            'message' => 'Anda telah menonaktifkan '.$user->name
           ]);
         }
 
@@ -53,6 +61,10 @@ class UserController extends Controller
     public function confirm(User $user){
       $user->update([
         'status' => true,
+      ]);
+
+      History::create([
+        'message' => $user->name.' telah dikonfirmasi'
       ]);
 
       return redirect()->route('admin.user')->with('success','Akun berhasil di konfirmasi');

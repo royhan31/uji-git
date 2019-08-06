@@ -2,12 +2,16 @@
 
 namespace App;
 
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Notifications\VerifyCompanyEmail;
 
 
 class Company extends Authenticatable
 {
+    use Notifiable;
+
     protected $guarded = [];
 
     protected $hidden = [
@@ -21,5 +25,10 @@ class Company extends Authenticatable
 
     public function lokers(){
       return $this->hasMany(Loker::class);
+    }
+
+    public function sendEmailCompanyVerificationNotification()
+    {
+      $this->notify(new VerifyCompanyEmail);
     }
 }

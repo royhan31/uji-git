@@ -20,7 +20,7 @@
                 <div class="authentication-box">
                   <!-- <div class="text-center"><img src="../assets/images/endless-logo.png" alt=""></div> -->
                   <div class="card mt-4 p-4">
-                    <h6 class="text-center">#</h6>
+                    <h6 class="text-center">Register</h6>
                     <form class="theme-form" method="post" action="{{route('company.register')}}">
                       @csrf
                       <div class="form-group">
@@ -28,7 +28,12 @@
                         <input name="name" class="form-control @error('name') is-invalid @enderror" value="{{old('name')}}" type="text" required placeholder="Nama" autofocus>
                         @error('name')
                             <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
+                              <strong>@if($message == 'validation.regex')
+                                Masukan nama dengan benar
+                                @else
+                                Nama terlalu pendek
+                                @endif
+                              </strong>
                             </span>
                         @enderror
                       </div>
@@ -37,7 +42,12 @@
                         <input name="company" class="form-control @error('company') is-invalid @enderror" type="text" value="{{old('company')}}" required placeholder="Perusahaan">
                         @error('company')
                             <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
+                              <strong>@if($message == 'validation.regex')
+                                Masukan nama perusahaan dengan benar
+                                @else
+                                Nama perusahaan terlalu pendek
+                                @endif
+                              </strong>
                             </span>
                         @enderror
                       </div>
@@ -46,7 +56,7 @@
                         <input name="email" class="form-control @error('email') is-invalid @enderror" type="email" value="{{old('email')}}" required placeholder="Email">
                         @error('email')
                             <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
+                                <strong>Email sudah ada</strong>
                             </span>
                         @enderror
                       </div>
@@ -55,7 +65,12 @@
                         <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="**********">
                         @error('password')
                             <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
+                              <strong>@if($message == 'validation.min.string')
+                                Password terlalu pendek
+                                @else
+                                Password tidak sama
+                                @endif
+                              </strong>
                             </span>
                         @enderror
                       </div>
@@ -68,7 +83,7 @@
                           <button class="btn btn-primary" type="submit">Register</button>
                         </div>
                         <div class="col-sm-8">
-                          <div class="text-left mt-2 m-l-20">Sudah punya akun?  <a class="btn-link text-capitalize" href="{{route('login')}}">Login</a></div>
+                          <div class="text-left mt-2 m-l-20"> <a class="btn-link text-capitalize" href="{{route('login')}}">Sudah punya akun?</a></div>
                         </div>
                       </div>
                     </form>

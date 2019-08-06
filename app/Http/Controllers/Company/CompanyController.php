@@ -37,10 +37,11 @@ class CompanyController extends Controller
     }
 
     public function updateProfile(Request $request, Company $company){
+      $company = Auth::user();
       $this->validate($request,[
-        'email' => 'required|email',
-        'company_number' => 'required|min:5',
-        'phone' => 'required|min:10|max:13',
+        'email' => "string|email|max:255|unique:companies,email,$company->id",
+        'company_number' => "numeric|digits_between:8,8|unique:companies,company_number,$company->id",
+        'phone' => 'numeric|digits_between:10,13',
         'address' => 'required|min:10'
       ]);
 
@@ -82,7 +83,16 @@ class CompanyController extends Controller
     }
 
     public function resetPassword(Request $request){
+      $user = Auth::user();
+      $this->validate($request,[
+        'password' => 'string|min:8|confirmed'
+      ]);
 
+      $user->update([
+        'password' => bcrypt($request->password),
+      ]);
+
+      return redirect()->back()->with('success', 'Password berhasil diubah');
     }
 
     public function notif(Notification $notification){
@@ -98,4 +108,5 @@ class CompanyController extends Controller
       $notif = Notification::where('company_id',Auth::user()->id)->where('read',false)->get();
       return view('home.comp.history', compact('notifications','notif', 'histories'));
     }
+
 }

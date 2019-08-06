@@ -21,7 +21,7 @@ class CreateCompaniesTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('avatar')->default('avatar/default.jpg')->nullable();
-            $table->string('company_number')->nullable()->unique();
+            $table->string('company_number', 8)->nullable()->unique();
             $table->text('address')->nullable();
             $table->string('phone',13)->nullable();
             $table->boolean('deleted_at')->default(false);

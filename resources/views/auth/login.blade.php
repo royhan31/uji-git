@@ -62,9 +62,10 @@
                           <button class="btn btn-primary btn-block" type="submit">Login</button>
                         </div>
                         <div class="form-group form-row mt-3 mb-0">
-                          <a href="#">Lupa Password ?</a>
+                          <!-- <a href="#">Lupa Password ?</a> -->
+                          <a href="{{route('register')}}"> Belum punya akun ? </a>
                           <div class="ml-5">
-                            Belum punya akun ? <a href="{{route('register')}}">Register</a>
+
                           </div>
                         </div>
 

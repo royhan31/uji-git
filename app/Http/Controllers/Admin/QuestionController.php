@@ -33,12 +33,33 @@ class QuestionController extends Controller
   }
 
   public function store(Request $request){
-    // dd($request->all());
+    $this->validate($request,[
+      'name' => 'string|min:5',
+      'point' => 'numeric|min:1',
+    ]);
     Question::create([
       'name' => $request->name,
       'category' => $request->category,
       'point' => $request->point
     ]);
     return redirect()->back()->with('success', 'Pertanyaan berhasil ditambahkan');
+  }
+
+  public function update(Request $request, Question $question){
+    $this->validate($request,[
+      'name' => 'string|min:5',
+      'point' => 'numeric|min:1',
+    ]);
+    $question->update([
+      'name' => $request->name,
+      'category' => $request->category,
+      'point' => $request->point
+    ]);
+    return redirect()->back()->with('success', 'Pertanyaan berhasil diubah');
+  }
+
+  public function destroy(Question $question){
+    $question->delete();
+    return redirect()->back()->with('success', 'Pertanyaan berhasil dihapus');
   }
 }

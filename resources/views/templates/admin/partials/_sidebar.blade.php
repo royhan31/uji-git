@@ -12,8 +12,9 @@
       <li class=""><a class="sidebar-header @if(Request::is('admin/beranda')) active @endif" href="{{route('admin.dashboard')}}"><i data-feather="home"></i><span>Beranda</span></a></li>
       <li><a class="sidebar-header @if(Request::is('admin/perusahaan')) active @endif" href="{{route('admin.company')}}"><i data-feather="globe"></i><span>Data Perusahaan</span></a></li>
       <li><a class="sidebar-header  @if(Request::is('admin/pengguna') || Request::is('admin/pengguna/*')) active @endif" href="{{route('admin.user')}}"><i data-feather="users"></i><span>Data Pengguna</span></a></li>
-      <li><a class="sidebar-header @if(Request::is('admin/pertanyaan')) active @endif" href="{{route('admin.question')}}"><i data-feather="clock"></i><span>Pertanyaan</span></a></li>
-      <li><a class="sidebar-header" href="#"><i data-feather="clock"></i><span>Riwayat</span></a></li>
+      <li><a class="sidebar-header @if(Request::is('admin/loker')) active @endif" href="{{route('admin.loker')}}"><i data-feather="clipboard"></i><span>Data Loker</span></a></li>
+      <li><a class="sidebar-header @if(Request::is('admin/pertanyaan')) active @endif" href="{{route('admin.question')}}"><i data-feather="book"></i><span>Pertanyaan</span></a></li>
+      <li><a class="sidebar-header @if(Request::is('admin/riwayat')) active @endif" href="{{route('admin.history')}}"><i data-feather="clock"></i><span>Riwayat</span></a></li>
     </ul>
   </div>
 </div>

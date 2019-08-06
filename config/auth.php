@@ -119,13 +119,13 @@ return [
         ],
 
         'companies' => [
-            'provider' => 'admins',
+            'provider' => 'companies',
             'table' => 'password_resets',
-            'expire' => 25,
+            'expire' => 60,
         ],
 
         'admins' => [
-            'provider' => 'pelamars',
+            'provider' => 'admins',
             'table' => 'password_resets',
             'expire' => 15,
         ],
