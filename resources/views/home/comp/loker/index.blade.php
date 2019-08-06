@@ -25,7 +25,7 @@
 </div>
 @if(Session::has('error'))
 <div class="col-12">
-  <div class="alert alert-danger dark alert-dismissible fade show" role="alert"><strong>{{Session::get('error')}}</strong>
+<div class="alert alert-warning alert-dismissible fade show" role="alert"><strong><i class="icon-alert"></i><a class="text-white" href="{{route('company.profile')}}">Silahkan Lengkapi Profil Anda.</a> </strong>
       <button class="close" type="button" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
     </div>
 </div>
@@ -37,7 +37,7 @@
 </div>
 @elseif(Session::has('errorEmail'))
 <div class="col-12">
-  <div class="alert alert-danger dark alert-dismissible fade show" role="alert"><strong>{{Session::get('errorEmail')}}</strong>
+  <div class="alert alert-danger dark alert-dismissible fade show" role="alert"><strong>Silahkan verifikasi email terlebih dahulu</strong>
       <button class="close" type="button" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
     </div>
 </div>

@@ -15,6 +15,7 @@ use Illuminate\Http\Request;
 */
 
 //Route::get('loker','API\LokerConroller@index');
+Route::get('email/verifikasi/{id}', 'API\VerificationUserController@verify')->name('verificationUser.verify');
 Route::post('user/register','API\UserController@register');
 Route::post('user/login','API\UserController@login');
 Route::post('user/registration','API\RegistrationController@userRegistration')->middleware('auth:api');

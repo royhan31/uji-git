@@ -13,7 +13,7 @@ class VerifyUserEmail extends VerifyEmailBase
 {
   protected function verificationUrl($notifiable){
     return URL::temporarySignedRoute(
-    'verificationCompany.verify', Carbon::now()->addMinutes(60), ['id' => $notifiable->getKey()]
+    'verificationUser.verify', Carbon::now()->addMinutes(60), ['id' => $notifiable->getKey()]
   );
   }
 

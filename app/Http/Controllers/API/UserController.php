@@ -36,6 +36,8 @@ class UserController extends Controller
         'ktp' => $ktp
       ]);
 
+      $user->sendEmailUserVerificationNotification();
+
       Notification::create([
         'message' => $user->name.' Telah mendaftar',
         'subject' => 'Pendaftaran Pengguna'
