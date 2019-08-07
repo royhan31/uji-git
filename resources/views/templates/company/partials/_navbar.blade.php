@@ -1,7 +1,7 @@
 <div class="page-main-header">
   <div class="main-header-right row">
     <div class="main-header-left d-lg-none">
-      <div class="logo-wrapper"><a href="index.html"><img src="../assets/images/endless-logo.png" alt=""></a></div>
+      <div class="logo-wrapper"><a href="{{url('beranda')}}"><img src="{{asset('assets/front/assets/img/iconlokerit.png')}}" alt=""></a></div>
     </div>
     <div class="mobile-sidebar d-block">
       <div class="media-body text-right switch-sm">

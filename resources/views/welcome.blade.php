@@ -14,7 +14,7 @@
     <title>Manage your loker</title>
 
     <!-- favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/front/assets/img/favicon.png')}}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/front/assets/img/iconlokerit.png')}}">
 
     <!-- Bootstrap css -->
     <link href="{{asset('assets/front/assets/css/bootstrap.min.css')}}" rel="stylesheet">

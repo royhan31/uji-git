@@ -1,6 +1,6 @@
 <div class="page-sidebar">
   <div class="main-header-left d-none d-lg-block">
-    <div class="logo-wrapper"><a href="index.html"><img src="../assets/images/endless-logo.png" alt=""></a></div>
+  <div class="logo-wrapper ml-3"><a href="{{url('admin/beranda')}}"><img width="50px" src="{{asset('assets/front/assets/img/iconlokerit.png')}}" alt=""></a> <h3 class="text-white ml-2 mt-3"> <strong>LokerIT</strong> </h3> </div>
   </div>
   <div class="sidebar custom-scrollbar">
     <div class="sidebar-user text-center">

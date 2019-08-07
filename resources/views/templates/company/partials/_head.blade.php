@@ -5,8 +5,8 @@
   <meta name="description" content="endless admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
   <meta name="keywords" content="admin template, endless admin template, dashboard template, flat admin template, responsive admin template, web app">
   <meta name="author" content="pixelstrap">
-  <link rel="icon" href="{{ asset('assets/back/images/favicon.png')}}" type="image/x-icon">
-  <link rel="shortcut icon" href="{{ asset('assets/back/images/favicon.png')}}" type="image/x-icon">
+  <link rel="icon" href="{{asset('assets/front/assets/img/iconlokerit.png')}}" type="image/x-icon">
+  <link rel="shortcut icon" href="{{asset('assets/front/assets/img/iconlokerit.png')}}" type="image/x-icon">
   <title>@if(Request::is('login')) LokerIT - Login
     @elseif(Request::is('register')) LokerIT - Register
     @else LokerIT

@@ -11,6 +11,15 @@
 |
 */
 
+Route::get("/emails", function() {
+   Mail::raw('Now I know how to send emails with Laravel', function($message)
+	{
+		$message->subject('Hi There!!');
+		$message->from(config('mail.from.address'), config("app.name"));
+		$message->to('royhan.ir31@gmail.com');
+	});
+});
+
 Route::get('/', function () {
     return view('welcome');
 });

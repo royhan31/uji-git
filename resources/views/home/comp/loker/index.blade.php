@@ -68,17 +68,14 @@
           </div>
         </div>
         <div class="card-body">
-          <!-- <p class="mb-0">{!!str_limit($loker->description, )!!}</p> -->
           <img src="{{asset('images/'.$loker->image)}}" width="265" height="180" alt="">
         </div>
         <div class="card-footer">
           <h5>{{$loker->job}}</h5>
-          {{--<p class="mb-1">Tanggal Buka   : {{date('d M Y', strtotime($loker->date_opened))}}</p>--}}
           <p class="mb-1">Tanggal Tutup  : {{date('d M Y', strtotime($loker->date_closed))}}</p>
           <p>Jumlah Pelamar : {{count($loker->registrations)}}</p>
         </div>
       </div>
-
     </div>
 
     <!-- Modal Hapus -->

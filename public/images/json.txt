@@ -1,1 +1,0 @@
-[{"name":"Database Administrator","count":5,"id":3,"score":21},{"name":"Sistem Analisis","count":5,"id":4,"score":21},{"name":"Android Developer","count":5,"id":5,"score":21}]
