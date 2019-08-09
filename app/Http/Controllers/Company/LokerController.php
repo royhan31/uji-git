@@ -53,7 +53,7 @@ class LokerController extends Controller
         'name' => 'string|min:3|max:255|regex:/^[\pL\s\-]+$/u',
         'description' => 'string|min:100',
         'image' => 'image|mimes:jpg,jpeg,png|max:2048',
-        'requirements' => 'regex:/^[a-zA-Z0-9\s-]+$/|min:5'
+        'requirements' => 'string|min:5'
       ]);
       $date_opened = strtotime($request->date_opened);
       $date_closed = strtotime($request->date_closed);
@@ -115,7 +115,7 @@ class LokerController extends Controller
         'name' => 'string|min:3|max:255|regex:/^[\pL\s\-]+$/u',
         'description' => 'string|min:100',
         'image' => 'image|mimes:jpg,jpeg,png|max:2048',
-        'requirements' => 'regex:/^[a-zA-Z0-9\s-]+$/|min:5'
+        'requirements' => 'string|min:5'
       ]);
       $date_opened = strtotime($request->date_opened);
       $date_closed = strtotime($request->date_closed);

@@ -147,40 +147,41 @@ class UserController extends Controller
       ]);
     }
 
-    public function userLoker(){
-      $user = User::find(Auth::user()->id);
-      $lokers = array();
-      $registrations = Registration::where('user_id', $user->id)->get( );
-      foreach ($registrations as $registration) {
-        if ($registration->status == 0) {
-          $status = 'Menunggu';
-        }
-        if ($registration->status == 1) {
-          $status = 'Diterima';
-        }
-        if ($registration->status == 2) {
-          $status = 'Ditolak';
-        }
-        $lokers[] = [
-          'id' => $registration->loker->id,
-          'name' => $registration->loker->name,
-          'job' => $registration->loker->job,
-          'requirements' => $registration->loker->requirements,
-          'job' => $registration->loker->job,
-          'image' => $registration->loker->image,
-          'description' => $registration->loker->description,
-          'date_opened' => date('d M Y', strtotime($registration->loker->date_opened)),
-          'date_closed' => date('d M Y', strtotime($registration->loker->date_closed)),
-          'company' => $registration->loker->company->company,
-          'status' => $status,
-          'message' => $registration->message,
-          'time' => $registration->updated_at->diffForHumans(),
-        ];
-      }
-      return response()->json([
-          'message' => 'Berhasil',
-          'status' => true,
-          'data' => $lokers
-      ], 200);
+    public function userLoker(Request $request){
+      // $user = User::find(Auth::user()->id);
+      // $lokers = array();
+      // $registrations = Registration::where('user_id', $user->id)->get( );
+      // foreach ($registrations as $registration) {
+      //   if ($registration->status == 0) {
+      //     $status = 'Menunggu';
+      //   }
+      //   if ($registration->status == 1) {
+      //     $status = 'Diterima';
+      //   }
+      //   if ($registration->status == 2) {
+      //     $status = 'Ditolak';
+      //   }
+      //   $lokers[] = [
+      //     'id' => $registration->loker->id,
+      //     'name' => $registration->loker->name,
+      //     'job' => $registration->loker->job,
+      //     'requirements' => $registration->loker->requirements,
+      //     'job' => $registration->loker->job,
+      //     'image' => $registration->loker->image,
+      //     'description' => $registration->loker->description,
+      //     'date_opened' => date('d M Y', strtotime($registration->loker->date_opened)),
+      //     'date_closed' => date('d M Y', strtotime($registration->loker->date_closed)),
+      //     'company' => $registration->loker->company->company,
+      //     'status' => $status,
+      //     'message' => $registration->message,
+      //     'time' => $registration->updated_at->diffForHumans(),
+      //   ];
+      // }
+    $data = $request->header('Authorization');
+     return response()->json([
+         'message' => 'Berhasil',
+         'status' => true,
+         'data' => $data
+     ], 200);
     }
 }
