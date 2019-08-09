@@ -21,7 +21,7 @@ Route::post('user/login','API\UserController@login');
 Route::post('user/registration','API\RegistrationController@userRegistration')->middleware('auth:api');
 Route::get('user/profile','API\UserController@show')->middleware('auth:api');
 Route::get('user/logout','API\UserController@logout')->middleware('auth:api');
-Route::get('user/loker','API\UserController@userLoker');
+Route::get('user/loker','API\UserController@userLoker')->middleware('auth:api');
 Route::post('user/update','API\UserController@update')->middleware('auth:api');
 Route::get('company','API\CompanyController@index');
 Route::get('company/{id}','API\CompanyController@companyLoker');
