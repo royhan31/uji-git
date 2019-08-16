@@ -126,6 +126,17 @@
               </div>
               <div class="col-sm-6 col-md-6">
                 <div class="form-group">
+                  <label class="form-label">Nomor Telepon</label>
+                  <input class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{old('phone',Auth::user()->phone)}}" type="text" required>
+                  @error('phone')
+                      <span class="invalid-feedback" role="alert">
+                          <strong>{{ $message }}</strong>
+                      </span>
+                  @enderror
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-6">
+                <div class="form-group">
                   <label class="form-label">Nomor Perusahaan</label>
                   <input class="form-control @error('company_number') is-invalid @enderror" name="company_number" value="{{old('company_number',Auth::user()->company_number)}}" type="text" maxlength="8" placeholder="" required>
                   @error('company_number')
@@ -143,17 +154,20 @@
                   @enderror
                 </div>
               </div>
+              @if(Auth::user()->image == null)
               <div class="col-sm-6 col-md-6">
-                <div class="form-group">
-                  <label class="form-label">Nomor Telepon</label>
-                  <input class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{old('phone',Auth::user()->phone)}}" type="text" placeholder="">
-                  @error('phone')
+                <label class="form-label">SKIU</label>
+                <div class="custom-file">
+                  <input name="image" class="custom-file-input @error('image') is-invalid @enderror" id="image" type="file" accept="image/*" required>
+                  <label class="custom-file-label" for="validatedCustomFile">Pilih Gambar</label>
+                  @error('image')
                       <span class="invalid-feedback" role="alert">
-                          <strong>{{ $message }}</strong>
+                          <strong>Gambar harus jpg,jpeg,png dan kurang dari 2MB</strong>
                       </span>
                   @enderror
                 </div>
               </div>
+              @endif
               <div class="col-md-12">
                 <div class="form-group">
                   <label class="form-label">Alamat</label>

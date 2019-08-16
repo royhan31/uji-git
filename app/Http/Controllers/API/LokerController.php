@@ -81,4 +81,31 @@ class LokerController extends Controller
       'data' => $result
     ]);
   }
+
+  public function job($job){
+    $lokers = Loker::where('job',$job)->get();
+    $result = array();
+    foreach ($lokers as $loker) {
+      $result[] = [
+        'id' => $loker->id,
+        'name' => $loker->name,
+        'job' => $loker->job,
+        'requirements' => $loker->requirements,
+        'description' => $loker->description,
+        'image' => $loker->image,
+        'date_opened' => date('d M Y', strtotime($loker->date_opened)),
+        'date_closed' => date('d M Y', strtotime($loker->date_closed)),
+        'company' => $loker->company->company,
+        'email' => $loker->company->email,
+        'avatar' => $loker->company->avatar,
+        'address' => $loker->company->address,
+        'phone' => $loker->company->phone,
+      ];
+    }
+    return response()->json([
+      'message' => 'Berhasil',
+      'status' => true,
+      'data' => $result
+    ]);
+  }
 }

@@ -32,6 +32,7 @@
                  <th>Pemilik</th>
                  <th>Email</th>
                  <th>No HP</th>
+                 <th>Konfirmasi</th>
                  <th>Status</th>
                  <th>Aksi</th>
                </tr>
@@ -44,7 +45,13 @@
                  <td>{{$company->company}}</td>
                  <td>{{$company->name}}</td>
                  <td>{{$company->email}}</td>
-                 <td>{{$company->phone}}</td>
+                 <td width="10%">{{$company->phone}}</td>
+                 <td>@if($company->status)
+                   <span class="badge badge-success">Sudah</span>
+                   @else
+                    <span class="badge badge-danger">Belum</span>
+                   @endif
+                 </td>
                  <td>@if($company->deleted_at == 1)
                    <span class="badge badge-danger">Tidak aktif</span>
                    @else
@@ -52,7 +59,7 @@
                    @endif
                  </td>
                  <td>
-                   <a href="#"><span class="badge badge-info">Detail</span></a>
+                   <a href="{{route('admin.company.show', $company)}}"><span class="badge badge-info">Detail</span></a>
                    @if($company->deleted_at)
                    <a href="#" data-toggle="modal" data-target="#update{{$company->id}}"><span class="badge badge-success">Aktifkan</span></a>
                    @else

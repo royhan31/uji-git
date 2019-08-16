@@ -37,48 +37,38 @@ class CompanyController extends Controller
     }
 
     public function updateProfile(Request $request, Company $company){
-      $company = Auth::user();
+      // dd($request->all());
       $this->validate($request,[
         'email' => "string|email|max:255|unique:companies,email,$company->id",
         'company_number' => "numeric|digits_between:8,8|unique:companies,company_number,$company->id",
         'phone' => 'numeric|digits_between:10,13',
         'address' => 'required|min:10'
       ]);
-
-      if($request->avatar){
-        if($company->avatar == 'avatar/default.jpg'){
-          $avatar = $request->file('avatar')->store('avatar');
-          $company->update([
-            'email' => $request->email,
-            'company_number' => $request->company_number,
-            'phone' => $request->phone,
-            'address' => $request->address,
-            'avatar' => $avatar,
-          ]);
-        }else {
-          $avatar_path = $company->avatar;
-          if (Storage::exists($avatar_path)) {
-            Storage::delete($avatar_path);
+        $company = Auth::user();
+        $image = Auth::user()->image;
+        $avatar = Auth::user()->avatar;
+        if ($request->avatar) {
+          if($company->avatar == 'avatar/default.jpg'){
+            $avatar = $request->file('avatar')->store('avatar');
+          }else {
+            $avatar = $request->file('avatar')->store('avatar');
+            $avatar_path = $company->avatar;
+            if (Storage::exists($avatar_path)) {
+              Storage::delete($avatar_path);
+            }
           }
-          $avatar = $request->file('avatar')->store('avatar');
+        }
+        if ($request->image) {
+          $image = $request->file('image')->store('SKIU');
+        }
           $company->update([
             'email' => $request->email,
             'company_number' => $request->company_number,
             'phone' => $request->phone,
             'address' => $request->address,
             'avatar' => $avatar,
+            'image' => $image
           ]);
-        }
-      }
-      else {
-        $company->update([
-          'email' => $request->email,
-          'company_number' => $request->company_number,
-          'phone' => $request->phone,
-          'address' => $request->address,
-        ]);
-       }
-
       return back()->with('success','Profil Berhasil Diubah');
     }
 

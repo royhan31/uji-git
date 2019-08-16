@@ -19,7 +19,7 @@ class CompanyController extends Controller
       $notifications = Notification::orderBy('id', 'DESC')->where('company_id',null)->paginate(4);
       $notif = Notification::where('company_id',null)->where('read',false)->get();
       $companies = Company::orderBy('id','DESC')->get();
-      return view('home.admin.company', compact('notifications','notif','companies'));
+      return view('home.admin.company.company', compact('notifications','notif','companies'));
     }
 
     public function update(Company $company){
@@ -47,5 +47,24 @@ class CompanyController extends Controller
         }
 
       return redirect()->back();
+    }
+
+    public function show(Company $company){
+      $notifications = Notification::orderBy('id', 'DESC')->where('company_id',null)->paginate(4);
+      $notif = Notification::where('company_id',null)->where('read',false)->get();
+
+      return view('home.admin.company.show', compact('company','notifications','notif'));
+    }
+
+    public function confirm(Company $company){
+      $company->update([
+        'status' => true,
+      ]);
+
+      History::create([
+        'message' => $company->company.' telah dikonfirmasi'
+      ]);
+
+      return redirect()->route('admin.company')->with('success','Perusahaan berhasil di konfirmasi');
     }
 }

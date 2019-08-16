@@ -25,6 +25,8 @@ class CreateCompaniesTable extends Migration
             $table->text('address')->nullable();
             $table->string('phone',13)->nullable();
             $table->boolean('deleted_at')->default(false);
+            $table->string('image')->nullable();
+            $table->boolean('status')->default(false);
             $table->rememberToken();
             $table->timestamps();
         });

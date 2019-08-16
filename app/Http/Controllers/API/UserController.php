@@ -177,7 +177,11 @@ class UserController extends Controller
           'time' => $registration->updated_at->diffForHumans(),
         ];
       }
+<<<<<<< HEAD
     // $data = $request->header('Authorization');
+=======
+    //$data = $request->header('Authorization');
+>>>>>>> 242947f190654d3c7d552780a9be49170cd95f87
      return response()->json([
          'message' => 'Berhasil',
          'status' => true,

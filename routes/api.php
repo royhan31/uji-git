@@ -27,6 +27,8 @@ Route::get('company','API\CompanyController@index');
 Route::get('company/{id}','API\CompanyController@companyLoker');
 Route::get('loker','API\LokerController@index');
 Route::get('loker/{id}','API\LokerController@details');
+Route::get('loker/job/{job}','API\LokerController@job');
+
 Route::post('loker/search','API\LokerController@search');
 Route::get('question','API\QuestionController@index');
 Route::post('question','API\QuestionController@store')->middleware('auth:api');

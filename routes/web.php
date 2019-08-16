@@ -11,14 +11,6 @@
 |
 */
 
-Route::get("/emails", function() {
-   Mail::raw('Now I know how to send emails with Laravel', function($message)
-	{
-		$message->subject('Hi There!!');
-		$message->from(config('mail.from.address'), config("app.name"));
-		$message->to('royhan.ir31@gmail.com');
-	});
-});
 
 Route::get('/', function () {
     return view('welcome');
@@ -34,6 +26,9 @@ Route::group(['prefix' => 'admin'], function(){
   Route::get('/perusahaan','Admin\CompanyController@index')->name('admin.company');
   Route::get('/notif/{notification}','Admin\AdminsController@showNotif')->name('admin.notification');
   Route::post('/perusahaan/{company}','Admin\CompanyController@update')->name('admin.company.update');
+  Route::get('/perusahaan/{company}','Admin\CompanyController@show')->name('admin.company.show');
+  Route::patch('/perusahaan/{company}','Admin\CompanyController@confirm')->name('admin.company.confirm');
+
   Route::get('/pengguna','Admin\UserController@index')->name('admin.user');
   Route::post('/pengguna/{user}','Admin\UserController@update')->name('admin.user.update');
   Route::get('/pengguna','Admin\UserController@index')->name('admin.user');

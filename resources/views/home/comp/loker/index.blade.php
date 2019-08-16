@@ -35,12 +35,12 @@
     <button class="close" type="button" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
   </div>
 </div>
-<!-- @elseif(Session::has('errorEmail'))
+@elseif(Session::has('errors'))
 <div class="col-12">
-  <div class="alert alert-danger dark alert-dismissible fade show" role="alert"><strong>Silahkan verifikasi email terlebih dahulu</strong>
+  <div class="alert alert-danger dark alert-dismissible fade show" role="alert"><strong>{{Session::get('errors')}}</strong>
       <button class="close" type="button" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
     </div>
-</div> -->
+</div>
 @endif
 <div class="col-2 mb-3">
   <button class="btn btn-primary" type="button" name="button" onclick="window.location='{{route("company.loker.create")}}'">Tambah</button>
