@@ -21,7 +21,7 @@ class QuestionController extends Controller
       '4' => 'Android Developer',
       '5' => 'Sistem Analisis',
       '6' => 'Database Administrator',
-      '7' => 'UI/UX Designer',
+      '7' => 'UI UX Designer',
       '8' => 'Hardware Engineer',
       '9' => 'Network Engineer',
       '10' => 'Umum',
