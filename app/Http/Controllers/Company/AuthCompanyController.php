@@ -32,7 +32,7 @@ class AuthCompanyController extends Controller
       'email'    => $request->email,
       'password' => bcrypt($request->password),
     ]);
-    $company->sendEmailCompanyVerificationNotification();
+    // $company->sendEmailCompanyVerificationNotification();
     return redirect()->route('login')->with('success','Berhasil register, Silahkan cek email anda');
   }
 

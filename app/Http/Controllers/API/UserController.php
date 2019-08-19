@@ -21,8 +21,9 @@ class UserController extends Controller
         'password' => 'required|min:6',
         'address' => 'required|min:5',
         'phone' => 'required|string|min:11|max:13|unique:users',
+        'fcm_token' => 'required',
         'nik' => 'required|string|min:16|max:16|unique:users',
-        'ktp' => 'required|image|mimes:jpg,jpeg,png,'
+        'ktp' => 'required|image|mimes:jpg,jpeg,png',
       ]);
       $ktp = $request->file('ktp')->store('ktp');
       $user = User::create([
@@ -30,6 +31,7 @@ class UserController extends Controller
         'email' => $request->email,
         'password' => bcrypt($request->password),
         'api_token' => bcrypt($request->email),
+        'fcm_token' => $request->fcm_token,
         'address' => $request->address,
         'phone' => $request->phone,
         'nik' => $request->nik,

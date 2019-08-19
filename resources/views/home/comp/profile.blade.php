@@ -138,7 +138,7 @@
               <div class="col-sm-6 col-md-6">
                 <div class="form-group">
                   <label class="form-label">Nomor Perusahaan</label>
-                  <input class="form-control @error('company_number') is-invalid @enderror" name="company_number" value="{{old('company_number',Auth::user()->company_number)}}" type="text" maxlength="8" placeholder="" required>
+                  <input disabled class="form-control @error('company_number') is-invalid @enderror" name="company_number" value="{{old('company_number',Auth::user()->company_number)}}" type="text" maxlength="8" placeholder="" required>
                   @error('company_number')
                       <span class="invalid-feedback" role="alert">
                           <strong>

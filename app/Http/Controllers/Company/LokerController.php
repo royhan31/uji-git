@@ -42,12 +42,12 @@ class LokerController extends Controller
       if(Auth::user()->company_number == null || Auth::user()->phone == null || Auth::user()->address == null){
         return back()->with('error','');
       }
-      if (Auth::user()->email_verified_at == null) {
-        return back()->with('errors','Silahkan konfirmasi email terlebih dahulu');
-      }
-      if (!Auth::user()->status) {
-        return back()->with('errors','Perusahaan anda belum dikonfirmasi');
-      }
+      // if (Auth::user()->email_verified_at == null) {
+      //   return back()->with('errors','Silahkan konfirmasi email terlebih dahulu');
+      // }
+      // if (!Auth::user()->status) {
+      //   return back()->with('errors','Perusahaan anda belum dikonfirmasi');
+      // }
       return view('home.comp.loker.create', compact('notifications','notif', 'jobs'));
     }
 

@@ -57,7 +57,7 @@
             <div class="col">
               <div class="form-group">
                 <label for="exampleFormControlSelect9">Bidang</label>
-                <select name="job" class="form-control digits">
+                <select name="job" class="form-control digits" disabled>
                   @foreach($jobs as $job)
                   <option value="{{$job}}" {{old('job', $loker->job) == $job ? 'selected' : ''}} >{{$job}}</option>
                   @endforeach

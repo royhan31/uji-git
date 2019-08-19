@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('avatar')->default('avatar/default.jpg')->nullable();
             $table->string('api_token')->nullable();
+            $table->string('fcm_token')->nullable();
             $table->string('address')->nullable();
             $table->string('phone')->unique()->nullable();
             $table->string('nik',16)->unique()->nullable();
