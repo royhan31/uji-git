@@ -38,7 +38,7 @@ class UserController extends Controller
         'ktp' => $ktp
       ]);
 
-      $user->sendEmailUserVerificationNotification();
+      //$user->sendEmailUserVerificationNotification();
 
       Notification::create([
         'message' => $user->name.' Telah mendaftar',
@@ -152,7 +152,7 @@ class UserController extends Controller
     public function userLoker(Request $request){
       $user = User::find(Auth::user()->id);
       $lokers = array();
-      $registrations = Registration::where('user_id', $user->id)->get( );
+      $registrations = Registration::where('user_id', $user->id)->get();
       foreach ($registrations as $registration) {
         if ($registration->status == 0) {
           $status = 'Menunggu';
@@ -179,11 +179,6 @@ class UserController extends Controller
           'time' => $registration->updated_at->diffForHumans(),
         ];
       }
-<<<<<<< HEAD
-    // $data = $request->header('Authorization');
-=======
-    //$data = $request->header('Authorization');
->>>>>>> 242947f190654d3c7d552780a9be49170cd95f87
      return response()->json([
          'message' => 'Berhasil',
          'status' => true,
