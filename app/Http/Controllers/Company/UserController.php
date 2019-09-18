@@ -72,4 +72,9 @@ class UserController extends Controller
 
   }
 
+  public function printPriview(){
+    $lokers = Loker::where('company_id', Auth::user()->id)->get();
+    return view('home.comp.print', compact('lokers'));
+  }
+
 }

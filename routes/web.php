@@ -70,5 +70,6 @@ Route::group(['prefix' => '/'], function(){
   Route::patch('daftar-pelamar-kerja/tolak/{registration}','Company\UserController@denied')->name('company.jobApplicant.denied');
 
   Route::get('riwayat','Company\CompanyController@history')->name('company.history');
+  Route::get('print','Company\UserController@printPriview')->name('company.print');
 
 });

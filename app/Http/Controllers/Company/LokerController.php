@@ -95,10 +95,12 @@ class LokerController extends Controller
           'message' => 'Anda telah menambahkan loker '.$loker->name
         ]);
         $tokens = [];
-        $results = Result::where('category',$loker->job)->get();
-        foreach ($results as $results) {
-          $tokens = $results->users->pluck('fcm_token')->toArray();
+        $results = Result::where('category',$loker->job)->orderBy('score','DESC')->get();
+        $users = User::all();
+        foreach ($results as $result) {
+          $tokens = $result->users->pluck('fcm_token')->toArray();
         }
+        dd($tokens);
         if(count($tokens) > 0){
           //dd($tokens);
           $optionBuilder = new OptionsBuilder();

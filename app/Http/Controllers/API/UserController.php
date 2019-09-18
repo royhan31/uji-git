@@ -17,14 +17,37 @@ class UserController extends Controller
     public function register(Request $request){
       $this->validate($request,[
         'name' => 'required|min:5',
-        'email' => 'required|email|max:255|unique:users',
+        'email' => 'required|email|max:255',
         'password' => 'required|min:6',
         'address' => 'required|min:5',
-        'phone' => 'required|string|min:11|max:13|unique:users',
+        'phone' => 'required|string|min:11|max:13',
         'fcm_token' => 'required',
-        'nik' => 'required|string|min:16|max:16|unique:users',
+        'nik' => 'required|string|min:16|max:16',
         'ktp' => 'required|image|mimes:jpg,jpeg,png',
       ]);
+      $email = User::where('email', $request->email)->first();
+      $phone = User::where('phone', $request->phone)->first();
+      $nik = User::where('nik', $request->nik)->first();
+
+      if($email != null){
+        return response()->json([
+          'message' => 'Email sudah ada',
+          'status' => false
+        ]);
+      }
+      if($phone != null){
+        return response()->json([
+          'message' => 'No telepon sudah ada',
+          'status' => false
+        ]);
+      }
+      if($nik != null){
+        return response()->json([
+          'message' => 'NIK sudah ada',
+          'status' => false
+        ]);
+      }
+
       $ktp = $request->file('ktp')->store('ktp');
       $user = User::create([
         'name' => $request->name,

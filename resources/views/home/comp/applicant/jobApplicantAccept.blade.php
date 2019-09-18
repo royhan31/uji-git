@@ -39,6 +39,14 @@
    <div class="col-sm-12">
      <div class="card">
        <div class="card-header">
+         <div class="pull-right">
+           <button type="button" onclick="window.location='{{URL::to('print')}}'" class="btnPrint btn btn-primary"> <i class="fa fa-print"></i> </button>
+           <script type="text/javascript">
+             $(document).ready(function(){
+               $('.btnPrint').printPage();
+             });
+           </script>
+         </div>
        </div>
        <div class="card-body">
          <div class="table-responsive">
